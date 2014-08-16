@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>VigapMvp</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="row">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-4">
+        <div class="col-md-4">
+          <% if current_user %>
+            Logged as: <%= current_user.username %>
+            <%= link_to 'Logout' , logout_path  %>
+          <% else %>
+              <%= link_to 'Sign UP', new_user_path %>
+              <%= link_to 'Login', new_session_path %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <%= yield %>
+  </div>
+</div>
+
+
+</body>
+</html>
