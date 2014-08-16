@@ -17,4 +17,6 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: true, format: { with: REGEX }
   validates :username, presence: true, uniqueness: true
   belongs_to :profile
+  has_many :posts
+  acts_as_voter
 end

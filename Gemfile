@@ -15,3 +15,4 @@ gem 'bcrypt-ruby', '3.1.2'
 gem 'annotate', "~> 2.6.5"
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'faker'
+gem 'acts_as_votable', '~> 0.10.0'

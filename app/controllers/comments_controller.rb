@@ -27,7 +27,7 @@ class CommentsController < ApplicationController
 
   def save_comment
     if build_comment.save!
-      redirect_to @post
+      #redirect_to @post
     end
   end
 end

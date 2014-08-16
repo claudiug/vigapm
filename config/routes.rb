@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions
   resources :posts do
+    member do
+      put 'up', to: 'posts#up'
+      put 'down', to: 'posts#down'
+    end
     resources :comments
   end
   resources :users do

@@ -35,6 +35,14 @@ class PostsController < ApplicationController
     redirect_to posts_path, notice: 'post deleted'
   end
 
+  def up
+    load_post.up_vote(current_user)
+  end
+
+  def down
+    load_post.down_vote(current_user)
+  end
+
   private
 
   def posts_scope
