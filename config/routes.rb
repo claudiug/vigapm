@@ -2,10 +2,11 @@ Rails.application.routes.draw do
   root 'welcome#index'
   resources :users
   resources :sessions
-  resources :posts
+  resources :posts do
+    resources :comments
+  end
   resources :users do
     resources :profiles
-    resources :comments
   end
   get 'logout', to: 'sessions#destroy', as: 'logout'
   # Example of regular route:

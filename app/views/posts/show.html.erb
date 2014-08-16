@@ -3,3 +3,23 @@
 <%= @post.body  %>
 
 <%= link_to 'root', root_url %>
+
+<div class="allert">
+  <h3>Add a new Comment!</h3>
+  <%= form_for [@post, @post.comments.build] do |f| %>
+  <%= f.label :body %>
+  <%= f.text_area :body %>
+  </br>
+  <%= f.submit 'Add a new amazin and cool comment here!' %>
+  <% end %>
+</div>
+
+<% if @post.list_of_comments %>
+    <% @post.list_of_comments.each do |comment| %>
+        <div>
+          <p>
+            <%= comment.body %>
+          </p>
+        </div>
+    <% end %>
+<% end %>
