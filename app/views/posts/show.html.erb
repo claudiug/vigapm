@@ -10,13 +10,8 @@
    <p>Negative votes:</p><p id="down"> <%= @post.cached_votes_down %></p>
   </div>
 <p>vote here:</p>
-  <% unless current_user.voted_for? @post %>
       <%= link_to 'up', up_post_path(@post), method: :put, remote: true, id: 'link_up' %> ||
       <%=link_to 'down', down_post_path(@post), method: :put, remote: true, id: 'link_down' %>
-    <%else%>
-      <strong>Sorry dude, allready voted</strong>
-  <%end%>
-
 </div>
 
 

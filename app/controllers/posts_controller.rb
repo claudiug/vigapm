@@ -2,7 +2,8 @@ class PostsController < ApplicationController
   before_action :authorize, only: [:edit, :update] #LOL
 
   def index
-    load_posts
+    params[:page] || 1
+    @posts = load_posts.page(params[:page])
   end
 
   def show
@@ -65,7 +66,7 @@ class PostsController < ApplicationController
   end
 
   def load_posts
-    @posts ||= posts_scope.to_a
+    @posts ||= posts_scope
   end
 
   def post_params

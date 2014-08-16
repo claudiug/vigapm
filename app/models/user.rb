@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   REGEX = /\A[^@\s]+@([^@.\s]+\.)+[^@.\s]+\z/
   validates :email, presence: true, uniqueness: true, format: { with: REGEX }
   validates :username, presence: true, uniqueness: true
-  belongs_to :profile
+  belongs_to :profile #TODO is wrong a profile belongs_to user and a user has_one profile
   has_many :posts
   acts_as_voter
 end
