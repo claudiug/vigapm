@@ -31,7 +31,10 @@
             <div>
               <p id="comment_body">
                 <%= comment.body %>
+                <%= comment.user.try(:username) %>
               </p>
             </div>
+            <div>
         <% end %>
     <% end %>
+</div>

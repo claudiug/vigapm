@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
 
   def create
     save_comment or redirect_to @post, notice: 'Some error occured'
+    byebug
   end
 
   private
@@ -19,7 +20,7 @@ class CommentsController < ApplicationController
   def comment_params
     comment_params = params[:comment]
     if comment_params
-      comment_params.permit(:body)
+      comment_params.permit(:body).merge(user_id: current_user.id)
     else
       {}
     end
@@ -27,7 +28,7 @@ class CommentsController < ApplicationController
 
   def save_comment
     if build_comment.save!
-      #redirect_to @post
+      redirect_to @post
     end
   end
 end

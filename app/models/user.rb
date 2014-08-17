@@ -18,5 +18,6 @@ class User < ActiveRecord::Base
   validates :username, presence: true, uniqueness: true
   belongs_to :profile #TODO is wrong a profile belongs_to user and a user has_one profile
   has_many :posts
+  has_many :comments
   acts_as_voter
 end
