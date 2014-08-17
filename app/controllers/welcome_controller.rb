@@ -1,14 +1,12 @@
 class WelcomeController < ApplicationController
   def index
     if params[:query]
-      @result = Post.where('title LIKE ?', "%#{params[:query]}%")
-
+      @results = Post.where('title LIKE ?', "%#{params[:query]}%")
     end
   end
 
   def autocomplete
-    @result = Post.where('title LIKE ?', "%#{params[:query]}%")
-    render json:  @result.map {|s| {name: s.title}}
+    render json: Post.where('title LIKE ?', "%#{params[:query]}%").map {|s| {name: s.title}}
   end
 end
 

@@ -1,15 +1,34 @@
 <p>welcome emy!</p>
 
 <%= link_to 'all posts', posts_path %>
-<% if @result %>
- <% else %>
-  <p> no result bro!</p>
-<%end%>
-
 <%= form_tag root_path, method: :get do %>
  <%= text_field_tag :query, params[:query], class: 'typeahead' %>
  <% if params[:query].present?  %>
      <%= link_to 'clear', posts_path %>
   <% end %>
   <%= submit_tag 'Search bro' %>
+<% end %>
+
+<p>Let see</p>
+<% @results.each do |result| %>
+    <div>
+      <p>
+        <%= result.title %>
+        <%= link_to result.title, post_path(result) %>
+      </p>
+    </div>
+    <div>
+      <strong>user: </strong> <%= result.try(:user).try(:username) %>
+    </div>
+    <hr>
+    <div>
+      <p>
+        <%= result.body %>
+      </p>
+    </div>
+    <p>
+      <strong>Created:</strong> <%= time_ago_in_words(result.created_at) %> ago
+    </p>
+    <hr>
+    <p>Comments numbers: <%= result.comments.size %> </p>
 <% end %>
