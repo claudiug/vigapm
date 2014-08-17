@@ -19,7 +19,7 @@ class CommentsController < ApplicationController
   def comment_params
     comment_params = params[:comment]
     if comment_params
-      comment_params.permit(:body).merge(user_id: current_user.id)
+      comment_params.permit(:body)#.merge(user_id: current_user.id)
     else
       {}
     end
