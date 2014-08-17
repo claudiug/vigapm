@@ -5,7 +5,6 @@ class CommentsController < ApplicationController
 
   def create
     save_comment or redirect_to @post, notice: 'Some error occured'
-    byebug
   end
 
   private
