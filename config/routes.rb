@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'welcome#index'
+  get 'autocomplete', to: 'welcome#autocomplete'
   resources :users
   resources :sessions
   resources :posts do

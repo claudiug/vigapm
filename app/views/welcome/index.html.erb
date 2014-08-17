@@ -1,3 +1,15 @@
 <p>welcome emy!</p>
 
 <%= link_to 'all posts', posts_path %>
+<% if @result %>
+ <% else %>
+  <p> no result bro!</p>
+<%end%>
+
+<%= form_tag root_path, method: :get do %>
+ <%= text_field_tag :query, params[:query], class: 'typeahead' %>
+ <% if params[:query].present?  %>
+     <%= link_to 'clear', posts_path %>
+  <% end %>
+  <%= submit_tag 'Search bro' %>
+<% end %>
