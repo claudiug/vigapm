@@ -3,6 +3,8 @@ class WelcomeController < ApplicationController
     if params[:query]
       @results = Post.where('title LIKE ?', "%#{params[:query]}%")
     end
+    params[:page] || 1
+    @posts = Post.all.page(params[:page]).per_page(20)
   end
 
   def autocomplete
