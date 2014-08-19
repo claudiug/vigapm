@@ -34,8 +34,8 @@
               <span class="badge glyphicon glyphicon-dashboard">&nbsp;<%=time_ago_in_words(post.updated_at)%></span>
             </a>
         </div>
-        <% require "pp" %>
-        <% puts post.pretty_inspect %>
+        <% #require "pp" %>
+        <% #puts post.pretty_inspect %>
     <% end %>
     </div>
     <%= will_paginate @posts, class: 'pagination pagination-centered' %>
