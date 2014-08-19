@@ -1,6 +1,3 @@
-<h1>Welcome!</h1>
-
-<%= link_to 'all posts', posts_path %>
 
 <% if @results %>
     <% @results.each do |result| %>
@@ -25,4 +22,18 @@
         <hr>
         <p>Comments numbers: <%= result.comments.size %> </p>
     <% end %>
+
+<% else %>
+    <div class="list-group row">
+    <% @posts.each do |post| %>
+      <a href=<%= post_path(post) %> class="list-group-item col-xs-4">
+          <h4 class="list-group-item-heading"><%= post.title %></h4>
+          <p class="list-group-item-text"><%= post.body %></p>
+      </a>
+        <% #require "pp" %>
+        <% #puts post.pretty_inspect %>
+    <% end %>
+    </div>
+    <%= will_paginate @posts, class: 'pagination pagination-centered' %>
+
 <% end %>
