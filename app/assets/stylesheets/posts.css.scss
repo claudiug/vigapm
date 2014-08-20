@@ -113,3 +113,12 @@
 .label {
   word-spacing: -8px;
 }
+
+.comments-box {
+  display: inline-block;
+  padding-top: 20px;
+}
+
+.comments-box p {
+  white-space: pre-wrap;
+}

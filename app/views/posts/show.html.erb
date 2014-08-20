@@ -34,7 +34,7 @@
 <% end %>
 </div>
 <hr>
-<div>
+<div class="comments-box">
 <% if @post.list_of_comments %>
   <% @post.list_of_comments.each do |comment| %>
     <% if comment.body %>
@@ -46,7 +46,7 @@
           <h4 class="media-heading">
             <strong>A user</strong>&nbsp;says:
           </h4>
-          <%=comment.body%>
+          <p><%=comment.body%></p>
           <br>
 
           <% if comment.cached_votes_up > 0 %>
