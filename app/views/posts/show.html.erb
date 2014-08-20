@@ -1,48 +1,81 @@
+<%= stylesheet_link_tag 'posts', media: 'all', 'data-turbolinks-track' => true %>
 <div class="jumbotron">
   <h1><%= @post.title  %></h1>
   <p><%= @post.body %></p>
   <% if current_user %>
       <h2>
       
-      <% if @post.cached_votes_up > 0 %>
-          <%= link_to " #{@post.cached_votes_up}", up_post_path(@post), method: :put, remote: true, id: 'link_up', class:'label label-success glyphicon glyphicon-thumbs-up' %>
-      <% else %>
-          <%= link_to " #{@post.cached_votes_up}", up_post_path(@post), method: :put, remote: true, id: 'link_up', class:'label label-default glyphicon glyphicon-thumbs-up' %>
-      <% end %>
+      <%= link_to " #{@post.cached_votes_up}", up_post_path(@post), method: :put, remote: true, id: 'link_up', class:'label label-success glyphicon glyphicon-thumbs-up' %>
 
-      <% if @post.cached_votes_down > 0 %>
-          <%= link_to " #{@post.cached_votes_down}", down_post_path(@post), method: :put, remote: true, id: 'link_down', class:'label label-danger glyphicon glyphicon-thumbs-down' %>
-      <% else %>
-          <%= link_to " #{@post.cached_votes_down}", down_post_path(@post), method: :put, remote: true, id: 'link_down', class:'label label-default glyphicon glyphicon-thumbs-down' %>
-      <% end %>
+      <%= link_to " #{@post.cached_votes_down}", down_post_path(@post), method: :put, remote: true, id: 'link_down', class:'label label-danger glyphicon glyphicon-thumbs-down' %>
 
       </h2>
   <% end %>
 </div>
+
+
 <div>
-
  <% if current_user %>
+    <%= form_for [@post, @post.comments.build], html: {rows: 3} do|f| %>
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <%= f.text_area :body, placeholder: "Add your thoughts!", class: "form-control", style: "font-size: 18px;" %>
+      </div>
+      <div class="col-md-2"></div>
 
-<%= link_to 'root', root_url %>
-    <div class="allert">
-      <h3>Add a new Comment!</h3>
-      <%= form_for [@post, @post.comments.build] do|f| %>
-      <%= f.label :body %>
-      <%= f.text_area :body %>
-      </br>
-      <%= f.submit 'Add a new amazin and cool comment here!' %>
-      <% end %>
-    </div>
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <span class="input-group-btn">
+          <%= f.submit 'Post comment', class: "btn btn-lg btn-success", style: "width: 100%; font-size: 24px;" %>
+        </span>
+      </div>
+      <div class="col-md-4"></div>
+    <% end %>
 <% end %>
-    <% if @post.list_of_comments %>
-        <% @post.list_of_comments.each do |comment| %>
-            <div>
-              <p id="comment_body">
-                <%= comment.body %>
-                <!--<%= comment.user.try(:username) %>-->
-              </p>
-            </div>
-            <div>
-        <% end %>
+</div>
+<hr>
+<div>
+<% if @post.list_of_comments %>
+  <% @post.list_of_comments.each do |comment| %>
+    <% if comment.body %>
+      <div class="media">
+        <a class="pull-left" href="">
+          <img class="media-object" data-src="holder.js/64x64" alt="64x64" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjZWVlIi8+PHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMzIiIHk9IjMyIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEycHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NjR4NjQ8L3RleHQ+PC9zdmc+" style="width: 64px; height: 64px;">
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <strong>A user</strong>&nbsp;says:
+          </h4>
+          <%=comment.body%>
+          <br>
+
+          <% if comment.cached_votes_up > 0 %>
+            <span class='label label-success glyphicon glyphicon-thumbs-up'>
+              <%=comment.cached_votes_up%>
+            </span>
+          <% end %>
+
+          <% if comment.cached_votes_down > 0 %>
+            <span class='label label-danger glyphicon glyphicon-thumbs-down'>
+              <%=comment.cached_votes_down%>
+            </span>
+          <% end %>
+
+          <% if comment.created_at %>
+            <% if comment.created_at > Time.now - 1.days %>
+                <span class="label label-warning glyphicon glyphicon-dashboard">&nbsp;
+            <% else %>
+                <span class="label label-default glyphicon glyphicon-dashboard">&nbsp;
+            <% end %>
+            <%=time_ago_in_words(comment.created_at)%></span>
+          <% end %>
+
+          <% require "pp" %>
+          <% #puts comment.pretty_inspect %>
+        </div>
+      </div>
+      <br>
+    <% end %>
+  <% end %>
 <% end %>
 </div>
