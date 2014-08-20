@@ -31,7 +31,7 @@ class Post < ActiveRecord::Base
   #To check if a voter has voted on a model, you can use voted_for?
 
   def list_of_comments
-    comments.to_a if comments.size > 1
+    comments.to_a if comments.length > 0
   end
 
   def average_rating

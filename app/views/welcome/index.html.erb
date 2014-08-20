@@ -27,7 +27,7 @@
 <% else %>
     <div class="menu row">
     <% @posts.each do |post| %>
-        <div class="menu-category list-group ">
+        <div class="menu-category list-group">
             <a href=<%= post_path(post) %> class="menu-item list-group-item">
               
               <h4 class="list-group-item-heading"><%= post.title %></h4>
@@ -44,23 +44,24 @@
 
               <% if post.cached_votes_up > 0 %>
                   <span class="label label-success glyphicon glyphicon-thumbs-up">
-              <% else %>
-                  <span class="label label-default glyphicon glyphicon-thumbs-up">
+                  &nbsp;<%=post.cached_votes_up%></span>
               <% end %>
-              &nbsp;<%=post.cached_votes_up%></span>
 
               <% if post.cached_votes_down > 0 %>
                   <span class="label label-danger glyphicon glyphicon-thumbs-down">
-              <% else %>
-                  <span class="label label-default glyphicon glyphicon-thumbs-down">
+                  &nbsp;<%=post.cached_votes_down%></span>
               <% end %>
-              &nbsp;<%=post.cached_votes_down%></span>
+              <% if post.list_of_comments %>
+                <span class="label label-primary glyphicon glyphicon-comment">
+                  &nbsp;<%=post.list_of_comments.length%>
+                </span>
+              <% end %>
             </a>
         </div>
-        <% #require "pp" %>
+        <% require "pp" %>
         <% #puts post.pretty_inspect %>
     <% end %>
     </div>
-    <%= will_paginate @posts, class: 'pagination pagination-centered' %>
+    <%= will_paginate @posts, class: 'apple_pagination' %>
 
 <% end %>
