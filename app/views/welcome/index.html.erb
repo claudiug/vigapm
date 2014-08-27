@@ -1,28 +1,41 @@
 <%= stylesheet_link_tag 'welcome', media: 'all', 'data-turbolinks-track' => true %>
 
 <% if @results %>
+  <div class="menu row">
     <% @results.each do |result| %>
-        <div>
-          <p>
-            <%= result.title %>
-            <%= link_to result.title, post_path(result) %>
-          </p>
+        <div class="menu-category list-group">
+            <a href=<%= post_path(result) %> class="menu-item list-group-item">
+              
+              <h4 class="list-group-item-heading"><%= result.title %></h4>
+
+              <% if result.updated_at > Time.now - 1.days %>
+                  <span class="label label-warning glyphicon glyphicon-dashboard">&nbsp;
+              <% else %>
+                  <span class="label label-default glyphicon glyphicon-dashboard">&nbsp;
+              <% end %>
+              <%=time_ago_in_words(result.updated_at)%></span>
+              
+              <p class="menu-item list-group-item-text"><%= truncate(result.body, :length => 150, :omission => '... (continued)') %></p>
+
+              <% if result.cached_votes_up > 0 %>
+                  <span class="label label-success glyphicon glyphicon-thumbs-up">
+                  &nbsp;<%=result.cached_votes_up%></span>
+              <% end %>
+
+              <% if result.cached_votes_down > 0 %>
+                  <span class="label label-danger glyphicon glyphicon-thumbs-down">
+                  &nbsp;<%=result.cached_votes_down%></span>
+              <% end %>
+
+              <% if result.comments %>
+                <span class="label label-primary glyphicon glyphicon-comment">
+                  &nbsp;<%=result.comments.size%>
+                </span>
+              <% end %>
+            </a>
         </div>
-        <div>
-          <strong>user: </strong> <%= result.try(:user).try(:username) %>
-        </div>
-        <hr>
-        <div>
-          <p>
-            <%= result.body %>
-          </p>
-        </div>
-        <p>
-          <strong>Created:</strong> <%= time_ago_in_words(result.created_at) %> ago
-        </p>
-        <hr>
-        <p>Comments numbers: <%= result.comments.size %> </p>
     <% end %>
+  </div>
 
 <% else %>
     <div class="menu row">
@@ -51,6 +64,7 @@
                   <span class="label label-danger glyphicon glyphicon-thumbs-down">
                   &nbsp;<%=post.cached_votes_down%></span>
               <% end %>
+
               <% if post.list_of_comments %>
                 <span class="label label-primary glyphicon glyphicon-comment">
                   &nbsp;<%=post.list_of_comments.length%>
