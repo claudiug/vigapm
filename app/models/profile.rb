@@ -8,8 +8,9 @@
 #  bio        :text
 #  created_at :datetime
 #  updated_at :datetime
+#  user_id    :integer
 #
 
 class Profile < ActiveRecord::Base
-  has_one :user
+  belongs_to :user
 end

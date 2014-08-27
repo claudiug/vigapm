@@ -53,7 +53,7 @@
               <% end %>
               <%=time_ago_in_words(post.updated_at)%></span>
 
-              <p class="menu-item list-group-item-text"><%= truncate(post.body.html_safe, :length => 150, :omission => '... (continued)') %></p>
+              <p class="menu-item list-group-item-text"><%= truncate(post.body.html_safe, :length => 150, :omission => '... (continued)', :escape => false) %></p>
 
               <% if post.cached_votes_up > 0 %>
                   <span class="label label-success glyphicon glyphicon-thumbs-up">

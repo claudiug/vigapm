@@ -8,7 +8,6 @@
 #  created_at      :datetime
 #  updated_at      :datetime
 #  password_digest :string(255)
-#  profile_id      :integer
 #
 
 class User < ActiveRecord::Base
@@ -21,6 +20,7 @@ class User < ActiveRecord::Base
   has_many :comments
   acts_as_voter
 
+  has_one :profile
   def user_raking
 
   end

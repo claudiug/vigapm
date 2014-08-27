@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140817091149) do
+ActiveRecord::Schema.define(version: 20140827222901) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,21 @@ ActiveRecord::Schema.define(version: 20140817091149) do
   add_index "comments", ["cached_weighted_average"], name: "index_comments_on_cached_weighted_average", using: :btree
   add_index "comments", ["cached_weighted_score"], name: "index_comments_on_cached_weighted_score", using: :btree
   add_index "comments", ["cached_weighted_total"], name: "index_comments_on_cached_weighted_total", using: :btree
+
+  create_table "event_notifications", force: true do |t|
+    t.string   "name"
+    t.integer  "comment_id"
+    t.integer  "post_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "events", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "posts", force: true do |t|
     t.string   "title"
@@ -68,6 +83,16 @@ ActiveRecord::Schema.define(version: 20140817091149) do
     t.text     "bio"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  add_index "profiles", ["user_id"], name: "user_profile_index", unique: true, using: :btree
+
+  create_table "statuses", force: true do |t|
+    t.string   "name"
+    t.datetime "when"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
@@ -76,7 +101,6 @@ ActiveRecord::Schema.define(version: 20140817091149) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "password_digest"
-    t.integer  "profile_id"
   end
 
   create_table "votes", force: true do |t|

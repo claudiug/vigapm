@@ -18,8 +18,8 @@
     <data-source source="LOCAL" name="Rails vigap-mvp: production" uuid="b3cb5fe5-ac19-4ba7-945d-ba546110c9b2">
       <driver-ref>postgresql</driver-ref>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql:vigap-mvp_production</jdbc-url>
-      <user-name>vigap-mvp</user-name>
+      <jdbc-url>jdbc:postgresql:vigap_production</jdbc-url>
+      <user-name>vigap</user-name>
       <user-password>df96df8fdf97df8adfefdfe4dffcdff1df8ddffcdfe3dfeddfebdffadf87dfe7dffcdffadff5dfeedfebdffedfebdfe8dfebdff9dfefdff5dffadfebdff9dff9dffddfe5dff8dfeedf8ddff7df8adf8fdf94</user-password>
       <libraries />
     </data-source>

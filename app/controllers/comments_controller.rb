@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
     @comment = @post.comments.build(params[:comment].permit(:body))
     @comment.user = current_user
     if @comment.save
+      CommentMail.new_comment(current_user).deliver #TODO send in a thread
       redirect_to @post
     else
       redirect_to @post
