@@ -18,6 +18,8 @@
 #
 
 class Post < ActiveRecord::Base
+
+  attr_reader :votes
   acts_as_votable
   has_many :comments
   belongs_to :user
@@ -36,5 +38,20 @@ class Post < ActiveRecord::Base
 
   def down_vote(user)
     self.downvote_from(user) if self.user != user
+  end
+
+  def votes
+    {
+        up: up_votes,
+        down: down_votes
+    }
+  end
+  private
+  def up_votes
+    self.get_upvotes.size
+  end
+
+  def down_votes
+    self.get_downvotes.size
   end
 end
