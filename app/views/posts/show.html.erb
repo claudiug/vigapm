@@ -5,7 +5,7 @@
   <% if current_user %>
       <h2>
 
-      <%= link_to " #{@post.cached_votes_up}", up_post_path(@post), method: :put, remote: true, id: 'link_up', class:'label label-success glyphicon glyphicon-thumbs-up' %>
+      <%= link_to "#{@post.cached_votes_up}", up_post_path(@post), method: :put, remote: true, id: 'link_up', class:'label label-success glyphicon glyphicon-thumbs-up' %>
 
       <%= link_to " #{@post.cached_votes_down}", down_post_path(@post), method: :put, remote: true, id: 'link_down', class:'label label-danger glyphicon glyphicon-thumbs-down' %>
 
@@ -52,7 +52,11 @@
             </strong>&nbsp;says:
           </h4>
           <p><%=comment.body%></p>
+          <h2>
+            <%= link_to "#{comment.cached_votes_up}", up_post_comment_path(@post.id, comment), method: :put, remote: true, id: 'link_up_comment', class:'label label-success glyphicon glyphicon-thumbs-up' %>
+            <%= link_to " #{comment.cached_votes_down}", down_post_comment_path(@post.id, comment), method: :put, remote: true, id: 'link_down_comment', class:'label label-danger glyphicon glyphicon-thumbs-down' %>
 
+          </h2>
           <% if comment.cached_votes_up > 0 %>
             <span class='label label-success glyphicon glyphicon-thumbs-up'>
               <%=comment.cached_votes_up%>

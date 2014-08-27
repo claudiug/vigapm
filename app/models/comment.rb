@@ -18,5 +18,14 @@
 #
 
 class Comment < ActiveRecord::Base
+  acts_as_votable
   belongs_to :user
+
+  def up_vote(user)
+    self.liked_by(user) if self.user != user
+  end
+
+  def down_vote(user)
+    self.liked_by(user) if self.user != user
+  end
 end

@@ -13,6 +13,16 @@ class CommentsController < ApplicationController
     end
   end
 
+  def up
+    @comment = Comment.find(params[:id])
+    @comment.up_vote(current_user)
+  end
+
+  def down
+    @comment = Comment.find(params[:id])
+    @comment.down_vote(current_user)
+  end
+
   private
   def find_post
     @post = Post.find(params[:post_id])
