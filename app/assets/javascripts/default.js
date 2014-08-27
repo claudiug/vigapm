@@ -20,5 +20,10 @@ $(function() {
             displayKey: 'name',
             source: posts.ttAdapter()
         }
-    )
+    );
+
+    $('.editable').each(function(i, elem) {
+        $(elem).wysihtml5();
+    });
+
 });

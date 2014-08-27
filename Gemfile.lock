@@ -43,6 +43,8 @@ GEM
     bcrypt-ruby (3.1.2)
     bootstrap-sass (3.2.0.1)
       sass (~> 3.2)
+    bootstrap-wysihtml5-rails (0.3.2.100)
+      railties (>= 3.0)
     builder (3.2.2)
     byebug (3.2.0)
       columnize (~> 0.8)
@@ -141,8 +143,6 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    turbolinks (2.2.2)
-      coffee-rails
     twitter-typeahead-rails (0.10.2)
       actionpack (>= 3.1)
       jquery-rails
@@ -162,6 +162,7 @@ DEPENDENCIES
   annotate (~> 2.6.5)
   bcrypt-ruby (= 3.1.2)
   bootstrap-sass (~> 3.2.0)
+  bootstrap-wysihtml5-rails
   byebug
   capistrano (~> 3.2.0)
   capistrano-bundler (~> 1.1.2)
@@ -176,7 +177,6 @@ DEPENDENCIES
   rails (= 4.1.4)
   rails_12factor
   sass-rails (~> 4.0.3)
-  turbolinks
   twitter-typeahead-rails
   uglifier (>= 1.3.0)
   will_paginate (~> 3.0)
