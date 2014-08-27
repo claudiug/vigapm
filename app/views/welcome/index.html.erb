@@ -5,7 +5,7 @@
     <% @results.each do |result| %>
         <div class="menu-category list-group">
             <a href=<%= post_path(result) %> class="menu-item list-group-item">
-              
+
               <h4 class="list-group-item-heading"><%= result.title %></h4>
 
               <% if result.updated_at > Time.now - 1.days %>
@@ -14,7 +14,7 @@
                   <span class="label label-default glyphicon glyphicon-dashboard">&nbsp;
               <% end %>
               <%=time_ago_in_words(result.updated_at)%></span>
-              
+
               <p class="menu-item list-group-item-text"><%= truncate(result.body, :length => 150, :omission => '... (continued)') %></p>
 
               <% if result.cached_votes_up > 0 %>
@@ -42,7 +42,7 @@
     <% @posts.each do |post| %>
         <div class="menu-category list-group">
             <a href=<%= post_path(post) %> class="menu-item list-group-item">
-              
+
               <h4 class="list-group-item-heading"><%= post.title %></h4>
 
               <!--Types of label: Default Primary Success Info Warning Danger-->
@@ -52,8 +52,8 @@
                   <span class="label label-default glyphicon glyphicon-dashboard">&nbsp;
               <% end %>
               <%=time_ago_in_words(post.updated_at)%></span>
-              
-              <p class="menu-item list-group-item-text"><%= truncate(post.body, :length => 150, :omission => '... (continued)') %></p>
+
+              <p class="menu-item list-group-item-text"><%= truncate(post.body.html_safe, :length => 150, :omission => '... (continued)') %></p>
 
               <% if post.cached_votes_up > 0 %>
                   <span class="label label-success glyphicon glyphicon-thumbs-up">
