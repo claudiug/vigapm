@@ -8,7 +8,10 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'quiet_assets'
 gem 'jquery-rails'
 gem 'turbolinks'
-
+gem 'capistrano', '~> 3.2.0'
+gem 'capistrano-rbenv', github: "capistrano/rbenv"
+gem 'capistrano-bundler', '~> 1.1.2'
+gem 'capistrano-rails', '~> 1.1.1'
 gem 'byebug'
 gem 'puma'
 gem 'bcrypt-ruby', '3.1.2'

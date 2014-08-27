@@ -42,11 +42,11 @@ class PostsController < ApplicationController
 
   def up
     @post = Post.find(params[:id])
-    load_post.up_vote(current_user)
+    @post.up_vote(current_user)
   end
 
   def down
     @post = Post.find(params[:id])
-    load_post.down_vote(current_user)
+    @post.down_vote(current_user)
   end
 end

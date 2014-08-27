@@ -21,14 +21,6 @@ class Post < ActiveRecord::Base
   acts_as_votable
   has_many :comments
   belongs_to :user
-  # self.per_page = 20 #default value for pagination
-  #use a post object + user object
-  #liked_by -> up vote
-  #downvote_from -> down vote
-  #votes_for -> all votes
-  #get_likes -> just likes size
-  #get_dislikes -> down votes size
-  #To check if a voter has voted on a model, you can use voted_for?
 
   def list_of_comments
     comments.to_a if comments.length > 0

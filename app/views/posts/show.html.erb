@@ -65,14 +65,12 @@
             </span>
           <% end %>
 
-          <% if comment.created_at %>
             <% if comment.created_at > Time.now - 1.days %>
                 <span class="label label-warning glyphicon glyphicon-dashboard">&nbsp;
             <% else %>
                 <span class="label label-default glyphicon glyphicon-dashboard">&nbsp;
             <% end %>
             <%=time_ago_in_words(comment.created_at)%></span>
-          <% end %>
         </span>
         </div>
       </div>

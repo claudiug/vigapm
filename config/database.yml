@@ -82,6 +82,6 @@ test:
 #
 production:
   <<: *default
-  database: vigap-mvp_production
-  username: vigap-mvp
+  database: vigap_production
+  username: vigap
   password: <%= ENV['VIGAP-MVP_DATABASE_PASSWORD'] %>
