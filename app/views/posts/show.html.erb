@@ -4,7 +4,7 @@
   <p><%= @post.body %></p>
   <% if current_user %>
       <h2>
-      
+
       <%= link_to " #{@post.cached_votes_up}", up_post_path(@post), method: :put, remote: true, id: 'link_up', class:'label label-success glyphicon glyphicon-thumbs-up' %>
 
       <%= link_to " #{@post.cached_votes_down}", down_post_path(@post), method: :put, remote: true, id: 'link_down', class:'label label-danger glyphicon glyphicon-thumbs-down' %>
@@ -47,7 +47,9 @@
         </a>
         <div class="media-body">
           <h4 class="media-heading">
-            <strong>A user</strong>&nbsp;says:
+            <strong>
+              <%= comment.user.username %>
+            </strong>&nbsp;says:
           </h4>
           <p><%=comment.body%></p>
 
@@ -71,9 +73,7 @@
             <% end %>
             <%=time_ago_in_words(comment.created_at)%></span>
           <% end %>
-
-          <% require "pp" %>
-          <% #puts comment.pretty_inspect %>
+        </span>
         </div>
       </div>
       <br>

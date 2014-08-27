@@ -3,79 +3,50 @@ class PostsController < ApplicationController
 
   def index
     params[:page] || 1
-    @posts = posts_scope.page(params[:page]).per_page(20)
+    @posts = Post.all.page(params[:page]).per_page(20)
   end
 
   def show
-    load_post
+    @post = Post.find(params[:id])
   end
 
   def new
-    build_post
+    @post = Post.new
   end
 
   def create
-    build_post
-    save_post or render 'new'
+    @post = Post.new(params[:post].permit(:title, :body))
+    if @post.save
+      redirect_to @post
+    else
+      render :new
+    end
   end
 
   def edit
-    load_post
-    build_post
+    @post = Post.find(params[:id])
   end
 
   def update
-    load_post
-    build_post
-    save_post or render 'edit'
+    @post = Post.find(params[:id])
+    if @post.update(params[:post].permit(:title, :body))
+      redirect_to @post
+    else
+      render :edit
+    end
   end
 
   def destroy
-    load_post
-    @post.destroy
-    redirect_to posts_path, notice: 'post deleted'
+    @post = Post.find(params[:id])
   end
 
   def up
+    @post = Post.find(params[:id])
     load_post.up_vote(current_user)
   end
 
   def down
+    @post = Post.find(params[:id])
     load_post.down_vote(current_user)
   end
-
-  private
-
-  def posts_scope
-    Post.all
-  end
-
-  def save_post
-    if @post.save
-      redirect_to @post, notice: 'post created'
-    end
-  end
-
-  def build_post
-    @post ||= posts_scope.build
-    @post.attributes = post_params
-  end
-
-  def load_post
-    @post ||= Post.find(params[:id])
-  end
-
-  def load_posts
-    @posts ||= posts_scope
-  end
-
-  def post_params
-    post_params = params[:post]
-    if post_params
-      post_params.permit(:title, :body)
-    else
-      {}
-    end
-  end
-
 end
