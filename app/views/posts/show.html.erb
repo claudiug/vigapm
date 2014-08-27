@@ -7,7 +7,7 @@
     </strong>
   </h2>
   <h1><%= @post.title  %></h1>
-  <p><%= @post.body %></p>
+  <p><%= @post.body.html_safe %></p>
   <% if current_user %>
       <h2>
 
