@@ -28,6 +28,9 @@ class User < ActiveRecord::Base
     self.posts.each do |r|
       result +=r.post_ranking rescue nil
     end
+    self.comments.each do |r|
+      result += r.comment_ranking rescue nil
+    end
     result
   end
 end
