@@ -1,5 +1,5 @@
 class AddPropeRelationsUserProfile < ActiveRecord::Migration
   def change
-    add_index :profiles, :user_id, unique: true, name: 'user_profile_index'
+    add_column :profiles, :user_id, :integer
   end
 end
