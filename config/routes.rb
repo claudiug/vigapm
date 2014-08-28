@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get 'autocomplete', to: 'welcome#autocomplete'
   resources :users
-  resources :sessions
+  resources :sessions, only: [:new, :create, :destroy]
   resources :posts do
     member do
       put 'up', to: 'posts#up'

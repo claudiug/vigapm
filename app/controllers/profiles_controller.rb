@@ -4,15 +4,19 @@ class ProfilesController < ApplicationController
 
   def index
     @user = current_user
-    @profile = @user.profile
   end
 
   def new
     @user = current_user
-    @profile = @user.profile
+    @profile =  Profile.new
   end
 
   def create
-    @profile = Profile.new(params[:profile].permit(:city, :country, :bio))
+    @profile = current_user.build_profile(params[:profile].permit(:city, :country, :bio))
+    if @profile.save
+      redirect_to user_profiles_path
+    else
+      render :new
+    end
   end
 end

@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authorize #only: [:new, :edit, :update, :create] #LOL
+  before_action :authorize, only: [:create, :up, :down, :edit, :update, :destroy]
 
   def index
     params[:page] || 1

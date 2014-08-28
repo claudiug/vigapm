@@ -1,3 +1,44 @@
-<%= form_for([@user, @profile]) do |f| %>
+<% if current_user.profile.nil? %>
+    <h3>Please create a profile:</h3>
+    <%= link_to 'Add profile', new_user_profile_path %>
+    <% else %>
+    <div>
+      <h2>Profile for: <%= @user.username %></h2>
+    </div>
 
+    <div>
+      <h3>Information</h3>
+    </div>
+
+    <hr>
+    <h2>Bio:
+      <%= @user.profile.bio %>
+    </h2>
+
+    <hr>
+    <h2>City:
+      <%= @user.profile.city %>
+    </h2>
+    <hr>
+
+    <h2>Country:
+      <%= @user.profile.country %>
+    </h2>
+
+    <div>
+      <h1>
+        <strong>Current Ranking</strong>
+        <%= @user.ranking %>
+      </h1>
+    </div>
+    <hr>
 <% end %>
+
+<p>Your posts:</p>
+<% @user.posts.each do |post| %>
+    <%= link_to post.title, post_path(post) %>
+<% end %>
+<hr>
+
+<h3>Who like you:</h3>
+TODO

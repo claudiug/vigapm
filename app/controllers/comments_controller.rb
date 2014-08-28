@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
 
   before_action :authorize, only: [:create, :up, :down] #LOL
-  before_action :find_post
+  before_action :find_post, only: [:create]
 
   def create
     @comment = @post.comments.build(params[:comment].permit(:body))
