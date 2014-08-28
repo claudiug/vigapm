@@ -42,16 +42,12 @@ class Post < ActiveRecord::Base
 
   def votes
     {
-        up: up_votes,
-        down: down_votes
+        up: self.get_upvotes.size,
+        down: self.get_downvotes.size
     }
   end
-  private
-  def up_votes
-    self.get_upvotes.size
-  end
 
-  def down_votes
-    self.get_downvotes.size
+  def post_ranking
+    self.get_upvotes.size - self.get_downvotes.size
   end
 end

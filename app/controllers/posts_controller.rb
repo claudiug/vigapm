@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authorize, only: [:edit, :update] #LOL
+  before_action :authorize #only: [:new, :edit, :update, :create] #LOL
 
   def index
     params[:page] || 1
@@ -15,7 +15,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(params[:post].permit(:title, :body))
+    @post = current_user.posts.build(posts_params)
     if @post.save
       redirect_to @post
     else
@@ -48,5 +48,9 @@ class PostsController < ApplicationController
   def down
     @post = Post.find(params[:id])
     @post.down_vote(current_user)
+  end
+
+  def posts_params
+    params[:post].permit(:title, :body)
   end
 end

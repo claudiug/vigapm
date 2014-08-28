@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
 
-  before_action :authorize, only: [:create] #LOL
+  before_action :authorize, only: [:create, :up, :down] #LOL
   before_action :find_post
 
   def create

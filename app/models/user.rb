@@ -12,6 +12,7 @@
 
 class User < ActiveRecord::Base
   has_secure_password
+  attr_reader :ranking
   REGEX = /\A[^@\s]+@([^@.\s]+\.)+[^@.\s]+\z/
   validates :email, presence: true, uniqueness: true, format: { with: REGEX }
   validates :username, presence: true, uniqueness: true
@@ -21,7 +22,12 @@ class User < ActiveRecord::Base
   acts_as_voter
 
   has_one :profile
-  def user_raking
 
+  def ranking
+    result = 0
+    self.posts.each do |r|
+      result +=r.post_ranking rescue nil
+    end
+    result
   end
 end
