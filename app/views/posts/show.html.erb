@@ -8,6 +8,12 @@
     <br>
     Post by: <%= @post.user.try(:username) %>
   </h2>
+
+  <% if current_user == @post.user %>
+    <h2>
+      Edit your post: <%= link_to 'Edit', edit_post_path %>
+    </h2>
+  <% end %>
   <h1><%= @post.title  %></h1>
   <p><%= @post.body.html_safe %></p>
   <% if current_user != @post.user %>
