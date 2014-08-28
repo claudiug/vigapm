@@ -58,6 +58,7 @@
           <h4 class="media-heading">
             <strong>
               <%= comment.user.username %>
+              <%= link_to 'profile', user_profiles_path(current_user) %>
             </strong>&nbsp;says:
           </h4>
           <p><%=comment.body%></p>
