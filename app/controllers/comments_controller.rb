@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
     @comment = @post.comments.build(params[:comment].permit(:body))
     @comment.user = current_user
     if @comment.save
-      CommentMail.new_comment(current_user).deliver #TODO send in a thread
+      CommentMail.new_comment(current_user, @post).deliver #TODO send in a thread
       redirect_to @post
     else
       redirect_to @post
@@ -17,11 +17,13 @@ class CommentsController < ApplicationController
   def up
     @comment = Comment.find(params[:id])
     @comment.up_vote(current_user)
+    CommentMail.new_up_vote(current_user, @comment)
   end
 
   def down
     @comment = Comment.find(params[:id])
     @comment.down_vote(current_user)
+    CommentMail.new_down_vote(current_user, @comment)
   end
 
   private

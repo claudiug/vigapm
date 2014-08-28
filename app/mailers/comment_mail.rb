@@ -6,9 +6,19 @@ class CommentMail < ActionMailer::Base
   #
   #   en.comment_mail.new_comment.subject
   #
-  def new_comment
-    @greeting = "Hi"
+  def new_comment(user, comment)
+    @greeting = comment
 
-    mail to: "to@example.org"
+    mail to: user.email
+  end
+
+  def new_up_vote(user, comment)
+    @user = user
+    @comment = comment
+  end
+
+  def new_down_vote(user, comment)
+    @user = user
+    @comment = comment
   end
 end
