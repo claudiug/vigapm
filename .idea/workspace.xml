@@ -53,21 +53,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="show.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/posts/show.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.538462" vertical-offset="0" max-vertical-offset="2544">
-              <caret line="15" column="30" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="newrelic.yml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/config/newrelic.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.43545878" vertical-offset="3080" max-vertical-offset="4763">
-              <caret line="168" column="0" selection-start-line="168" selection-start-column="0" selection-end-line="168" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.17366137" vertical-offset="60" max-vertical-offset="2511">
+              <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -132,15 +122,14 @@
         <option value="$PROJECT_DIR$/db/migrate/20140827222901_add_prope_relations_user_profile.rb" />
         <option value="$PROJECT_DIR$/db/schema.rb" />
         <option value="$PROJECT_DIR$/app/views/posts/edit.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/posts/show.html.erb" />
         <option value="$PROJECT_DIR$/config/newrelic.yml" />
+        <option value="$PROJECT_DIR$/app/views/posts/show.html.erb" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="22" />
     <option name="width" value="1280" />
-    <option name="height" value="735" />
+    <option name="height" value="800" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -287,6 +276,7 @@
     <property name="dynamic.classpath" value="false" />
     <property name="SearchEverywhereHistoryKey" value="databa&#9;ACTION&#9;ActivateDatabaseToolWindow&#10;pro&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/app/models/profile.rb&#10;gem&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/Gemfile&#10;route&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/config/routes.rb&#10;routes&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/config/routes.rb&#10;session_co&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/app/controllers/sessions_controller.rb&#10;user&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/app/models/user.rb&#10;post&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/app/models/post.rb&#10;profi&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/app/models/profile.rb&#10;20140827222901_add_prope_relations_user_profile.rb&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/db/migrate/20140827222901_add_prope_relations_user_profile.rb&#10;Gem&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/Gemfile&#10;comment&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/app/models/comment.rb&#10;comm&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/app/controllers/comments_controller.rb&#10;ge&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/Gemfile&#10;see&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/db/seeds.rb&#10;20140817091149_add_relation_comment_to_user.rb&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigap-mvp/db/migrate/20140817091149_add_relation_comment_to_user.rb&#10;20140816213321_add_cache_to_speed_up_voting_for_comments.rb&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigap-mvp/db/migrate/20140816213321_add_cache_to_speed_up_voting_for_comments.rb&#10;20140816212701_add_cache_to_speed_up_voting.rb&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigap-mvp/db/migrate/20140816212701_add_cache_to_speed_up_voting.rb&#10;20140816212001_add_user_to_have_many_posts.rb&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigap-mvp/db/migrate/20140816212001_add_user_to_have_many_posts.rb&#10;20140816191014_add_has_many_posts_with_comments.rb&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigap-mvp/db/migrate/20140816191014_add_has_many_posts_with_comments.rb&#10;profile&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigap-mvp/app/models/profile.rb&#10;Post&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigap-mvp/app/models/post.rb&#10;gemf&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigap-mvp/Gemfile&#10;user_contr&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigap-mvp/app/controllers/users_controller.rb" />
     <property name="Ruby.ViewRefParam.DefaultExtension" value="html.erb" />
+    <property name="FullScreen" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -419,7 +409,7 @@
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1280" height="735" extended-state="6" />
+    <frame x="0" y="0" width="1280" height="800" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -730,18 +720,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/posts/show.html.erb">
+    <entry file="file://$PROJECT_DIR$/config/newrelic.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.538462" vertical-offset="0" max-vertical-offset="2544">
-          <caret line="15" column="30" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.65318817" vertical-offset="3080" max-vertical-offset="4763">
+          <caret line="175" column="47" selection-start-line="175" selection-start-column="47" selection-end-line="175" selection-end-column="47" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/newrelic.yml">
+    <entry file="file://$PROJECT_DIR$/app/views/posts/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43545878" vertical-offset="3080" max-vertical-offset="4763">
-          <caret line="168" column="0" selection-start-line="168" selection-start-column="0" selection-end-line="168" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.17366137" vertical-offset="60" max-vertical-offset="2511">
+          <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
           <folding />
         </state>
       </provider>

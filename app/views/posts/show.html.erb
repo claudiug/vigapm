@@ -8,20 +8,12 @@
     <br>
     Post by: <%= @post.user.try(:username) %>
   </h2>
-
-  <h2>
-    Edit your post:
-    <%= link_to 'Edit post', edit_post_path(@post) %>
-  </h2>
   <h1><%= @post.title  %></h1>
   <p><%= @post.body.html_safe %></p>
-  <% if current_user %>
+  <% if current_user != @post.user %>
       <h2>
-
       <%= link_to "#{@post.cached_votes_up}", up_post_path(@post), method: :put, remote: true, id: 'link_up', class:'label label-success glyphicon glyphicon-thumbs-up' %>
-
       <%= link_to " #{@post.cached_votes_down}", down_post_path(@post), method: :put, remote: true, id: 'link_down', class:'label label-danger glyphicon glyphicon-thumbs-down' %>
-
       </h2>
   <% end %>
 </div>
@@ -67,8 +59,10 @@
           </h4>
           <p><%=comment.body%></p>
           <h2>
-            <%= link_to "#{comment.cached_votes_up}", up_post_comment_path(@post.id, comment), method: :put, remote: true, id: 'link_up_comment', class:'label label-success glyphicon glyphicon-thumbs-up' %>
-            <%= link_to " #{comment.cached_votes_down}", down_post_comment_path(@post.id, comment), method: :put, remote: true, id: 'link_down_comment', class:'label label-danger glyphicon glyphicon-thumbs-down' %>
+            <% if current_user != comment.user %>
+                <%= link_to "#{comment.cached_votes_up}", up_post_comment_path(@post.id, comment), method: :put, remote: true, id: 'link_up_comment', class:'label label-success glyphicon glyphicon-thumbs-up' %>
+                <%= link_to " #{comment.cached_votes_down}", down_post_comment_path(@post.id, comment), method: :put, remote: true, id: 'link_down_comment', class:'label label-danger glyphicon glyphicon-thumbs-down' %>
+            <% end %>
           </h2>
           <% if comment.cached_votes_up > 0 %>
             <span class='label label-success glyphicon glyphicon-thumbs-up'>
