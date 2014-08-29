@@ -9,6 +9,14 @@
     Post by: <%= @post.user.try(:username) %>
   </h2>
 
+   <strong>
+     Tags: <%= @post.tag_list %>>
+   </strong>
+  <p>
+    <% @post.tags.each do |tag| %>
+        <%= link_to tag.name, tag_path(tag) %>
+    <%end%>
+  </p>
   <% if current_user %>
     <h2>
       Edit your post: <%= link_to 'Edit', edit_post_path %>

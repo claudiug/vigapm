@@ -29,7 +29,7 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    if @post.update(params[:post].permit(:title, :body))
+    if @post.update(posts_params)
       redirect_to @post
     else
       render :edit
@@ -51,6 +51,6 @@ class PostsController < ApplicationController
   end
 
   def posts_params
-    params[:post].permit(:title, :body)
+    params[:post].permit(:title, :body, :tag_list)
   end
 end

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'welcome#index'
   get 'autocomplete', to: 'welcome#autocomplete'
+  resources :tags
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :posts do
@@ -15,6 +16,7 @@ Rails.application.routes.draw do
       end
     end
   end
+
   resources :users do
     resources :profiles
   end

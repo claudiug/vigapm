@@ -5,6 +5,10 @@
     </br>
     <%= f.text_field :title, class: 'form' %>
     </br>
+    <div class="field">
+      <%= f.label :tag_list, "Tags (separated by commas)" %><br />
+      <%= f.text_field :tag_list %>
+    </div>
     <%= f.label :body %>
     </br>
     <%= f.text_area(:body, cols: 110, rows: 10, class: 'editable form') %>

@@ -15,6 +15,8 @@
 #  cached_weighted_total   :integer          default(0)
 #  cached_weighted_average :float            default(0.0)
 #  user_id                 :integer
+#  ancestry                :string(255)
+#  parent_id               :integer
 #
 
 class Comment < ActiveRecord::Base

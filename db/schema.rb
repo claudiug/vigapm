@@ -1,5 +1,17 @@
+# encoding: UTF-8
+# This file is auto-generated from the current state of the database. Instead
+# of editing this file, please use the migrations feature of Active Record to
+# incrementally modify your database, and then regenerate this schema definition.
+#
+# Note that this schema.rb definition is the authoritative source for your
+# database schema. If you need to create the application database on another
+# system, you should be using db:schema:load, not running all the migrations
+# from scratch. The latter is a flawed and unsustainable approach (the more migrations
+# you'll amass, the slower it'll run and the greater likelihood for issues).
+#
+# It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140827222901) do
+ActiveRecord::Schema.define(version: 20140829202859) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -17,8 +29,11 @@ ActiveRecord::Schema.define(version: 20140827222901) do
     t.integer  "cached_weighted_total",   default: 0
     t.float    "cached_weighted_average", default: 0.0
     t.integer  "user_id"
+    t.string   "ancestry"
+    t.integer  "parent_id"
   end
 
+  add_index "comments", ["ancestry"], name: "index_comments_on_ancestry", using: :btree
   add_index "comments", ["cached_votes_down"], name: "index_comments_on_cached_votes_down", using: :btree
   add_index "comments", ["cached_votes_score"], name: "index_comments_on_cached_votes_score", using: :btree
   add_index "comments", ["cached_votes_total"], name: "index_comments_on_cached_votes_total", using: :btree
@@ -26,6 +41,7 @@ ActiveRecord::Schema.define(version: 20140827222901) do
   add_index "comments", ["cached_weighted_average"], name: "index_comments_on_cached_weighted_average", using: :btree
   add_index "comments", ["cached_weighted_score"], name: "index_comments_on_cached_weighted_score", using: :btree
   add_index "comments", ["cached_weighted_total"], name: "index_comments_on_cached_weighted_total", using: :btree
+  add_index "comments", ["parent_id"], name: "index_comments_on_parent_id", using: :btree
 
   create_table "event_notifications", force: true do |t|
     t.string   "name"
@@ -79,6 +95,22 @@ ActiveRecord::Schema.define(version: 20140827222901) do
   create_table "statuses", force: true do |t|
     t.string   "name"
     t.datetime "when"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "taggings", force: true do |t|
+    t.integer  "tag_id"
+    t.integer  "post_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "taggings", ["post_id"], name: "index_taggings_on_post_id", using: :btree
+  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
+
+  create_table "tags", force: true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
