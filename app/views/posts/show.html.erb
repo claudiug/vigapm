@@ -9,7 +9,7 @@
     Post by: <%= @post.user.try(:username) %>
   </h2>
 
-  <% if current_user == @post.user %>
+  <% if current_user %>
     <h2>
       Edit your post: <%= link_to 'Edit', edit_post_path %>
     </h2>
@@ -60,7 +60,7 @@
           <h4 class="media-heading">
             <strong>
               <%= comment.user.username %>
-              <%= link_to 'profile', user_profiles_path(current_user) %>
+              <%= link_to 'profile', user_profiles_path(current_user) if current_user %>
             </strong>&nbsp;says:
           </h4>
           <p><%=comment.body%></p>
