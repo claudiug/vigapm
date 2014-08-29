@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.1.4'
-gem 'pg'
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
@@ -11,7 +10,6 @@ gem 'capistrano', '~> 3.2.0'
 gem 'capistrano-rbenv', github: "capistrano/rbenv"
 gem 'capistrano-bundler', '~> 1.1.2'
 gem 'capistrano-rails', '~> 1.1.1'
-gem 'byebug'
 gem 'puma'
 gem 'bcrypt-ruby', '3.1.2'
 gem 'annotate', "~> 2.6.5"
@@ -23,3 +21,6 @@ gem 'twitter-typeahead-rails'
 gem 'rails_12factor'
 gem 'bootstrap-wysihtml5-rails'
 gem 'newrelic_rpm'
+gem 'pg'
+gem 'byebug'
+

@@ -42,8 +42,7 @@
 
             <% if current_user %>
             <li style="padding-top:15px;color:#33CC33;">
-                Logged as: <%= current_user.username %>
-                Profile: <%= link_to 'Profile', user_profiles_path(current_user) %>
+                Logged as:&nbsp;<%=link_to current_user.username, user_profiles_path(current_user), style: 'display:inline;padding:0 0;' %>
             </li>
             <% else %>
             <li>
