@@ -42,3 +42,11 @@
 
 <h3>Who like you:</h3>
 TODO
+<%= form_for current_user, :html => { :multipart => true } do |form| %>
+    <%= form.file_field :avatar %>
+    <%= form.submit %>
+<% end %>
+
+
+<strong>za image</strong>
+<%= image_tag current_user.avatar.url(:medium) %>

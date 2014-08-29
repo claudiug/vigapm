@@ -23,4 +23,7 @@ gem 'bootstrap-wysihtml5-rails'
 gem 'newrelic_rpm'
 gem 'pg'
 gem 'byebug'
+gem "paperclip", "~> 4.2"
+
+gem 'rmagick', '2.13.2'
 

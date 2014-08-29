@@ -16,12 +16,16 @@ class User < ActiveRecord::Base
   REGEX = /\A[^@\s]+@([^@.\s]+\.)+[^@.\s]+\z/
   validates :email, presence: true, uniqueness: true, format: { with: REGEX }
   validates :username, presence: true, uniqueness: true
-  belongs_to :profile #TODO is wrong a profile belongs_to user and a user has_one profile
+  has_one :profile
   has_many :posts
   has_many :comments
   acts_as_voter
-
-  has_one :profile
+  has_attached_file :avatar,
+                    :styles => { :medium => "300x300>", :thumb => "100x100>" },
+                    :default_url => "/images/:style/missing.png"
+  has_attached_file :avatar
+  validates_attachment_content_type :avatar,
+                                    :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
   def ranking
     result = 0

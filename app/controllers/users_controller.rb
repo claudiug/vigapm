@@ -14,6 +14,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    @user = User.find(params[:id])
+    byebug
+    if @user.update(user_params)
+      redirect_to user_profiles_path(@user)
+    else
+      redirect_to user_profiles_path(@user)
+    end
+  end
+
   def show
     @user = User.find(params[:id])
   end
@@ -22,6 +32,6 @@ class UsersController < ApplicationController
 
   def user_params
     user_params = params[:user]
-    user_params.permit(:email, :username, :password)
+    user_params.permit(:email, :username, :password, :avatar)
   end
 end
