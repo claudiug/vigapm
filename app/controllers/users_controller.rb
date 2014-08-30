@@ -16,7 +16,6 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    byebug
     if @user.update(user_params)
       redirect_to user_profiles_path(@user)
     else

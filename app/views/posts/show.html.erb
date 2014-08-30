@@ -1,14 +1,6 @@
 <%= stylesheet_link_tag 'posts', media: 'all', 'data-turbolinks-track' => true %>
 <div class="jumbotron">
-  <% if current_user %>
-   <strong>
-     Tags: <%= @post.tag_list %>>
-   </strong>
-  <p>
-    <% @post.tags.each do |tag| %>
-        <%= link_to tag.name, tag_path(tag) %>
-    <%end%>
-  </p>
+  <% if @post.user && current_user && current_user.id == @post.user.id %>
   <div class="row" align="right" style="margin-top:-24px;">
     <h4>
       <a href="<%=edit_post_path %>">
@@ -39,6 +31,7 @@
 
   <div class="row"></div>
 
+  <br>
   <p><%= @post.body.html_safe %></p>
   <% if current_user != @post.user %>
       <h2>
@@ -46,6 +39,7 @@
       <%= link_to " #{@post.cached_votes_down}", down_post_path(@post), method: :put, remote: true, id: 'link_down', class:'label label-danger glyphicon glyphicon-thumbs-down' %>
       </h2>
   <% end %>
+  <br>
 
   <div class="pull-right">
     <div class="media">
@@ -64,7 +58,11 @@
     </div>
   </div>
 
-  <div class="row"></div>
+  <div class="row">
+    <% @post.tags.each do |tag| %>
+        <%= link_to tag.name, tag_path(tag), class: "btn btn-default" %>
+    <%end%>
+  </div>
 </div>
 
 

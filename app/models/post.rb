@@ -41,7 +41,6 @@ class Post < ActiveRecord::Base
   end
 
   def tag_list=(names)
-    byebug
     self.tags = names.split(",").map do |n|
       Tag.where(name: n.strip).first_or_create!
     end
