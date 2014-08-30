@@ -4,7 +4,7 @@ class WelcomeController < ApplicationController
       @results = Post.where('title LIKE ?', "%#{params[:query]}%")
     end
     params[:page] || 1
-    @posts = Post.all.page(params[:page]).per_page(16)
+    @posts = Post.page(params[:page]).per(10)
   end
 
   def autocomplete

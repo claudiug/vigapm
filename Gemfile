@@ -16,7 +16,9 @@ gem 'annotate', "~> 2.6.5"
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'faker'
 gem 'acts_as_votable', '~> 0.10.0'
-gem 'will_paginate', '~> 3.0'
+# gem 'will_paginate', '~> 3.0'
+gem 'kaminari'
+gem 'kaminari-bootstrap', '~> 3.0.1'
 gem 'twitter-typeahead-rails'
 gem 'rails_12factor'
 gem 'bootstrap-wysihtml5-rails'
@@ -27,3 +29,4 @@ gem "paperclip", "~> 4.2"
 
 gem 'rmagick', '2.13.2'
 
+gem 'pjax_rails'
