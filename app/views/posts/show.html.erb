@@ -1,14 +1,6 @@
 <%= stylesheet_link_tag 'posts', media: 'all', 'data-turbolinks-track' => true %>
 <div class="jumbotron">
-  <h2>
-    User ranking:
-    <strong>
-      <%= current_user.ranking rescue nil %>
-    </strong>
-    <br>
-    Post by: <%= @post.user.try(:username) %>
-  </h2>
-
+  <% if current_user %>
    <strong>
      Tags: <%= @post.tag_list %>>
    </strong>
@@ -17,12 +9,36 @@
         <%= link_to tag.name, tag_path(tag) %>
     <%end%>
   </p>
-  <% if current_user %>
-    <h2>
-      Edit your post: <%= link_to 'Edit', edit_post_path %>
-    </h2>
+  <div class="row" align="right" style="margin-top:-24px;">
+    <h4>
+      <a href="<%=edit_post_path %>">
+        <span class="glyphicon glyphicon-edit"></span>&nbsp;Edit Post
+      </a>
+    </h4>
+  </div>
   <% end %>
-  <h1><%= @post.title  %></h1>
+
+  <h1 style='text-align:center;'><%= @post.title  %></h1>
+
+  <div class="pull-right">
+    <div class="media">
+      <div class="media">
+        <a class="pull-left" href="<%=user_profiles_path(@post.user) rescue ""%>">
+          <img class="media-object img-circle" style="width:40px;height:40px;" src="https://lh6.googleusercontent.com/-BrWlufeovKA/AAAAAAAAAAI/AAAAAAAACPQ/GnLIUTBks3I/photo.jpg">
+          <span class="badge" style="position:relative;top:-13px;left:22px;"><%=@post.user.ranking rescue nil%></span>
+        </a>
+          <div class="media-body">
+            <h4 class="media-heading"><i>Ruled By: </i></h4>
+              <a href="<%=user_profiles_path(@post.user) rescue ""%>">
+                <h4 style="margin-top:-2px;">Guru&nbsp;<%= @post.user.username rescue "Vigap" %></h4>
+              </a>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row"></div>
+
   <p><%= @post.body.html_safe %></p>
   <% if current_user != @post.user %>
       <h2>
@@ -30,6 +46,25 @@
       <%= link_to " #{@post.cached_votes_down}", down_post_path(@post), method: :put, remote: true, id: 'link_down', class:'label label-danger glyphicon glyphicon-thumbs-down' %>
       </h2>
   <% end %>
+
+  <div class="pull-right">
+    <div class="media">
+      <div class="media">
+        <a class="pull-left" href="<%=user_profiles_path(@post.user) rescue ""%>">
+          <img class="media-object img-circle" style="width:40px;height:40px;" src="https://lh6.googleusercontent.com/-BrWlufeovKA/AAAAAAAAAAI/AAAAAAAACPQ/GnLIUTBks3I/photo.jpg">
+          <span class="badge" style="position:relative;top:-13px;left:22px;"><%=@post.user.ranking rescue nil%></span>
+        </a>
+          <div class="media-body">
+            <h4 class="media-heading"><i>Created By: </i></h4>
+              <a href="<%=user_profiles_path(@post.user) rescue ""%>">
+                <h4 style="margin-top:-2px;">Guru&nbsp;<%= @post.user.username rescue "Vigap" %></h4>
+              </a>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row"></div>
 </div>
 
 
