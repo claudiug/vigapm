@@ -16,7 +16,7 @@
     <div class="media">
       <div class="media">
         <a class="pull-left" href="<%=user_profiles_path(@post.user) rescue ""%>">
-          <img class="media-object img-circle" style="width:40px;height:40px;" src="https://lh6.googleusercontent.com/-BrWlufeovKA/AAAAAAAAAAI/AAAAAAAACPQ/GnLIUTBks3I/photo.jpg">
+          <img class="media-object img-circle" style="width:40px;height:40px;" src="<%= @post.user.avatar.url(:thumb) rescue "/assets/missing-avatar.png" %>">
           <span class="badge" style="position:relative;top:-13px;left:22px;"><%=@post.user.ranking rescue nil%></span>
         </a>
           <div class="media-body">
@@ -35,7 +35,7 @@
   <p><%= @post.body.html_safe %></p>
   <% if current_user != @post.user %>
       <h2>
-      <%= link_to "#{@post.cached_votes_up}", up_post_path(@post), method: :put, remote: true, id: 'link_up', class:'label label-success glyphicon glyphicon-thumbs-up' %>
+      <%= link_to " #{@post.cached_votes_up}", up_post_path(@post), method: :put, remote: true, id: 'link_up', class:'label label-success glyphicon glyphicon-thumbs-up' %>
       <%= link_to " #{@post.cached_votes_down}", down_post_path(@post), method: :put, remote: true, id: 'link_down', class:'label label-danger glyphicon glyphicon-thumbs-down' %>
       </h2>
   <% end %>
@@ -45,7 +45,7 @@
     <div class="media">
       <div class="media">
         <a class="pull-left" href="<%=user_profiles_path(@post.user) rescue ""%>">
-          <img class="media-object img-circle" style="width:40px;height:40px;" src="https://lh6.googleusercontent.com/-BrWlufeovKA/AAAAAAAAAAI/AAAAAAAACPQ/GnLIUTBks3I/photo.jpg">
+          <img class="media-object img-circle" style="width:40px;height:40px;" src="<%= @post.user.avatar.url(:thumb) rescue "/assets/missing-avatar.png" %>">
           <span class="badge" style="position:relative;top:-13px;left:22px;"><%=@post.user.ranking rescue nil%></span>
         </a>
           <div class="media-body">
@@ -94,41 +94,31 @@
   <% @post.list_of_comments.each do |comment| %>
     <% if comment.body %>
       <div class="media">
-        <a class="pull-left" href="">
-          <img class="media-object" data-src="holder.js/64x64" alt="64x64" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjZWVlIi8+PHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMzIiIHk9IjMyIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEycHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NjR4NjQ8L3RleHQ+PC9zdmc+" style="width: 64px; height: 64px;">
+        <a class="pull-left" href="<%=user_profiles_path(comment.user.username) rescue ""%>">
+            <%= image_tag comment.user.avatar.url(:medium), style:'height:64px;width:64px;' %>
         </a>
         <div class="media-body">
+          <% if comment.created_at > Time.now - 1.days %>
+              <span class="label label-warning glyphicon glyphicon-dashboard pull-right">&nbsp;
+          <% else %>
+              <span class="label label-default glyphicon glyphicon-dashboard pull-right">&nbsp;
+          <% end %>
+          <%=time_ago_in_words(comment.created_at)%></span>
+
           <h4 class="media-heading">
             <strong>
-              <%= comment.user.username %>
-              <%= link_to 'profile', user_profiles_path(current_user) if current_user %>
+              <%= link_to comment.user.username, user_profiles_path(comment.user.username) rescue "" %>
             </strong>&nbsp;says:
           </h4>
+
           <p><%=comment.body%></p>
-          <h2>
+          <h4>
             <% if current_user != comment.user %>
-                <%= link_to "#{comment.cached_votes_up}", up_post_comment_path(@post.id, comment), method: :put, remote: true, id: 'link_up_comment', class:'label label-success glyphicon glyphicon-thumbs-up' %>
+                <%= link_to " #{comment.cached_votes_up}", up_post_comment_path(@post.id, comment), method: :put, remote: true, id: 'link_up_comment', class:'label label-success glyphicon glyphicon-thumbs-up' %>
                 <%= link_to " #{comment.cached_votes_down}", down_post_comment_path(@post.id, comment), method: :put, remote: true, id: 'link_down_comment', class:'label label-danger glyphicon glyphicon-thumbs-down' %>
             <% end %>
-          </h2>
-          <% if comment.cached_votes_up > 0 %>
-            <span class='label label-success glyphicon glyphicon-thumbs-up'>
-              <%=comment.cached_votes_up%>
-            </span>
-          <% end %>
+          </h4>
 
-          <% if comment.cached_votes_down > 0 %>
-            <span class='label label-danger glyphicon glyphicon-thumbs-down'>
-              <%=comment.cached_votes_down%>
-            </span>
-          <% end %>
-
-            <% if comment.created_at > Time.now - 1.days %>
-                <span class="label label-warning glyphicon glyphicon-dashboard">&nbsp;
-            <% else %>
-                <span class="label label-default glyphicon glyphicon-dashboard">&nbsp;
-            <% end %>
-            <%=time_ago_in_words(comment.created_at)%></span>
         </span>
         </div>
       </div>

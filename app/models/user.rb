@@ -21,9 +21,8 @@ class User < ActiveRecord::Base
   has_many :comments
   acts_as_voter
   has_attached_file :avatar,
-                    :styles => { :medium => "300x300>", :thumb => "100x100>" },
-                    :default_url => "/images/:style/missing.png"
-  has_attached_file :avatar
+                    :styles => { :big => "300x300>", :medium => "64x64>", :thumb => "40x40>" },
+                    :default_url => "missing-avatar.png"
   validates_attachment_content_type :avatar,
                                     :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
