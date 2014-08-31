@@ -13,6 +13,8 @@
       <driver-ref>postgresql</driver-ref>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql:vigap-mvp_test</jdbc-url>
+      <user-name>claudiu</user-name>
+      <user-password>dfdbdfdddfcfdf9bdf98df99</user-password>
       <libraries />
     </data-source>
     <data-source source="LOCAL" name="Rails vigap-mvp: production" uuid="b3cb5fe5-ac19-4ba7-945d-ba546110c9b2">
