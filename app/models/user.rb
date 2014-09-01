@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   acts_as_voter
   has_attached_file :avatar,
                     :styles => { :big => "300x300>", :medium => "64x64>", :thumb => "40x40>" },
-                    :default_url => "missing-avatar.png"
+                    :default_url => "/assets/missing-avatar.png"
   validates_attachment_content_type :avatar,
                                     :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 

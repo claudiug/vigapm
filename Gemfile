@@ -26,6 +26,7 @@ gem 'newrelic_rpm'
 gem 'pg'
 gem 'byebug'
 gem "paperclip", "~> 4.2"
+gem 'medium-editor-rails'
 
 gem 'rmagick', '2.13.2'
 

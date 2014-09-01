@@ -1,5 +1,4 @@
-<p>Create a post here!</p>
-<%= form_for @post, class:'editable' do |f| %>
+<%= form_for @post do |f| %>
     <br>
     <%= f.label :title %>
     <br>
@@ -12,13 +11,14 @@
       <%= f.text_field :tag_list %>
     </div>
     <br>
-    <%= f.text_area(:body, cols: 110, rows: 10, class: 'editable form') %>
+      <%= f.text_area(:body, cols: 110, rows: 10, class: 'textarea-body') %>
     <br>
     <br>
     <%= f.submit 'say it', class: 'btn btn-info' %>
 <% end %>
 
 
+<script>var editor = new MediumEditor('.textarea-body');</script>
 
 
 

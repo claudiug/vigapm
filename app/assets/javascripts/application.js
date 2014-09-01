@@ -5,6 +5,7 @@
 //= require bootstrap-sprockets
 //=require jquery.pjax
 //= require bootstrap-wysihtml5
+//= require medium-editor
 
 //= require_tree .
 
