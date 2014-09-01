@@ -17,7 +17,7 @@
       <div class="media">
         <a class="pull-left" href="<%=user_profiles_path(@post.user) rescue ""%>">
           <img class="media-object img-circle" style="width:40px;height:40px;" src="<%= @post.user.avatar.url(:thumb) rescue "/assets/missing-avatar.png" %>">
-          <span class="badge" style="position:relative;top:-13px;left:22px;"><%=@post.user.ranking rescue nil%></span>
+          <span class="badge" style="position:relative;top:-13px;left:22px;"><%=@post.user.ranking rescue 0%></span>
         </a>
           <div class="media-body">
             <h4 class="media-heading"><i>Ruled By: </i></h4>
@@ -93,10 +93,13 @@
 <% if @post.list_of_comments %>
   <% @post.list_of_comments.each do |comment| %>
     <% if comment.body %>
-      <div class="media">
+      <div class="media comment">
+
         <a class="pull-left" href="<%=user_profiles_path(comment.user.username) rescue ""%>">
-            <%= image_tag comment.user.avatar.url(:medium), style:'height:64px;width:64px;' %>
+            <%= image_tag comment.user.avatar.url(:medium), class:'img-circle', style:'height:64px;width:64px;' %>
+          <span class="badge"><%=comment.user.ranking rescue 0%></span>
         </a>
+
         <div class="media-body">
           <% if comment.created_at > Time.now - 1.days %>
               <span class="label label-warning glyphicon glyphicon-dashboard pull-right">&nbsp;
@@ -119,7 +122,6 @@
             <% end %>
           </h4>
 
-        </span>
         </div>
       </div>
       <br>
