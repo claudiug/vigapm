@@ -5,14 +5,27 @@
     </h1>
     <div class="row" align="right" style="margin-top:-24px;">
   <% else %>
-    <div class="row" align="right" style="margin-top:-6px;">
+    <div class="row" align="left" style="margin-top:-6px;">
   <% end %>
+  </div>
+
+  <div class="row">
+  <h4 class="pull-right">
+  <% if @post.created_at > Time.now - 1.days %>
+      <span class="label label-warning glyphicon glyphicon-dashboard">&nbsp;
+  <% else %>
+      <span class="label label-default glyphicon glyphicon-dashboard">&nbsp;
+  <% end %>
+  Created&nbsp;<%=time_ago_in_words(@post.created_at)%>&nbsp;ago</span>
+  </h4>
+  </div>
+
+  <div class="row">
   <% if @post.user && current_user && current_user.id == @post.user.id %>
-    <h4>
       <a href="<%=edit_post_path %>">
-        <span class="glyphicon glyphicon-edit"></span>&nbsp;Edit Post
+        <!--<span class="label label-warning glyphicon glyphicon-edit">&nbsp;Edit Post</span>-->
+        <button class="pull-right btn btn-lg btn-success glyphicon glyphicon-edit" style="word-spacing:-10px;">&nbsp;Edit Post</button>
       </a>
-    </h4>
   <% end %>
   </div>
 
@@ -28,9 +41,9 @@
         </a>
           <div class="media-body">
             <h4 class="media-heading"><i>Ruled By: </i></h4>
-              <a href="<%=user_profiles_path(@post.user) rescue ""%>">
-                <h4 style="margin-top:-2px;"><%= @post.user.username rescue "Vigap" %></h4>
-              </a>
+            <a href="<%=user_profiles_path(@post.user) rescue ""%>">
+              <h4 style="margin-top:-2px;"><%= @post.user.username rescue "Vigap" %></h4>
+            </a>
           </div>
       </div>
     </div>
