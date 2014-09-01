@@ -1,1 +1,2 @@
-$('#link_up').text(<%= @post.cached_votes_up %>);
+$('#link_up').text(" " + <%=@post.cached_votes_up%>);
+$('#link_down').text(" " + <%=@post.cached_votes_down%>);

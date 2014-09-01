@@ -35,8 +35,8 @@
   <p><%= @post.body.html_safe %></p>
   <% if current_user != @post.user %>
       <h2>
-      <%= link_to " #{@post.cached_votes_up}", up_post_path(@post), method: :put, remote: true, id: 'link_up', class:'label label-success glyphicon glyphicon-thumbs-up' %>
-      <%= link_to " #{@post.cached_votes_down}", down_post_path(@post), method: :put, remote: true, id: 'link_down', class:'label label-danger glyphicon glyphicon-thumbs-down' %>
+      <%= link_to " #{@post.cached_votes_up}", up_post_path(@post), method: :put, remote: true, id: 'link_up', class:'label label-success glyphicon glyphicon-thumbs-up vote-btn' %>
+      <%= link_to " #{@post.cached_votes_down}", down_post_path(@post), method: :put, remote: true, id: 'link_down', class:'label label-danger glyphicon glyphicon-thumbs-down vote-btn' %>
       </h2>
   <% end %>
   <br>
@@ -96,8 +96,18 @@
       <div class="media comment">
 
         <a class="pull-left" href="<%=user_profiles_path(comment.user.username) rescue ""%>">
-            <%= image_tag comment.user.avatar.url(:medium), class:'img-circle', style:'height:64px;width:64px;' %>
-          <span class="badge"><%=comment.user.ranking rescue 0%></span>
+          <%= image_tag comment.user.avatar.url(:medium), class:'img-circle', style:'height:64px;width:64px;' %>
+          <% if comment.user.ranking %>
+            <% if comment.user.ranking < 0 %>
+              <span class="badge alert-danger">
+            <% else %>
+              <span class="badge">
+            <% end %>
+            <%=comment.user.ranking%>
+          <% else %>
+            0
+          <% end %>
+          </span>
         </a>
 
         <div class="media-body">
@@ -115,12 +125,12 @@
           </h4>
 
           <p><%=comment.body%></p>
-          <h4>
             <% if current_user != comment.user %>
-                <%= link_to " #{comment.cached_votes_up}", up_post_comment_path(@post.id, comment), method: :put, remote: true, id: 'link_up_comment', class:'label label-success glyphicon glyphicon-thumbs-up' %>
-                <%= link_to " #{comment.cached_votes_down}", down_post_comment_path(@post.id, comment), method: :put, remote: true, id: 'link_down_comment', class:'label label-danger glyphicon glyphicon-thumbs-down' %>
+              <h4>
+                <%= link_to " #{comment.cached_votes_up}", up_post_comment_path(@post.id, comment), method: :put, remote: true, id: 'link_up_comment', class:'label label-success glyphicon glyphicon-thumbs-up vote-btn' %>
+                <%= link_to " #{comment.cached_votes_down}", down_post_comment_path(@post.id, comment), method: :put, remote: true, id: 'link_down_comment', class:'label label-danger glyphicon glyphicon-thumbs-down vote-btn' %>
+              </h4>
             <% end %>
-          </h4>
 
         </div>
       </div>

@@ -33,6 +33,6 @@ class Comment < ActiveRecord::Base
   end
 
   def down_vote(user)
-    self.liked_by(user) if self.user != user
+    self.downvote_from(user) if self.user != user
   end
 end
