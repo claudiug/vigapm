@@ -140,6 +140,7 @@
     <orderEntry type="library" scope="PROVIDED" name="kaminari (v0.15.0, rbenv: 2.1.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="kaminari-bootstrap (v3.0.1, rbenv: 2.1.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mail (v2.5.4, rbenv: 2.1.2) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="medium-editor-rails (v0.10.0, rbenv: 2.1.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mime-types (v1.25.1, rbenv: 2.1.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="minitest (v5.4.0, rbenv: 2.1.2) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="multi_json (v1.10.1, rbenv: 2.1.2) [gem]" level="application" />
