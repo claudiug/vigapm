@@ -4,21 +4,25 @@
     <br>
     <%= f.text_field :title, class: 'form' %>
     <br>
-    <%= f.label :body %>
     <br>
     <div class="field">
       <%= f.label :tag_list, "Tags (separated by commas)" %><br />
       <%= f.text_field :tag_list %>
     </div>
     <br>
-      <%= f.text_area(:body, cols: 110, rows: 10, class: 'textarea-body') %>
+    <div class="field">
+      <%= f.hidden_field :body, html: { id: 'body' } %>
+    </div>
     <br>
+    <div class="editable" style="height:300px;" data-field-id="body"></div>
     <br>
-    <%= f.submit 'say it', class: 'btn btn-info' %>
+    <%= f.submit 'Submit', class: 'btn btn-info' %>
 <% end %>
 
-
-<script>var editor = new MediumEditor('.textarea-body');</script>
-
-
+<script>
+    var editor = new MediumEditor('.editable');
+    $('.editable').bind('input propertychange', function() {
+      $("#post_" + $(this).attr("data-field-id")).val($(this).html());
+    });
+</script>
 

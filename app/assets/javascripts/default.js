@@ -22,9 +22,5 @@ $(function() {
         }
     );
 
-    $('.editable').each(function(i, elem) {
-        $(elem).wysihtml5();
-    });
-
 });
 
