@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.find_by(slug: params[:id])
   end
 
   def new
@@ -24,11 +24,11 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
+    @post = Post.find_by(slug: params[:id])
   end
 
   def update
-    @post = Post.find(params[:id])
+    @post = Post.find_by(slug: params[:id])
     if @post.update(posts_params)
       redirect_to @post
     else
@@ -37,20 +37,20 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
+    @post = Post.find_by(slug: params[:id])
   end
 
   def up
-    @post = Post.find(params[:id])
+    @post = Post.find_by(slug: params[:id])
     @post.up_vote(current_user)
   end
 
   def down
-    @post = Post.find(params[:id])
+    @post = Post.find_by(slug: params[:id])
     @post.down_vote(current_user)
   end
 
   def posts_params
-    params[:post].permit(:title, :body, :tag_list)
+    params[:post].permit(:title, :body, :tag_list, :slug)
   end
 end

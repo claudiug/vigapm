@@ -15,6 +15,7 @@
 #  cached_weighted_score   :integer          default(0)
 #  cached_weighted_total   :integer          default(0)
 #  cached_weighted_average :float            default(0.0)
+#  slug                    :string(255)
 #
 
 class Post < ActiveRecord::Base
@@ -25,13 +26,20 @@ class Post < ActiveRecord::Base
   belongs_to :user
   has_many :taggings
   has_many :tags, through: :taggings
+  validates :slug, presence: true
+  validates :title, presence: true, uniqueness: true
+  validates :title, length: {in: 3..50 }
+  before_validation :generate_slug
 
+  def to_param
+    slug
+  end
 
   def self.tagged_with(name)
     Tag.find_by_name!(name).posts
   end
 
-  def self.tag_counts #TODO remote it
+  def self.tag_counts #TODO remove it
     Tag.select("tags.*, count(taggings.tag_id) as count").
         joins(:taggings).group("taggings.tag_id")
   end
@@ -71,5 +79,10 @@ class Post < ActiveRecord::Base
 
   def post_ranking
     @result = self.get_upvotes.size - self.get_downvotes.size
+  end
+
+  private
+  def generate_slug
+    self.slug = title.parameterize
   end
 end

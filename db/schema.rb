@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140829224126) do
+ActiveRecord::Schema.define(version: 20140902075303) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 20140829224126) do
     t.integer  "cached_weighted_score",   default: 0
     t.integer  "cached_weighted_total",   default: 0
     t.float    "cached_weighted_average", default: 0.0
+    t.string   "slug"
   end
 
   add_index "posts", ["cached_votes_down"], name: "index_posts_on_cached_votes_down", using: :btree
@@ -80,6 +81,7 @@ ActiveRecord::Schema.define(version: 20140829224126) do
   add_index "posts", ["cached_weighted_average"], name: "index_posts_on_cached_weighted_average", using: :btree
   add_index "posts", ["cached_weighted_score"], name: "index_posts_on_cached_weighted_score", using: :btree
   add_index "posts", ["cached_weighted_total"], name: "index_posts_on_cached_weighted_total", using: :btree
+  add_index "posts", ["slug"], name: "index_posts_on_slug", using: :btree
 
   create_table "profiles", force: true do |t|
     t.string   "city"
@@ -113,7 +115,10 @@ ActiveRecord::Schema.define(version: 20140829224126) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
+
+  add_index "tags", ["slug"], name: "index_tags_on_slug", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "username"

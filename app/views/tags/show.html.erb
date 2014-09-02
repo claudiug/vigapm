@@ -1,2 +1,4 @@
-<% @tags.posts.each do |post| %>
+<% @tag.posts.each do |post| %>
+    <%= post.title %>
+    <%= link_to post.title, post_path(post) %>
 <%end %>

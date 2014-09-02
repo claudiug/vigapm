@@ -1,6 +1,10 @@
 class TagsController < ApplicationController
 
+  def index
+    render json: Tag.all
+  end
+
   def show
-    @tags = Tag.find(params[:id])
+    @tag = Tag.find_by(id: params[:id])
   end
 end

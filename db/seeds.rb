@@ -12,17 +12,9 @@ Comment.delete_all
   )
 end
 ##POST
-10.times do
+10.times do |t|
   Post.create!(
-      title: Faker::Company.name,
-      body: Faker::Lorem.paragraph,
-      user_id: User.first
-  )
-end
-##POST
-10.times do
-  Post.create!(
-      title: Faker::Company.name,
+      title: "#{Faker::Name.name}",
       body: Faker::Lorem.paragraph,
       user_id: User.last
   )
@@ -41,6 +33,14 @@ end
       body: Faker::Lorem.paragraph,
       post_id: Post.last,
       user_id: User.first
+  )
+end
+
+##Tag
+
+10.times do
+  Tag.create!(
+      name: Faker::Name.name
   )
 end
 
