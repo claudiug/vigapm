@@ -1,3 +1,10 @@
-CommentMail#new_comment
+<%= @comment.user.username %> commented on your post!
 
-<%= @greeting.body %>, find me in app/views/comment_mail/new_comment.text.erb
+There's a new comment on your post "<%= @post.title %>":
+
+<%= truncate(@comment.body.html_safe, :length => 100, :omission => '... (continued)', :escape => false) %>
+
+<%= link_to 'Click here to read and reply to this comment!', post_url(@post) %>
+
+Sincerely,
+The Vigap Team

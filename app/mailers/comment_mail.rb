@@ -1,15 +1,16 @@
 class CommentMail < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "Vigap <no-reply@vigap.com>"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
   #   en.comment_mail.new_comment.subject
   #
-  def new_comment(user, comment)
-    @greeting = comment
+  def new_comment(post, comment)
+    @post = post
+    @comment = comment
 
-    mail to: user.email
+    mail to: post.user.email, subject: "New comment on \"" + post.title + "\""
   end
 
   def new_up_vote(user, comment)
