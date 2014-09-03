@@ -12,9 +12,9 @@
   <div class="row">
   <h4 class="pull-right">
   <% if @post.created_at > Time.now - 1.days %>
-      <span class="label label-warning glyphicon glyphicon-dashboard">&nbsp;
+      <span class="label label-warning glyphicon glyphicon-dashboard">
   <% else %>
-      <span class="label label-default glyphicon glyphicon-dashboard">&nbsp;
+      <span class="label label-default glyphicon glyphicon-dashboard">
   <% end %>
   Created&nbsp;<%=time_ago_in_words(@post.created_at)%>&nbsp;ago</span>
   </h4>
@@ -64,7 +64,7 @@
   <div class="pull-right">
     <div class="media">
       <h4 class="pull-left media-heading" style="margin-top:3px;"><i>Created By: </i></h4>
-      <div class="media" style="margin-top:0;padding-top:0;top:0;height:30px;">
+      <div class="media" style="margin-top:0;padding-top:0;top:0;height:33px;">
         <a href="<%=user_profiles_path(@post.user) rescue ""%>">
           <img class="media-object img-circle pull-left" style="width:24px;height:24px;" src="<%= @post.user.avatar.url(:thumb) rescue "/assets/missing-avatar.png" %>">
           <h4 class="media-body pull-right" style="margin:3px 0 0 -5px;padding:0;top:0;">
