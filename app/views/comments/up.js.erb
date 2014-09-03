@@ -1,2 +1,3 @@
-$('#link_up_comment').text(" " + <%= @comment.cached_votes_up %>);
-$('#link_down_comment').text(" " + <%= @comment.cached_votes_down %>);
+$('#<%=@comment.user.username rescue "Vigap"%>-comment-upvote').text(" " + <%= @comment.cached_votes_up %>);
+$('#<%=@comment.user.username rescue "Vigap"%>-comment-downvote').text(" " + <%= @comment.cached_votes_down %>);
+$('.<%=@comment.user.username rescue "Vigap"%>-rank').text(<%=@comment.user.ranking rescue 0%>);

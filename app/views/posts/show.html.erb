@@ -37,7 +37,7 @@
         <a class="pull-left" style="width:70px;" href="<%=user_profiles_path(@post.user) rescue ""%>">
           <img class="media-object img-circle" style="margin-left:20px;width:40px;height:40px;" src="<%= @post.user.avatar.url(:thumb) rescue "/assets/missing-avatar.png" %>">
           <span class="glyphicon glyphicon-star" style="color:goldenrod;position:relative;top:-40px;left:8px;font-size:24px;"></span>
-          <span class="badge" style="position:relative;top:-24px;left:20px;background-color:goldenrod;color:white;"><%=@post.user.ranking rescue 0%></span>
+          <span class="badge <%=@post.user.username rescue "Vigap"%>-rank" style="position:relative;top:-24px;left:20px;background-color:goldenrod;color:white;"><%=@post.user.ranking rescue 0%></span>
         </a>
           <div class="media-body">
             <h4 class="media-heading"><i>Ruled By: </i></h4>
@@ -55,8 +55,9 @@
   <p><%= @post.body.html_safe %></p>
   <% if current_user != @post.user %>
       <h2>
-      <%= link_to " #{@post.cached_votes_up}", up_post_path(@post), method: :put, remote: true, id: 'link_up', class:'label label-success glyphicon glyphicon-thumbs-up vote-btn' %>
-      <%= link_to " #{@post.cached_votes_down}", down_post_path(@post), method: :put, remote: true, id: 'link_down', class:'label label-danger glyphicon glyphicon-thumbs-down vote-btn' %>
+      <% votetag = @post.user.username rescue "Vigap" %>
+      <%= link_to " #{@post.cached_votes_up}", up_post_path(@post), method: :put, remote: true, id: votetag + '-post-upvote', class:'label label-success glyphicon glyphicon-thumbs-up vote-btn' %>
+      <%= link_to " #{@post.cached_votes_down}", down_post_path(@post), method: :put, remote: true, id: votetag + '-post-downvote', class:'label label-danger glyphicon glyphicon-thumbs-down vote-btn' %>
       </h2>
   <% else %>
     <h2>
@@ -76,7 +77,7 @@
             <%= @post.user.username rescue "Vigap" %>
           </h4>
         </a>
-        <span class="badge" style="position:relative;top:10px;left:-10px;"><%=@post.user.ranking rescue 0%></span>
+        <span class="badge <%=@post.user.username rescue "Vigap"%>-rank" style="position:relative;top:10px;left:-10px;"><%=@post.user.ranking rescue 0%></span>
       </div>
     </div>
   </div>
@@ -122,9 +123,9 @@
           <%= image_tag comment.user.avatar.url(:medium), class:'img-circle', style:'height:64px;width:64px;' %>
           <% if comment.user.ranking %>
             <% if comment.user.ranking < 0 %>
-              <span class="badge alert-danger">
+              <span class="badge alert-danger <%=comment.user.username rescue "Vigap"%>-rank">
             <% else %>
-              <span class="badge" style="background-color:slate-grey;">
+              <span class="badge <%=comment.user.username rescue "Vigap"%>-rank" style="background-color:slate-grey;">
             <% end %>
             <%=comment.user.ranking%>
           <% else %>
@@ -150,8 +151,9 @@
           <p><%=comment.body%></p>
             <% if current_user != comment.user %>
               <h4>
-                <%= link_to " #{comment.cached_votes_up}", up_post_comment_path(@post.id, comment), method: :put, remote: true, id: 'link_up_comment', class:'label label-success glyphicon glyphicon-thumbs-up vote-btn' %>
-                <%= link_to " #{comment.cached_votes_down}", down_post_comment_path(@post.id, comment), method: :put, remote: true, id: 'link_down_comment', class:'label label-danger glyphicon glyphicon-thumbs-down vote-btn' %>
+                <% votetag = comment.user.username rescue "Vigap" %>
+                <%= link_to " #{comment.cached_votes_up}", up_post_comment_path(@post.id, comment), method: :put, remote: true, id: votetag + '-comment-upvote', class:'label label-success glyphicon glyphicon-thumbs-up vote-btn' %>
+                <%= link_to " #{comment.cached_votes_down}", down_post_comment_path(@post.id, comment), method: :put, remote: true, id: votetag + '-comment-downvote', class:'label label-danger glyphicon glyphicon-thumbs-down vote-btn' %>
               </h4>
             <% else %>
               <h4>
