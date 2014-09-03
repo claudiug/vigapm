@@ -117,7 +117,11 @@
 <% if @post.list_of_comments %>
   <% @post.list_of_comments.each do |comment| %>
     <% if comment.body %>
-      <div class="media comment">
+      <% if comment.cached_votes_up - comment.cached_votes_down < 0 %>
+        <div class="media comment" style="opacity:<%= 1 + (comment.cached_votes_up - comment.cached_votes_down) / 10.0 %>">
+      <% else %>
+        <div class="media comment">
+      <% end %>
 
         <a class="pull-left" href="<%=user_profiles_path(comment.user.username) rescue ""%>">
           <%= image_tag comment.user.avatar.url(:medium), class:'img-circle', style:'height:64px;width:64px;' %>
