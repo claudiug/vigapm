@@ -58,6 +58,11 @@
       <%= link_to " #{@post.cached_votes_up}", up_post_path(@post), method: :put, remote: true, id: 'link_up', class:'label label-success glyphicon glyphicon-thumbs-up vote-btn' %>
       <%= link_to " #{@post.cached_votes_down}", down_post_path(@post), method: :put, remote: true, id: 'link_down', class:'label label-danger glyphicon glyphicon-thumbs-down vote-btn' %>
       </h2>
+  <% else %>
+    <h2>
+      <span id='link_up' class='label label-success glyphicon glyphicon-thumbs-up vote-btn'><%=" #{@post.cached_votes_up}"%></span>
+      <span id='link_down' class='label label-danger glyphicon glyphicon-thumbs-down vote-btn'><%=" #{@post.cached_votes_down}"%></span>
+    </h2>
   <% end %>
   <br>
 
@@ -147,6 +152,11 @@
               <h4>
                 <%= link_to " #{comment.cached_votes_up}", up_post_comment_path(@post.id, comment), method: :put, remote: true, id: 'link_up_comment', class:'label label-success glyphicon glyphicon-thumbs-up vote-btn' %>
                 <%= link_to " #{comment.cached_votes_down}", down_post_comment_path(@post.id, comment), method: :put, remote: true, id: 'link_down_comment', class:'label label-danger glyphicon glyphicon-thumbs-down vote-btn' %>
+              </h4>
+            <% else %>
+              <h4>
+                <span id='link_up_comment' class='label label-success glyphicon glyphicon-thumbs-up vote-btn'><%=" #{comment.cached_votes_up}"%></span>
+                <span id='link_down_comment' class='label label-danger glyphicon glyphicon-thumbs-down vote-btn'><%=" #{comment.cached_votes_down}"%></span>
               </h4>
             <% end %>
 

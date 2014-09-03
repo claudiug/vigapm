@@ -34,12 +34,16 @@
   white-space: pre-wrap;
 }
 
-.label {
+h4 .label {
   word-spacing: -10px;
 }
 
 .comments-box p {
   white-space: pre-wrap;
+}
+
+.comments-box .label {
+  word-spacing: -8px;
 }
 
 .comment .badge {
@@ -50,5 +54,9 @@
 
 .vote-btn {
   padding-left: 10px;
+}
+
+h2 .vote-btn {
+  word-spacing: -10px;
 }
 
