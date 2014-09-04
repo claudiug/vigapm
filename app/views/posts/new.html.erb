@@ -1,28 +1,31 @@
+<%= stylesheet_link_tag 'newpost', media: 'all', 'data-turbolinks-track' => true %>
+
+<div class="row" id="composer-box">
 <%= form_for @post do |f| %>
+  <div id="title">
+    <%= f.text_field :title, class: 'form', :placeholder => "Title", :style => "text-align:center;border:none !important;outline: 0;" %>
     <br>
-    <%= f.label :title %>
-    <br>
-    <%= f.text_field :title, class: 'form' %>
-    <br>
-    <br>
-    <div class="field">
-      <%= f.label :tag_list, "Tags (separated by commas)" %><br />
-      <%= f.text_field :tag_list %>
-    </div>
-    <br>
+  </div>
     <div class="field">
       <%= f.hidden_field :body, html: { id: 'body' } %>
     </div>
     <br>
-    <div class="editable" style="height:300px;" data-field-id="body"></div>
+    <div class="editable" data-field-id="body"></div>
     <br>
-    <%= f.submit 'Submit', class: 'btn btn-info' %>
+    <div class="field">
+      <%= f.text_field :tag_list, :placeholder => "Tags (separated by commas)", :style => "width:100%;outline: 0;border: none;font-size:21px;font-color: rgba(0,0,0,0.3);font-weight:100;" %>
+    </div>
+    <br>
+    <%= f.submit 'Submit', class: 'btn btn-lg btn-info' %>
 <% end %>
+</div>
 
 <script>
-    var editor = new MediumEditor('.editable');
-    $('.editable').bind('input propertychange', function() {
-      $("#post_" + $(this).attr("data-field-id")).val($(this).html());
-    });
+  var editor = new MediumEditor('.editable', {
+    anchorInputPlaceholder: 'Write your post'
+  });
+  $('.editable').bind('input propertychange', function() {
+    $("#post_" + $(this).attr("data-field-id")).val($(this).html());
+  });
 </script>
 
