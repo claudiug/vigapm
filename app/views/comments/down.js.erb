@@ -1,3 +1,3 @@
-$('#<%=@comment.user.username rescue "Vigap"%>-comment-upvote').text(" " + <%= @comment.cached_votes_up %>);
-$('#<%=@comment.user.username rescue "Vigap"%>-comment-downvote').text(" " + <%= @comment.cached_votes_down %>);
-$('.<%=@comment.user.username rescue "Vigap"%>-rank').text(<%=@comment.user.ranking rescue 0%>);
+$('#<%=@comment.user.username.gsub(/ /, "-") rescue "Vigap"%>-comment-upvote').text(" " + <%= @comment.cached_votes_up %>);
+$('#<%=@comment.user.username.gsub(/ /, "-") rescue "Vigap"%>-comment-downvote').text(" " + <%= @comment.cached_votes_down %>);
+$('.<%=@comment.user.username.gsub(/ /, "-") rescue "Vigap"%>-rank').text(<%=@comment.user.ranking rescue 0%>);
