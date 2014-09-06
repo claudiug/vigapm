@@ -28,7 +28,7 @@ class Post < ActiveRecord::Base
   has_many :tags, through: :taggings
   validates :slug, presence: true
   validates :title, presence: true, uniqueness: true
-  validates :title, length: {in: 3..50 }
+  validates :title, length: {in: 3..56 }
   before_validation :generate_slug
 
   def to_param
