@@ -3,3 +3,34 @@
 //*= require medium-editor/themes/default
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
+
+@media only screen and (min-width: 768px) {
+	.navbar, .navbar-default .navbar-nav > li > a {
+		height: 42px;
+		background-color: rgba(255, 215, 0, 1);
+		color: rgba(0, 0, 0, 0.45);
+		font-size: 16px;
+		font-family: 'Helvetica Neue', Helvetica, Arial, 'lucida grande',tahoma,verdana,arial,sans-serif;
+		text-shadow: 0 -1px rgba(0, 0, 0, .1);
+		font-weight: bold;
+	}
+
+	.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    	background-color: rgba(255, 255, 255, 0.4);
+		color: rgba(0, 0, 0, 1);
+    	height: 50px;
+	}
+
+	.form-group {
+		display: inline;
+	}
+
+	.searchbox {
+		color: #9197a3;
+		font-size: 16px;
+		-webkit-font-smoothing: antialised;
+		border-color:rgba(0, 0, 0, 0.3);
+		margin-left: 12px;
+		width:auto;
+	}
+}
