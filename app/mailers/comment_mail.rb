@@ -10,7 +10,7 @@ class CommentMail < ActionMailer::Base
     @post = post
     @comment = comment
 
-    mail to: post.user.email, subject: "New comment on \"" + post.title + "\"" if post.user.username
+    mail to: post.user.email, subject: "New comment on \"" + post.title + "\"" if post.user
   end
 
   def new_up_vote(user, comment)
