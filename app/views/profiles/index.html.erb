@@ -1,52 +1,130 @@
-<% if current_user.profile.nil? %>
-    <h3>Please create a profile:</h3>
-    <%= link_to 'Add profile', new_user_profile_path %>
-    <% else %>
-    <div>
-      <h2>Profile for: <%= @user.username %></h2>
-    </div>
-
-    <div>
-      <h3>Information</h3>
-    </div>
-
-    <hr>
-    <h2>Bio:
-      <%= @user.profile.bio %>
-    </h2>
-
-    <hr>
-    <h2>City:
-      <%= @user.profile.city %>
-    </h2>
-    <hr>
-
-    <h2>Country:
-      <%= @user.profile.country %>
-    </h2>
-
-    <div>
-      <h1>
-        <strong>Current Ranking</strong>
-        <%= @user.ranking %>
-      </h1>
+<div class="container">
+    <div class="row">
+      <div class="col-sm-2">
+        <%= image_tag @user.avatar.url(:medium), :class => "img-circle img-responsive" %>
+      </div>
+      <div class="col-sm-10"><h1 style="padding-top:24px;margin-left:-10px;"><%= @user.username %></h1></div>
     </div>
     <hr>
-<% end %>
+    <div class="row">
+      <div class="col-sm-3"><!--left col-->
+              
+          <ul class="list-group">
+            <li class="list-group-item text-muted">Profile</li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>Joined</strong></span> <%= time_ago_in_words(@user.created_at) %> ago</li>
+          </ul> 
+          
+          <ul class="list-group">
+            <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span> 37</li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>Followers</strong></span> 78</li>
+          </ul> 
+               
+          <!--
+          <div class="panel panel-default">
+            <div class="panel-heading">Social Media</div>
+            <div class="panel-body">
+              <i class="fa fa-facebook fa-2x"></i> <i class="fa fa-github fa-2x"></i> <i class="fa fa-twitter fa-2x"></i> <i class="fa fa-pinterest fa-2x"></i> <i class="fa fa-google-plus fa-2x"></i>
+            </div>
+          </div>
+          -->
+          
+        </div><!--/col-3-->
+      <div class="col-sm-9">
+          
+          <ul class="nav nav-tabs" id="myTab">
+            <li class="active"><a href="#posts" data-toggle="tab">Posts</a></li>
+            <% if current_user.username == @user.username %>
+            <li><a href="#settings" data-toggle="tab">Settings</a></li>
+            <% end %>
+          </ul>
+              
+          <div class="tab-content">
 
-<p>Your posts:</p>
-<% @user.posts.each do |post| %>
-    <%= link_to post.title, post_path(post) %>
-<% end %>
-<hr>
+             <div class="tab-pane active" id="posts">
+               <h2></h2>
+               <ul class="list-group">
+                  <% @user.posts.each do |post| %>
+                    <li class="list-group-item text-right">
+                      <%= link_to post.title, post_path(post), :class => "pull-left" %>
+                      <%= time_ago_in_words(post.created_at) %>
+                    </li>
+                  <% end %>
+                </ul> 
+             </div><!--/tab-pane-->
 
-<h3>Who like you:</h3>
-TODO
-<%= form_for current_user, :html => { :multipart => true } do |form| %>
-    <%= form.file_field :avatar %>
-    <%= form.submit %>
-<% end %>
+            <% if current_user.username == @user.username %>
+             <div class="tab-pane" id="settings">
+                  <hr>
+                  <%= form_for @user do |f| %>
+
+                      <div class="form-group">
+                          <div class="col-xs-6">
+                              <label for="username"><h4><%= f.label :username%></h4></label>
+                              <%= f.text_field :username, :class => "form-control" %>
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          <div class="col-xs-6">
+                              <label for="city"><h4><%= f.label :username %></h4></label>
+                              <%= f.text_field :username, :class => "form-control" %>
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          <div class="col-xs-6">
+                              <label for="city"><h4><%= f.label :username %></h4></label>
+                              <%= f.text_field :username, :class => "form-control" %>
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          <div class="col-xs-6">
+                              <label for="city"><h4><%= f.label :username %></h4></label>
+                              <%= f.text_field :username, :class => "form-control" %>
+                          </div>
+                      </div>
+    
+                      <div class="form-group">
+                          <div class="col-xs-6">
+                              <label for="password"><h4> <%= f.label :password %></h4></label>
+                              <%= f.text_field :password, :class => "form-control" %>
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          <div class="col-xs-6">
+                            <label for="password2"><h4><%= f.label :password %></h4></label>
+                              <input type="password" class="form-control" name="password2" id="password2" placeholder="password2" title="enter your password2.">
+                          </div>
+                      </div>
+                      
+                      <div class="form-group">
+                           <div class="col-xs-12">
+                                <br>
+                                <%= f.submit 'save', :class => "btn btn-success btn-lrg" %>
+                            </div>
+                      </div>
+                <% end %>
+
+                <%= form_for current_user, :html => { :multipart => true } do |form| %>
+                <div class="form-group">
+                    <div class="col-xs-6">
+                      <label for="avatar"><h4>Avatar</h4></label>
+                        <%= form.file_field :avatar, :class => "form-control" %>
+                        <%= form.submit %>
+                    </div>
+                </div>
+                <% end %>
+              </div>
+              <% end %>
+               
+              </div><!--/tab-pane-->
+          </div><!--/tab-content-->
+
+        </div><!--/col-9-->
+    </div><!--/row-->
+                                                      
 
 
-<strong>za image</strong>
-<%= image_tag current_user.avatar.url(:medium) %>
