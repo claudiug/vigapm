@@ -8,18 +8,18 @@
     <hr>
     <div class="row">
       <div class="col-sm-3"><!--left col-->
-              
+
           <ul class="list-group">
             <li class="list-group-item text-muted">Profile</li>
             <li class="list-group-item text-right"><span class="pull-left"><strong>Joined</strong></span> <%= time_ago_in_words(@user.created_at) %> ago</li>
-          </ul> 
-          
+          </ul>
+
           <ul class="list-group">
             <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span> 37</li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span> <%= @user.posts.count %></li>
             <li class="list-group-item text-right"><span class="pull-left"><strong>Followers</strong></span> 78</li>
-          </ul> 
-               
+          </ul>
+
           <!--
           <div class="panel panel-default">
             <div class="panel-heading">Social Media</div>
@@ -28,17 +28,17 @@
             </div>
           </div>
           -->
-          
+
         </div><!--/col-3-->
       <div class="col-sm-9">
-          
+
           <ul class="nav nav-tabs" id="myTab">
             <li class="active"><a href="#posts" data-toggle="tab">Posts</a></li>
             <% if current_user.username == @user.username %>
             <li><a href="#settings" data-toggle="tab">Settings</a></li>
             <% end %>
           </ul>
-              
+
           <div class="tab-content">
 
              <div class="tab-pane active" id="posts">
@@ -50,7 +50,7 @@
                       <%= time_ago_in_words(post.created_at) %>
                     </li>
                   <% end %>
-                </ul> 
+                </ul>
              </div><!--/tab-pane-->
 
             <% if current_user.username == @user.username %>
@@ -85,7 +85,7 @@
                               <%= f.text_field :username, :class => "form-control" %>
                           </div>
                       </div>
-    
+
                       <div class="form-group">
                           <div class="col-xs-6">
                               <label for="password"><h4> <%= f.label :password %></h4></label>
@@ -99,7 +99,7 @@
                               <input type="password" class="form-control" name="password2" id="password2" placeholder="password2" title="enter your password2.">
                           </div>
                       </div>
-                      
+
                       <div class="form-group">
                            <div class="col-xs-12">
                                 <br>
@@ -119,12 +119,12 @@
                 <% end %>
               </div>
               <% end %>
-               
+
               </div><!--/tab-pane-->
           </div><!--/tab-content-->
 
         </div><!--/col-9-->
     </div><!--/row-->
-                                                      
+
 
 
