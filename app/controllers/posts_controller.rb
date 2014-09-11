@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 
   def index
     params[:page] || 1
-    @posts = Post.all.page(params[:page]).per_page(20)
+    @posts = Post.page(params[:page]).per_page(20)
   end
 
   def show

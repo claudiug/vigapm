@@ -17,13 +17,13 @@ class CommentsController < ApplicationController
   def up
     @comment = Comment.find(params[:id])
     @comment.up_vote(current_user)
-    #CommentMail.new_up_vote(current_user, @comment)
+    CommentMail.new_up_vote(current_user, @comment)
   end
 
   def down
     @comment = Comment.find(params[:id])
     @comment.down_vote(current_user)
-    #CommentMail.new_down_vote(current_user, @comment)
+    CommentMail.new_down_vote(current_user, @comment)
   end
 
   private
