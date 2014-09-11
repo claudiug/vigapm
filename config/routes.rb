@@ -18,8 +18,12 @@ Rails.application.routes.draw do
   end
 
   resources :users do
-    resources :profiles
+    member do
+      get :following, :followers
+    end
   end
+  resources :relationships, only: [:create, :destroy]
+
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
 end
