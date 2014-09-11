@@ -23,11 +23,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="users_controller.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="users_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="100" max-vertical-offset="1644">
-              <caret line="39" column="28" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="28" />
+            <state vertical-scroll-proportion="0.031201247" vertical-offset="0" max-vertical-offset="1621">
+              <caret line="1" column="57" selection-start-line="1" selection-start-column="57" selection-end-line="1" selection-end-column="57" />
               <folding />
             </state>
           </provider>
@@ -48,7 +48,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-1.5384616" vertical-offset="0" max-vertical-offset="698">
               <caret line="2" column="45" selection-start-line="2" selection-start-column="45" selection-end-line="2" selection-end-column="45" />
-              <folding />
+              <folding>
+                <marker date="1410442541000" expanded="true" signature="15:109" placeholder="do ... end" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -73,11 +75,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="create.js.erb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="create.js.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/relationships/create.js.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.06504065" vertical-offset="0" max-vertical-offset="635">
+            <state vertical-scroll-proportion="-1.5384616" vertical-offset="0" max-vertical-offset="635">
               <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sessions_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/sessions_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1061">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="new.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/sessions/new.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.3846154" vertical-offset="0" max-vertical-offset="895">
+              <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -113,7 +135,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/db/migrate/20140829124901_add_ancestry_to_comment.rb" />
         <option value="$PROJECT_DIR$/app/views/comments/new.html.erb" />
         <option value="$PROJECT_DIR$/app/helpers/comments_helper.rb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/users.css.scss" />
@@ -156,7 +177,6 @@
         <option value="$PROJECT_DIR$/app/models/relationship.rb" />
         <option value="$PROJECT_DIR$/app/models/user.rb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/users/show_follow.html.erb" />
         <option value="$PROJECT_DIR$/app/views/users/_follow.html.erb" />
         <option value="$PROJECT_DIR$/app/views/users/_unfollow.html.erb" />
@@ -164,6 +184,8 @@
         <option value="$PROJECT_DIR$/app/views/relationships/destroy.js.erb" />
         <option value="$PROJECT_DIR$/app/views/users/show.html.erb" />
         <option value="$PROJECT_DIR$/app/views/relationships/create.js.erb" />
+        <option value="$PROJECT_DIR$/app/views/sessions/new.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
       </list>
     </option>
   </component>
@@ -543,7 +565,7 @@
     <property name="options.searchVisible" value="true" />
     <property name="recentsLimit" value="5" />
     <property name="dynamic.classpath" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="route&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/config/routes.rb&#10;user&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/app/models/user.rb&#10;welcome&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/app/controllers/welcome_controller.rb&#10;pro&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/app/controllers/profiles_controller.rb&#10;&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/app/controllers/welcome_controller.rb&#10;post&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/app/models/post.rb&#10;gem&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/Gemfile&#10;routes&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/config/routes.rb&#10;see&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/db/seeds.rb&#10;tag&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/app/models/tag.rb&#10;profi&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/app/models/profile.rb&#10;ge&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/Gemfile&#10;db:see&#9;ACTION&#9;rake:db:seed&#10;com&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/app/models/comment.rb&#10;Gem&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/Gemfile&#10;comm&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/app/models/comment.rb&#10;databa&#9;ACTION&#9;ActivateDatabaseToolWindow&#10;session_co&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/app/controllers/sessions_controller.rb&#10;20140827222901_add_prope_relations_user_profile.rb&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/db/migrate/20140827222901_add_prope_relations_user_profile.rb&#10;comment&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/app/models/comment.rb&#10;20140817091149_add_relation_comment_to_user.rb&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigap-mvp/db/migrate/20140817091149_add_relation_comment_to_user.rb&#10;20140816213321_add_cache_to_speed_up_voting_for_comments.rb&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigap-mvp/db/migrate/20140816213321_add_cache_to_speed_up_voting_for_comments.rb&#10;20140816212701_add_cache_to_speed_up_voting.rb&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigap-mvp/db/migrate/20140816212701_add_cache_to_speed_up_voting.rb&#10;20140816212001_add_user_to_have_many_posts.rb&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigap-mvp/db/migrate/20140816212001_add_user_to_have_many_posts.rb&#10;20140816191014_add_has_many_posts_with_comments.rb&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigap-mvp/db/migrate/20140816191014_add_has_many_posts_with_comments.rb&#10;profile&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigap-mvp/app/models/profile.rb&#10;Post&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigap-mvp/app/models/post.rb&#10;gemf&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigap-mvp/Gemfile&#10;user_contr&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigap-mvp/app/controllers/users_controller.rb" />
+    <property name="SearchEverywhereHistoryKey" value="user&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/app/controllers/users_controller.rb&#10;ses&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/app/controllers/sessions_controller.rb&#10;route&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/config/routes.rb&#10;welcome&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/app/controllers/welcome_controller.rb&#10;pro&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/app/controllers/profiles_controller.rb&#10;&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/app/controllers/welcome_controller.rb&#10;post&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/app/models/post.rb&#10;gem&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/Gemfile&#10;routes&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/config/routes.rb&#10;see&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/db/seeds.rb&#10;tag&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/app/models/tag.rb&#10;profi&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/app/models/profile.rb&#10;ge&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/Gemfile&#10;db:see&#9;ACTION&#9;rake:db:seed&#10;com&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/app/models/comment.rb&#10;Gem&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/Gemfile&#10;comm&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/app/models/comment.rb&#10;databa&#9;ACTION&#9;ActivateDatabaseToolWindow&#10;session_co&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/app/controllers/sessions_controller.rb&#10;20140827222901_add_prope_relations_user_profile.rb&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/db/migrate/20140827222901_add_prope_relations_user_profile.rb&#10;comment&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigapm/app/models/comment.rb&#10;20140817091149_add_relation_comment_to_user.rb&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigap-mvp/db/migrate/20140817091149_add_relation_comment_to_user.rb&#10;20140816213321_add_cache_to_speed_up_voting_for_comments.rb&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigap-mvp/db/migrate/20140816213321_add_cache_to_speed_up_voting_for_comments.rb&#10;20140816212701_add_cache_to_speed_up_voting.rb&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigap-mvp/db/migrate/20140816212701_add_cache_to_speed_up_voting.rb&#10;20140816212001_add_user_to_have_many_posts.rb&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigap-mvp/db/migrate/20140816212001_add_user_to_have_many_posts.rb&#10;20140816191014_add_has_many_posts_with_comments.rb&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigap-mvp/db/migrate/20140816191014_add_has_many_posts_with_comments.rb&#10;profile&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigap-mvp/app/models/profile.rb&#10;Post&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigap-mvp/app/models/post.rb&#10;gemf&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigap-mvp/Gemfile&#10;user_contr&#9;FILE&#9;file:///Users/claudiu/startups/learn/vigap-mvp/app/controllers/users_controller.rb" />
     <property name="Ruby.ViewRefParam.DefaultExtension" value="html.erb" />
     <property name="FullScreen" value="false" />
   </component>
@@ -721,20 +743,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/posts/index.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3133903" vertical-offset="0" max-vertical-offset="902">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/posts.css.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3068">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/welcome.css.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1728">
@@ -1044,15 +1052,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.5384616" vertical-offset="0" max-vertical-offset="698">
           <caret line="2" column="45" selection-start-line="2" selection-start-column="45" selection-end-line="2" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="100" max-vertical-offset="1644">
-          <caret line="39" column="28" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="28" />
-          <folding />
+          <folding>
+            <marker date="1410442541000" expanded="true" signature="15:109" placeholder="do ... end" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1098,8 +1100,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/relationships/create.js.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.06504065" vertical-offset="0" max-vertical-offset="635">
+        <state vertical-scroll-proportion="-1.5384616" vertical-offset="0" max-vertical-offset="635">
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/sessions_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1061">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/sessions/new.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.3846154" vertical-offset="0" max-vertical-offset="895">
+          <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.031201247" vertical-offset="0" max-vertical-offset="1621">
+          <caret line="1" column="57" selection-start-line="1" selection-start-column="57" selection-end-line="1" selection-end-column="57" />
           <folding />
         </state>
       </provider>
