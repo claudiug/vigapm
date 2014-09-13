@@ -1,6 +1,6 @@
 <%= stylesheet_link_tag 'posts', media: 'all', 'data-turbolinks-track' => true %>
 <div class="jumbotron">
-  <%= "#{@post.impressionist_count(filter: :ip_address)} views so far!" %>
+  <%= "#{@post.impressionist_count} views so far!" %>
   <% if @post.cached_votes_up > 5000 %>
     <h1 style="margin-top:-18px;"><span class="glyphicon glyphicon-bookmark" style="position:relative;margin-top:0;color:brown;top:0;padding-top:0;"></span>
     </h1>
@@ -10,10 +10,12 @@
   <% end %>
   </div>
    <br>
-  <% if @post.is_post_subscribe?(current_user) %>
-      <%= render 'posts/unfollow' %>
-  <% else %>
-      <%= render 'posts/follow' %>
+  <% if current_user %>
+      <% if @post.is_post_subscribe?(current_user) %>
+          <%= render 'posts/unfollow' %>
+      <% else %>
+          <%= render 'posts/follow' %>
+      <% end %>
   <% end %>
 
   <h3>User that follow this post:</h3>
