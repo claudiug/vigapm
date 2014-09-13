@@ -11,23 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140911122129) do
+ActiveRecord::Schema.define(version: 20140913121129) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "ahoy_events", id: false, force: true do |t|
-    t.uuid     "id",         null: false
-    t.uuid     "visit_id"
-    t.integer  "user_id"
-    t.string   "name"
-    t.json     "properties"
-    t.datetime "time"
-  end
-
-  add_index "ahoy_events", ["time"], name: "index_ahoy_events_on_time", using: :btree
-  add_index "ahoy_events", ["user_id"], name: "index_ahoy_events_on_user_id", using: :btree
-  add_index "ahoy_events", ["visit_id"], name: "index_ahoy_events_on_visit_id", using: :btree
 
   create_table "comments", force: true do |t|
     t.text     "body"
@@ -56,15 +43,6 @@ ActiveRecord::Schema.define(version: 20140911122129) do
   add_index "comments", ["cached_weighted_total"], name: "index_comments_on_cached_weighted_total", using: :btree
   add_index "comments", ["parent_id"], name: "index_comments_on_parent_id", using: :btree
 
-  create_table "event_notifications", force: true do |t|
-    t.string   "name"
-    t.integer  "comment_id"
-    t.integer  "post_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "events", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -85,7 +63,6 @@ ActiveRecord::Schema.define(version: 20140911122129) do
     t.text     "referrer"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "impressions_count"
   end
 
   add_index "impressions", ["controller_name", "action_name", "ip_address"], name: "controlleraction_ip_index", using: :btree
@@ -174,32 +151,6 @@ ActiveRecord::Schema.define(version: 20140911122129) do
     t.string   "city"
     t.string   "bio"
   end
-
-  create_table "visits", id: false, force: true do |t|
-    t.uuid     "id",               null: false
-    t.uuid     "visitor_id"
-    t.string   "ip"
-    t.text     "user_agent"
-    t.text     "referrer"
-    t.text     "landing_page"
-    t.integer  "user_id"
-    t.string   "referring_domain"
-    t.string   "search_keyword"
-    t.string   "browser"
-    t.string   "os"
-    t.string   "device_type"
-    t.string   "country"
-    t.string   "region"
-    t.string   "city"
-    t.string   "utm_source"
-    t.string   "utm_medium"
-    t.string   "utm_term"
-    t.string   "utm_content"
-    t.string   "utm_campaign"
-    t.datetime "started_at"
-  end
-
-  add_index "visits", ["user_id"], name: "index_visits_on_user_id", using: :btree
 
   create_table "votes", force: true do |t|
     t.integer  "votable_id"

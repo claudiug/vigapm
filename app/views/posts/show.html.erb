@@ -1,5 +1,6 @@
 <%= stylesheet_link_tag 'posts', media: 'all', 'data-turbolinks-track' => true %>
 <div class="jumbotron">
+  <%= "#{@post.impressionist_count(filter: :ip_address)} views so far!" %>
   <% if @post.cached_votes_up > 5000 %>
     <h1 style="margin-top:-18px;"><span class="glyphicon glyphicon-bookmark" style="position:relative;margin-top:0;color:brown;top:0;padding-top:0;"></span>
     </h1>

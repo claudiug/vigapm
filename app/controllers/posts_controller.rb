@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
   before_action :authorize, only: [:create, :up, :down, :edit, :update, :destroy]
+  impressionist actions: [:show]
+  impressionist :unique => [:session_hash, :ip_address]
 
   def index
     params[:page] || 1

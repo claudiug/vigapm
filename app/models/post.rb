@@ -30,6 +30,7 @@ class Post < ActiveRecord::Base
   validates :title, presence: true, uniqueness: true
   validates :title, length: {in: 3..56 }
   before_validation :generate_slug
+  is_impressionable
 
   def to_param
     slug

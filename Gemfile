@@ -11,6 +11,9 @@ gem 'capistrano-rbenv', github: "capistrano/rbenv"
 gem 'capistrano-bundler', '~> 1.1.2'
 gem 'capistrano-rails', '~> 1.1.1'
 gem 'puma'
+gem 'better_errors'
+gem 'binding_of_caller'
+gem 'impressionist'
 gem 'bcrypt-ruby', '3.1.2'
 gem 'annotate', "~> 2.6.5"
 gem 'bootstrap-sass', '~> 3.2.0'
@@ -25,6 +28,7 @@ gem 'bootstrap-wysihtml5-rails'
 gem 'newrelic_rpm'
 gem 'pg'
 gem 'byebug'
+gem 'redis'
 gem "paperclip", "~> 4.2"
 gem 'medium-editor-rails'
 
