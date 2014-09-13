@@ -9,6 +9,20 @@
     <div class="row" align="left" style="margin-top:-6px;">
   <% end %>
   </div>
+   <br>
+  <% if @post.is_post_subscribe?(current_user) %>
+      <%= render 'posts/unfollow' %>
+  <% else %>
+      <%= render 'posts/follow' %>
+  <% end %>
+
+  <h3>User that follow this post:</h3>
+  <% @users_follow.each do |user| %>
+    <li>
+      <%= user.username %>
+      <%= link_to 'Profile', user_path(user) %>
+    </li>
+  <% end %>
 
   <div class="row">
   <h4 class="pull-right">

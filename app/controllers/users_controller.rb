@@ -34,6 +34,12 @@ class UsersController < ApplicationController
     render 'show_follow'
   end
 
+  def user_follow_posts
+    @user = User.find(params[:id])
+    @posts = @user.followed_posts
+    render json: @posts
+  end
+
   def followers
     @title = 'Followers'
     @user = User.find(params[:id])

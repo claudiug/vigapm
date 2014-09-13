@@ -1,0 +1,7 @@
+<%= form_for(@post.subscriptions.build(user_id: current_user.id), remote: false) do |f| %>
+    <div><%= f.hidden_field :user_id %></div>
+    <div><%= f.hidden_field :post_id %></div>
+  <div>
+    <%= f.submit 'Subscribe',  class: "btn btn-large btn-primary" %>
+  </div>
+<% end %>

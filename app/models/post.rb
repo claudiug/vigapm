@@ -30,6 +30,12 @@ class Post < ActiveRecord::Base
   validates :title, presence: true, uniqueness: true
   validates :title, length: {in: 3..56 }
   before_validation :generate_slug
+  has_many :subscriptions
+  has_many :subscriptions
+
+  has_many :subscriptions
+  has_many :users, through: :subscriptions, dependent: :destroy
+
   is_impressionable
 
   def to_param
@@ -41,8 +47,8 @@ class Post < ActiveRecord::Base
   end
 
   def self.tag_counts #TODO remove it
-    Tag.select("tags.*, count(taggings.tag_id) as count").
-        joins(:taggings).group("taggings.tag_id")
+    Tag.select('tags.*, count(taggings.tag_id) as count').
+        joins(:taggings).group('taggings.tag_id')
   end
 
   def tag_list
@@ -80,6 +86,10 @@ class Post < ActiveRecord::Base
 
   def post_ranking
     @result = self.get_upvotes.size - self.get_downvotes.size
+  end
+
+  def is_post_subscribe?(user)
+    subscriptions.find_by(user_id: user.id)
   end
 
   private

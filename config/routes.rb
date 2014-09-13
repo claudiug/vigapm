@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root 'welcome#index'
   get 'autocomplete', to: 'welcome#autocomplete'
   resources :tags
@@ -6,6 +7,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :posts do
     member do
+      get :users_follow
       put 'up', to: 'posts#up'
       put 'down', to: 'posts#down'
     end
@@ -23,6 +25,7 @@ Rails.application.routes.draw do
     end
   end
   resources :relationships, only: [:create, :destroy]
+  resources :subscriptions, only: [:create, :destroy]
 
   get 'logout', to: 'sessions#destroy', as: 'logout'
 

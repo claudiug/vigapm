@@ -10,6 +10,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find_by(slug: params[:id])
+    @users_follow = @post.users
   end
 
   def new
@@ -50,6 +51,12 @@ class PostsController < ApplicationController
   def down
     @post = Post.find_by(slug: params[:id])
     @post.down_vote(current_user)
+  end
+
+  def users_follow
+    @post = Post.find_by(slug: params[:id])
+    @users_follow = @post.users
+    render json: @users_follow
   end
 
   def posts_params
