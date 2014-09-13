@@ -46,8 +46,8 @@
       <file leaf-file-name="20140913100243_clean_tables.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/db/migrate/20140913100243_clean_tables.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.062402494" vertical-offset="0" max-vertical-offset="781">
-              <caret line="2" column="38" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
+            <state vertical-scroll-proportion="0.15600625" vertical-offset="0" max-vertical-offset="781">
+              <caret line="5" column="50" selection-start-line="2" selection-start-column="3" selection-end-line="5" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -903,8 +903,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20140913100243_clean_tables.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.062402494" vertical-offset="0" max-vertical-offset="781">
-          <caret line="2" column="38" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
+        <state vertical-scroll-proportion="0.15600625" vertical-offset="0" max-vertical-offset="781">
+          <caret line="5" column="50" selection-start-line="2" selection-start-column="3" selection-end-line="5" selection-end-column="50" />
           <folding />
         </state>
       </provider>
