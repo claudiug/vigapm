@@ -1,7 +1,5 @@
 class PostsController < ApplicationController
   before_action :authorize, only: [:create, :up, :down, :edit, :update, :destroy]
-  impressionist actions: [:show]
-  impressionist :unique => [:session_hash, :ip_address]
 
   def index
     params[:page] || 1
@@ -9,8 +7,10 @@ class PostsController < ApplicationController
   end
 
   def show
+
     @post = Post.find_by(slug: params[:id])
     @users_follow = @post.users
+    impressionist(@post, "PostController", :unique => [:session_hash])
   end
 
   def new
