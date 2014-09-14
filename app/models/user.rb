@@ -48,12 +48,8 @@ class User < ActiveRecord::Base
 
   def ranking
     result = 0
-    self.posts.each do |r|
-      result +=r.post_ranking rescue nil
-    end
-    self.comments.each do |r|
-      result += r.comment_ranking rescue nil
-    end
+    result += User.includes(:comments).pluck(:cached_votes_score).delete_if{|x| x == nil}.reduce(:+)
+    result += User.includes(:posts).pluck(:cached_votes_score).delete_if{|x| x == nil}.reduce(:+)
     result
   end
 

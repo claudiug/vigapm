@@ -85,7 +85,7 @@ class Post < ActiveRecord::Base
   end
 
   def post_ranking
-    @result = self.get_upvotes.size - self.get_downvotes.size
+    self.get_upvotes.size - self.get_downvotes.size
   end
 
   def is_post_subscribe?(user)
