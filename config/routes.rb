@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :password_resets
   root 'welcome#index'
   get 'autocomplete', to: 'welcome#autocomplete'
   resources :tags
