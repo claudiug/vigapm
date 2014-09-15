@@ -1,15 +1,100 @@
 <%= stylesheet_link_tag 'posts', media: 'all', 'data-turbolinks-track' => true %>
-<div class="jumbotron">
+
+<section class="content-25 bg-clouds">
+    <div class="container">
+        <% if @post.cached_votes_up > 5000 %>
+          <h1 style="margin-top:-18px;"><span class="glyphicon glyphicon-bookmark" style="position:relative;margin-top:0;color:brown;top:0;padding-top:0;"></span>
+          </h1>
+          <div class="row" align="right" style="margin-top:-24px;">
+        <% else %>
+          <div class="row" align="left" style="margin-top:-6px;">
+        <% end %>
+        </div>
+        <br>
+
+        <div class="row">
+        <h4 class="pull-right">
+        <% if @post.created_at > Time.now - 1.days %>
+            <span class="label label-warning glyphicon glyphicon-dashboard">
+        <% else %>
+            <span class="label label-default glyphicon glyphicon-dashboard">
+        <% end %>
+        Created&nbsp;<%=time_ago_in_words(@post.created_at)%>&nbsp;ago</span>
+        </h4>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <h1 style='text-align:center;'><%= @post.title  %></h1>
+
+                <div class="pull-right">
+                  <div class="media">
+                    <div class="media">
+                      <a class="pull-left" style="width:70px;" href="<%=user_profiles_path(@post.user) rescue ""%>">
+                        <img class="media-object img-circle" style="margin-left:20px;width:40px;height:40px;" src="<%= @post.user.avatar.url(:thumb) rescue "/assets/missing-avatar.png" %>">
+                        <span class="glyphicon glyphicon-star" style="color:goldenrod;position:relative;top:-40px;left:8px;font-size:24px;"></span>
+                        <span class="badge <%=@post.user.username.gsub(/ /, "-") rescue "Vigap"%>-rank" style="position:relative;top:-24px;left:20px;background-color:goldenrod;color:white;"><%=@post.user.ranking rescue 0%></span>
+                      </a>
+                        <div class="media-body">
+                          <h4 class="media-heading"><i>Ruled By: </i></h4>
+                          <a href="<%=user_profiles_path(@post.user) rescue ""%>">
+                            <h4 style="margin-top:-2px;"><%= @post.user.username rescue "Vigap" %></h4>
+                          </a>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row"></div>
+
+                <br>
+                <p><%= @post.body.html_safe %></p>
+                <% if current_user != @post.user %>
+                    <h2>
+                    <% votetag = @post.user.username.gsub(/ /, "-") rescue "Vigap" %>
+                    <%= link_to " #{@post.cached_votes_up}", up_post_path(@post), method: :put, remote: true, id: votetag + '-post-upvote', class:'label label-success glyphicon glyphicon-thumbs-up vote-btn' %>
+                    <%= link_to " #{@post.cached_votes_down}", down_post_path(@post), method: :put, remote: true, id: votetag + '-post-downvote', class:'label label-danger glyphicon glyphicon-thumbs-down vote-btn' %>
+                    </h2>
+                <% else %>
+                  <h2>
+                    <span id='link_up' class='label label-success glyphicon glyphicon-thumbs-up vote-btn'><%=" #{@post.cached_votes_up}"%></span>
+                    <span id='link_down' class='label label-danger glyphicon glyphicon-thumbs-down vote-btn'><%=" #{@post.cached_votes_down}"%></span>
+                  </h2>
+                <% end %>
+                <br>
+
+                <div class="pull-right">
+                  <div class="media">
+                    <h4 class="pull-left media-heading" style="margin-top:3px;"><i>Created By: </i></h4>
+                    <div class="media" style="margin-top:0;padding-top:0;top:0;height:33px;">
+                      <a href="<%=user_profiles_path(@post.user) rescue ""%>">
+                        <img class="media-object img-circle pull-left" style="width:24px;height:24px;" src="<%= @post.user.avatar.url(:thumb) rescue "/assets/missing-avatar.png" %>">
+                        <h4 class="media-body pull-right" style="margin:3px 0 0 -5px;padding:0;top:0;">
+                          <%= @post.user.username rescue "Vigap" %>
+                        </h4>
+                      </a>
+                      <span class="badge <%=@post.user.username.gsub(/ /, "-") rescue "Vigap"%>-rank" style="position:relative;top:10px;left:-10px;"><%=@post.user.ranking rescue 0%></span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <% @post.tags.each do |tag| %>
+                      <%= link_to tag.name, tag_path(tag), class: "btn btn-default" %>
+                  <%end%>
+                </div>
+            </div>
+        </div>
+    </div>
+<br />
+</section>
+
+
+<div class="bg-clouds">
+  <div class="container">
+  <h3> Elemente de aranjat in pagina: </h3>
   <%= "#{@post.impressionist_count} views so far!" %>
-  <% if @post.cached_votes_up > 5000 %>
-    <h1 style="margin-top:-18px;"><span class="glyphicon glyphicon-bookmark" style="position:relative;margin-top:0;color:brown;top:0;padding-top:0;"></span>
-    </h1>
-    <div class="row" align="right" style="margin-top:-24px;">
-  <% else %>
-    <div class="row" align="left" style="margin-top:-6px;">
-  <% end %>
-  </div>
-   <br>
+  
   <% if current_user %>
       <% if @post.is_post_subscribe?(current_user) %>
           <%= render 'posts/unfollow' %>
@@ -26,16 +111,6 @@
     </li>
   <% end %>
 
-  <div class="row">
-  <h4 class="pull-right">
-  <% if @post.created_at > Time.now - 1.days %>
-      <span class="label label-warning glyphicon glyphicon-dashboard">
-  <% else %>
-      <span class="label label-default glyphicon glyphicon-dashboard">
-  <% end %>
-  Created&nbsp;<%=time_ago_in_words(@post.created_at)%>&nbsp;ago</span>
-  </h4>
-  </div>
 
   <div class="row">
   <% if @post.user && current_user && current_user.id == @post.user.id %>
@@ -46,68 +121,11 @@
   <% end %>
   </div>
 
-  <h1 style='text-align:center;'><%= @post.title  %></h1>
-
-  <div class="pull-right">
-    <div class="media">
-      <div class="media">
-        <a class="pull-left" style="width:70px;" href="<%=user_profiles_path(@post.user) rescue ""%>">
-          <img class="media-object img-circle" style="margin-left:20px;width:40px;height:40px;" src="<%= @post.user.avatar.url(:thumb) rescue "/assets/missing-avatar.png" %>">
-          <span class="glyphicon glyphicon-star" style="color:goldenrod;position:relative;top:-40px;left:8px;font-size:24px;"></span>
-          <span class="badge <%=@post.user.username.gsub(/ /, "-") rescue "Vigap"%>-rank" style="position:relative;top:-24px;left:20px;background-color:goldenrod;color:white;"><%=@post.user.ranking rescue 0%></span>
-        </a>
-          <div class="media-body">
-            <h4 class="media-heading"><i>Ruled By: </i></h4>
-            <a href="<%=user_profiles_path(@post.user) rescue ""%>">
-              <h4 style="margin-top:-2px;"><%= @post.user.username rescue "Vigap" %></h4>
-            </a>
-          </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row"></div>
-
-  <br>
-  <p><%= @post.body.html_safe %></p>
-  <% if current_user != @post.user %>
-      <h2>
-      <% votetag = @post.user.username.gsub(/ /, "-") rescue "Vigap" %>
-      <%= link_to " #{@post.cached_votes_up}", up_post_path(@post), method: :put, remote: true, id: votetag + '-post-upvote', class:'label label-success glyphicon glyphicon-thumbs-up vote-btn' %>
-      <%= link_to " #{@post.cached_votes_down}", down_post_path(@post), method: :put, remote: true, id: votetag + '-post-downvote', class:'label label-danger glyphicon glyphicon-thumbs-down vote-btn' %>
-      </h2>
-  <% else %>
-    <h2>
-      <span id='link_up' class='label label-success glyphicon glyphicon-thumbs-up vote-btn'><%=" #{@post.cached_votes_up}"%></span>
-      <span id='link_down' class='label label-danger glyphicon glyphicon-thumbs-down vote-btn'><%=" #{@post.cached_votes_down}"%></span>
-    </h2>
-  <% end %>
-  <br>
-
-  <div class="pull-right">
-    <div class="media">
-      <h4 class="pull-left media-heading" style="margin-top:3px;"><i>Created By: </i></h4>
-      <div class="media" style="margin-top:0;padding-top:0;top:0;height:33px;">
-        <a href="<%=user_profiles_path(@post.user) rescue ""%>">
-          <img class="media-object img-circle pull-left" style="width:24px;height:24px;" src="<%= @post.user.avatar.url(:thumb) rescue "/assets/missing-avatar.png" %>">
-          <h4 class="media-body pull-right" style="margin:3px 0 0 -5px;padding:0;top:0;">
-            <%= @post.user.username rescue "Vigap" %>
-          </h4>
-        </a>
-        <span class="badge <%=@post.user.username.gsub(/ /, "-") rescue "Vigap"%>-rank" style="position:relative;top:10px;left:-10px;"><%=@post.user.ranking rescue 0%></span>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <% @post.tags.each do |tag| %>
-        <%= link_to tag.name, tag_path(tag), class: "btn btn-default" %>
-    <%end%>
-  </div>
+</div>
 </div>
 
 
-<div>
+<div class="container">
  <% if current_user %>
     <%= form_for [@post, @post.comments.build] do|f| %>
       <div class="row">
@@ -130,6 +148,8 @@
 <% end %>
 </div>
 <hr>
+
+<div class="container">
 <div class="comments-box row">
 <% if @post.list_of_comments %>
   <% @post.list_of_comments.each do |comment| %>
@@ -189,4 +209,5 @@
     <% end %>
   <% end %>
 <% end %>
+</div>
 </div>

@@ -35,3 +35,4 @@ gem 'medium-editor-rails'
 gem 'rmagick', '2.13.2'
 
 gem 'pjax_rails'
+gem 'flat-ui-rails'

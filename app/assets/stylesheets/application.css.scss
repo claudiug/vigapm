@@ -3,23 +3,32 @@
 //*= require medium-editor/themes/default
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
+@import 'flat-ui';
 
 @media only screen and (min-width: 768px) {
-	.navbar, .navbar-default .navbar-nav > li > a {
-		height: 42px;
-		background-color: #3b5998;
-		color: rgba(255, 255, 255, 0.9);
-		font-size: 16px;
-		font-family: 'Helvetica Neue', Helvetica, Arial, 'lucida grande',tahoma,verdana,arial,sans-serif;
-		text-shadow: 0 -1px rgba(0, 0, 0, .1);
-		font-weight: bold;
+//	.navbar, .navbar-default .navbar-nav > li > a {
+//		height: 42px;
+//		background-color: #3b5998;
+//		color: rgba(255, 255, 255, 0.9);
+//		font-size: 16px;
+//		font-family: 'Helvetica Neue', Helvetica, Arial, 'lucida grande',tahoma,verdana,arial,sans-serif;
+//		text-shadow: 0 -1px rgba(0, 0, 0, .1);
+//		font-weight: bold;
+//	}
+
+//	.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+//    	background-color: rgba(255, 255, 255, 0.4) !important;
+//		color: #3b5998;
+//		text-shadow: none;
+//    	height: 52px;
+//	}
+
+	.navbar img {
+		height: 35px;
 	}
 
-	.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-    	background-color: rgba(255, 255, 255, 0.4);
-		color: #3b5998;
-		text-shadow: none;
-    	height: 52px;
+	.form-group {
+		margin-top:14px;
 	}
 
 	.form-group {

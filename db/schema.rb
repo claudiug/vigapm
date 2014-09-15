@@ -43,6 +43,15 @@ ActiveRecord::Schema.define(version: 20140914002554) do
   add_index "comments", ["cached_weighted_total"], name: "index_comments_on_cached_weighted_total", using: :btree
   add_index "comments", ["parent_id"], name: "index_comments_on_parent_id", using: :btree
 
+  create_table "event_notifications", force: true do |t|
+    t.string   "name"
+    t.integer  "comment_id"
+    t.integer  "post_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "events", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -154,7 +163,6 @@ ActiveRecord::Schema.define(version: 20140914002554) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.boolean  "is_guru",                default: false
     t.string   "city"
     t.string   "bio"
     t.string   "auth_token"

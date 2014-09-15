@@ -10,3 +10,6 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( welcome.css )
 Rails.application.config.assets.precompile += %w( posts.css )
 Rails.application.config.assets.precompile += %w( newpost.css )
+Rails.application.config.assets.precompile += %w( animations.css )
+Rails.application.config.assets.precompile += %w( icon-font.css )
+Rails.application.config.assets.precompile += %w( template25.css )

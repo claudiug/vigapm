@@ -6,6 +6,14 @@
 //=require jquery.pjax
 //= require bootstrap-wysihtml5
 //= require medium-editor
+//= require jquery.scrollTo-1.4.3.1-min
+//= require modernizr.custom
+//= require page-transitions
+//= require easing.min
+//= require jquery.svg.js
+//= require jquery.svganim
+//= require jquery.parallax.min
+//= require startup-kit
 
 //= require_tree .
 

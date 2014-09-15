@@ -1,5 +1,6 @@
 <%= stylesheet_link_tag 'welcome', media: 'all', 'data-turbolinks-track' => true %>
 
+<div class="container">
 <% if @results %>
   <div class="menu row">
     <% @results.each do |result| %>
@@ -78,3 +79,4 @@
     <%= paginate @posts %>
 
 <% end %>
+</div>
