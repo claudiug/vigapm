@@ -30,14 +30,14 @@
                 <div class="pull-right">
                   <div class="media">
                     <div class="media">
-                      <a class="pull-left" style="width:70px;" href="<%=user_profiles_path(@post.user) rescue ""%>">
+                      <a class="pull-left" style="width:70px;" href="<%=user_path(@post.user) rescue ""%>">
                         <img class="media-object img-circle" style="margin-left:20px;width:40px;height:40px;" src="<%= @post.user.avatar.url(:thumb) rescue "/assets/missing-avatar.png" %>">
                         <span class="glyphicon glyphicon-star" style="color:goldenrod;position:relative;top:-40px;left:8px;font-size:24px;"></span>
                         <span class="badge <%=@post.user.username.gsub(/ /, "-") rescue "Vigap"%>-rank" style="position:relative;top:-24px;left:20px;background-color:goldenrod;color:white;"><%=@post.user.ranking rescue 0%></span>
                       </a>
                         <div class="media-body">
                           <h4 class="media-heading"><i>Ruled By: </i></h4>
-                          <a href="<%=user_profiles_path(@post.user) rescue ""%>">
+                          <a href="<%=user_path(@post.user) rescue ""%>">
                             <h4 style="margin-top:-2px;"><%= @post.user.username rescue "Vigap" %></h4>
                           </a>
                         </div>
@@ -67,7 +67,7 @@
                   <div class="media">
                     <h4 class="pull-left media-heading" style="margin-top:3px;"><i>Created By: </i></h4>
                     <div class="media" style="margin-top:0;padding-top:0;top:0;height:33px;">
-                      <a href="<%=user_profiles_path(@post.user) rescue ""%>">
+                      <a href="<%=user_path(@post.user) rescue ""%>">
                         <img class="media-object img-circle pull-left" style="width:24px;height:24px;" src="<%= @post.user.avatar.url(:thumb) rescue "/assets/missing-avatar.png" %>">
                         <h4 class="media-body pull-right" style="margin:3px 0 0 -5px;padding:0;top:0;">
                           <%= @post.user.username rescue "Vigap" %>
@@ -160,7 +160,7 @@
         <div class="media comment">
       <% end %>
 
-        <a class="pull-left" href="<%=user_profiles_path(comment.user.username) rescue ""%>">
+        <a class="pull-left" href="<%=user_path(comment.user) rescue ""%>">
           <%= image_tag comment.user.avatar.url(:medium), class:'img-circle', style:'height:64px;width:64px;' %>
           <% if comment.user.ranking %>
             <% if comment.user.ranking < 0 %>
@@ -185,7 +185,7 @@
 
           <h4 class="media-heading">
             <strong>
-              <%= link_to comment.user.username, user_profiles_path(comment.user.username) rescue "" %>
+              <%= link_to comment.user.username, user_path(comment.user) rescue "Anonymous" %>
             </strong>says:
           </h4>
 
