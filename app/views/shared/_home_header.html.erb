@@ -6,7 +6,7 @@
       <!-- user face -->
         <% if current_user %>
               <a href="<%=user_path(current_user)%>" class="no-style">
-                <span class="user-avatar"><%= image_tag current_user.avatar.url, width: 30 %></span>
+                <span class="user-avatar"><%= image_tag current_user.avatar.url, style: "width: 30px" %></span>
                 <strong><%= current_user.username %></strong>
                 <span class="inliner icon icon-angle-right"></span>
               </a>
