@@ -1,4 +1,5 @@
 /log/*.log
 /tmp
+/.idea
 .idea/*.xml
 .idea/*.iml
