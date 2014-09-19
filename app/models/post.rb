@@ -20,7 +20,6 @@
 
 class Post < ActiveRecord::Base
 
-  attr_reader :votes
   acts_as_votable
   has_many :comments
   belongs_to :user
@@ -37,6 +36,16 @@ class Post < ActiveRecord::Base
   has_many :users, through: :subscriptions, dependent: :destroy
 
   is_impressionable
+
+
+  def page_view_size
+    impressions.size
+  end
+
+  POST_LIMIT = 4
+  def self.top_posts
+    includes(:impressions).sort_by { |a| a.page_view_size}.reverse.take(POST_LIMIT)
+  end
 
   def to_param
     slug

@@ -79,4 +79,19 @@
     <%= paginate @posts %>
 
 <% end %>
+
+  <h2>Top Posts</h2>
+  <% @top_posts.each do |top| %>
+    <h3>
+      <%= link_to top.title, post_path(top.slug) %>
+      <br>
+    </h3>
+  <% end %>
+
+  <h2>Top Categories</h2>
+  <% @top_tags.each do |category| %>
+  <h3>
+    <%= link_to category.name, tag_path(category) %>
+  </h3>
+   <% end %>
 </div>
