@@ -7,6 +7,8 @@ class WelcomeController < ApplicationController
     end
     params[:page] || 1
     @posts = Post.includes(:comments).page(params[:page]).per(10)
+    @top_posts = Post.top_posts
+    @top_tags = Tag.top_tags
   end
 
   def autocomplete

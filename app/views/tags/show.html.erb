@@ -1,4 +1,7 @@
+<%= "#{@tag.impressionist_count} views so far!" %>
+
 <% @tag.posts.each do |post| %>
+
     <%= post.title %>
     <%= link_to post.title, post_path(post) %>
 <%end %>
