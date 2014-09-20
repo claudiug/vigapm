@@ -14,6 +14,7 @@
 //= require jquery.svganim
 //= require jquery.parallax.min
 //= require startup-kit
+//= require holder
 
 //= require_tree .
 

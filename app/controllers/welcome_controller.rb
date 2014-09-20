@@ -1,4 +1,6 @@
 class WelcomeController < ApplicationController
+  layout "home"
+
   def index
     if params[:query]
       @results = Post.where('title LIKE ?', "%#{params[:query]}%")

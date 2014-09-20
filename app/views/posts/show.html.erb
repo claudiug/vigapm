@@ -3,29 +3,22 @@
 <section class="content-25 bg-clouds">
     <div class="container">
         <% if @post.cached_votes_up > 5000 %>
-          <h1 style="margin-top:-18px;"><span class="glyphicon glyphicon-bookmark" style="position:relative;margin-top:0;color:brown;top:0;padding-top:0;"></span>
-          </h1>
-          <div class="row" align="right" style="margin-top:-24px;">
-        <% else %>
-          <div class="row" align="left" style="margin-top:-6px;">
+            <span class="icon icon-bookmark"></span>
         <% end %>
-        </div>
-        <br>
 
         <div class="row">
-        <h4 class="pull-right">
-        <% if @post.created_at > Time.now - 1.days %>
-            <span class="label label-warning glyphicon glyphicon-dashboard">
-        <% else %>
-            <span class="label label-default glyphicon glyphicon-dashboard">
-        <% end %>
-        Created&nbsp;<%=time_ago_in_words(@post.created_at)%>&nbsp;ago</span>
-        </h4>
-        </div>
+            <div class="content-post">
+                <h1>
+                    <%= @post.title  %>
 
-        <div class="row">
-            <div class="col-sm-12">
-                <h1 style='text-align:center;'><%= @post.title  %></h1>
+                    <% if @post.created_at > Time.now - 1.days %>
+                    <span class="post-stats icon icon-clock-o warn">
+                    <% else %>
+                    <span class="post-stats icon icon-clock-o">
+                    <% end %>
+                    <span>Created <%=time_ago_in_words(@post.created_at)%> ago</span></span>
+
+                </h1>
 
                 <div class="pull-right">
                   <div class="media">

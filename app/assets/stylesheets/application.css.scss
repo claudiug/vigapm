@@ -4,6 +4,12 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 @import 'flat-ui';
+@import 'icons';
+
+body {
+  font-family: "proxima-nova", sans-serif;
+  background: #f9f9f9;
+}
 
 @media only screen and (min-width: 768px) {
 //	.navbar, .navbar-default .navbar-nav > li > a {
@@ -70,4 +76,68 @@
 	.tt-suggestion p {
 	    margin: 0;
 	}
+}
+.container {
+  h2 {
+    text-align: center;
+    font-weight: 200;
+    padding: 20px 0 30px;
+    font-size: 36px;
+  }
+}
+
+/* User area section */
+.user-area {
+  position: absolute;
+  top: 8px;
+  right: 15px;
+
+  a {
+    display: inline-block;
+    padding: 8px 14px;
+    margin-left: 10px;
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    &:hover {
+      color: white;
+      background: #3198e0;
+      border-color: #3198e0;
+    }
+  }
+  .action {
+    border: 1px solid white;
+
+    &:hover {
+      background: #3198e0;
+      border-color: #3198e0;
+      color: white;
+    }
+  }
+}
+
+header {
+  background: #1b1f23;
+  padding: 10px 0;
+}
+.twitter-typeahead {
+  vertical-align: middle;
+  .typeahead {
+    border-radius: 6px 0 0 6px !important;
+    margin-left: 0;
+  }
+}
+
+.inliner {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+h1 {
+  text-align: center;
+  .post-stats {
+    font-size: 14px;
+    display: block;
+  }
 }

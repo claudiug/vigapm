@@ -21,3 +21,12 @@
 
 en:
   hello: "Hello world"
+
+  search:
+    field_placeholder: "Search for a topic"
+    button: "Search"
+  user:
+    user_signup: "Join Vigap"
+    user_login: "Login"
+    user_logout: "Logout"
+    add_post: "New post"

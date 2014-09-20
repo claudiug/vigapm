@@ -5,19 +5,18 @@
 /* styles from flat-ui-free2.0.0-fix.less files */
 body {
   color: #34495e;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.231;
 }
 input,
 button,
 select,
 textarea {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
   font-size: 14px;
 }
 a {
-  color: #16a085;
+  color: #3498db;
   text-decoration: none;
   -webkit-transition: color 0.25s, background 0.25s;
   -moz-transition: color 0.25s, background 0.25s;
@@ -25,7 +24,7 @@ a {
   transition: color 0.25s, background 0.25s;
 }
 a:hover {
-  color: #1abc9c;
+  color: #000;
   text-decoration: none;
 }
 h1,
@@ -516,7 +515,7 @@ h5,
 .h5,
 h6,
 .h6 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
   color: #2c3e50;
 }
 h1 {
@@ -524,9 +523,6 @@ h1 {
 }
 h3 {
   font-weight: normal;
-}
-img {
-  -webkit-backface-visibility: hidden;
 }
 textarea,
 input[type="text"],
@@ -781,22 +777,8 @@ body > .navbar-collapse .navbar-search .btn-primary:hover {
   border-top: 2px solid #ebedee;
 }
 header {
-  padding-top: 100px;
-  padding-bottom: 70px;
+
   z-index: 100;
-}
-header .brand {
-  font-size: 25px;
-  font-weight: normal;
-  color: #34495e;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 800;
-  letter-spacing: -1px;
-  color: #2c3e50;
-}
-header .brand img:first-child {
-  float: left;
-  margin: -10px 15px 0 0;
 }
 section * {
   z-index: 2;
@@ -1841,4 +1823,19 @@ section * {
 .header-23-sub {
   padding-top: 330px;
   padding-bottom: 300px;
+}
+
+.header-14-sub .subscribe-form form .input-group .btn {
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-left: 0;
+    -webkit-border-radius: 0 6px 6px 0;
+    -moz-border-radius: 0 6px 6px 0;
+    border-radius: 0 6px 6px 0;
+    border: 0;
+    color: #fff;
+    background: #1abc9c;
+    line-height: 22px;
+    font-size: 17px;
+    font-weight: 500;
 }

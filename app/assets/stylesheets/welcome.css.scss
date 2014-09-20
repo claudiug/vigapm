@@ -44,9 +44,191 @@
  display: inline-block;
  margin:  0.25rem;
  padding:  1rem;
- width:  100%; 
+  width: 282px;
 }
 
 .label {
   word-spacing: -8px;
+}
+
+/* Vlad */
+/* Let's mess up with the header a little bit */
+header {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  padding: 0;
+  background: transparent;
+  .brand {
+    display: inline-block;
+    img:first-child {
+      float: none;
+      margin: 110px auto 10px;
+    }
+  }
+}
+.header-23 {
+  .navbar {
+    position: relative;
+    top: 0;
+
+  }
+}
+.bg-midnight-blue {
+  background: transparent;
+}
+/* Now let's lift the /pagecontent a little */
+.pagecontent {
+  margin-top: -50px;
+}
+.hero-container {
+  height: 600px;
+  background: image-url('hero.jpg') center 0;
+}
+.twitter-typeahead {
+  vertical-align: middle;
+  .typeahead {
+    padding: 10px 20px;
+    height: 50px;
+    width: 500px !important;
+    margin-left: 0;
+  }
+}
+/* Stolen from #14 */
+
+.header-14-sub .subscribe-form form {
+  margin: 40px 0 10px;
+}
+.header-14-sub .subscribe-form form .input-group input[type="text"] {
+  border-color: white;
+  border-right: 0;
+  min-height: 0;
+}
+@media (max-width: 480px) {
+  .header-14-sub .subscribe-form form .input-group input[type="text"] {
+    min-height: 41px;
+  }
+}
+.header-14-sub .subscribe-form form .input-group .btn {
+  margin-left: 0;
+  -webkit-border-radius: 0 6px 6px 0;
+  -moz-border-radius: 0 6px 6px 0;
+  border-radius: 0 6px 6px 0;
+  border: 0;
+  color: #fff;
+  background: #3198e0;
+  line-height: 22px;
+  font-size: 17px;
+  font-weight: 500;
+  padding: 14px 25px;
+}
+@media (max-width: 480px) {
+  .header-14-sub .subscribe-form form .input-group .btn {
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+  }
+}
+@media (max-width: 480px) {
+  .header-14-sub .subscribe-form form .input-group .form-control {
+    float: none;
+  }
+  .header-14-sub .subscribe-form form .input-group .input-group-btn {
+    display: block;
+    width: 100%;
+  }
+}
+.header-14-sub .subscribe-form .btn.btn-primary:hover,
+.header-14-sub .subscribe-form .btn.btn-primary:focus {
+  background-color: #e74c3c;
+}
+.header-14-sub .subscribe-form .btn.btn-primary:active,
+.header-14-sub .subscribe-form .btn.btn-primary.active {
+  background-color: #c44133;
+}
+@media (max-width: 480px) {
+  .header-14-sub .subscribe-form .input-group,
+  .header-14-sub .subscribe-form .input-group input[type="text"],
+  .header-14-sub .subscribe-form .input-group .btn {
+    display: block;
+    width: 100%;
+  }
+  .header-14-sub .subscribe-form .input-group input[type="text"],
+  .header-14-sub .subscribe-form .input-group .btn {
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+  }
+  .header-14-sub .subscribe-form .input-group .btn {
+    margin-top: 15px;
+  }
+}
+.header-14-sub {
+  display: table;
+  width: 100%;
+  vertical-align: middle;
+  padding-bottom: 120px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+@media (max-width: 480px) {
+  .header-14-sub {
+    padding-bottom: 50px;
+  }
+}
+@media (max-width: 540px) {
+  .header-14-sub .hero-unit {
+    margin: 0 auto 65px;
+  }
+}
+
+/* Home cards */
+.list-group-item,
+.list-group-item:hover,
+.list-group-item:focus {
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  background-color: #fff;
+  -moz-box-shadow: 0 2px 2px rgba(0,0,0,.1);
+  -webkit-box-shadow: 0 2px 2px rgba(0,0,0,.1);
+  box-shadow: 0 2px 2px rgba(0,0,0,.1);
+}
+.list-group-item {
+  h4 {
+    font-size: 15px;
+    font-weight: 700;
+    padding-bottom: 8px;
+  }
+  p {
+    font-size: 13px;
+  }
+  .pic {
+    margin: -10px -15px 15px;
+  }
+  .card-footer {
+    border-top: 1px solid #ddd;
+    margin: 15px -15px -10px;
+    padding: 10px 15px;
+  }
+}
+.post-stats {
+  padding-right: 10px;
+  font-size: 15px;
+  span {
+    font-family: 'proxima-nova', sans-serif;
+    font-weight: 700;
+    padding-left: 4px;
+    font-size: 12px;
+    vertical-align: middle;
+  }
+  &.warn {
+    color: rgb(231, 76, 60);
+  }
 }
