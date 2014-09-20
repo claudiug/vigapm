@@ -26,6 +26,7 @@ en:
     field_placeholder: "Search for a topic"
     button: "Search"
   user:
+    user_signup_html: "<strong>Join</strong> Vigap"
     user_signup: "Join Vigap"
     user_login: "Login"
     user_logout: "Logout"

@@ -41,9 +41,8 @@
 }
 
 .menu-category {
-  display: inline-block;
+  display: block;
   margin: 0 0 10px;
-  padding:  1rem;
   width: 280px;
 }
 
@@ -210,6 +209,10 @@ header {
   border: 0;
 }
 .list-group-item {
+  .group-container-none & {
+    display: inline-block;
+    margin: 0 6px 13px;
+  }
   h4 {
     font-size: 15px;
     font-weight: 700;
@@ -223,6 +226,7 @@ header {
     margin: -10px -15px 0;
     border-radius: 4px 4px 0 0;
     overflow: hidden;
+    height: 150px;
   }
   .card-footer {
     border-top: 1px solid #ddd;
@@ -285,5 +289,14 @@ header {
   }
   &:after {
 
+  }
+}
+.vigap-count {
+  display: block;
+  padding: 15px 0 0;
+  font-weight: 200;
+  font-size: 16px;
+  strong {
+    border-bottom: 1px dotted #7f8c8d;
   }
 }

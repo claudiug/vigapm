@@ -3,7 +3,7 @@
 //= require jquery_ujs
 //= require twitter/typeahead.min
 //= require bootstrap-sprockets
-//=require jquery.pjax
+//= require jquery.pjax
 //= require bootstrap-wysihtml5
 //= require medium-editor
 //= require jquery.scrollTo-1.4.3.1-min
@@ -14,7 +14,9 @@
 //= require jquery.svganim
 //= require jquery.parallax.min
 //= require startup-kit
+//= require wookmark
 //= require holder
+//= require common
 
 //= require_tree .
 

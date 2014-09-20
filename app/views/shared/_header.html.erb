@@ -23,32 +23,33 @@
     </div> <!-- .header-14-sub -->
 
 
-  <div class="user-area">
+    <div class="user-area">
 
-    <!-- user face -->
-    <% if current_user %>
-        <a href="<%=user_path(current_user)%>">
-          <%= image_tag current_user.avatar.url %>
-          <%= current_user.username %>
-        </a>
-    <% else %>
-        <%= link_to t('user.user_login'), new_session_path, title: t('user.user_login') %>
-    <% end %>
+      <!-- user face -->
+      <% if current_user %>
+          <a href="<%=user_path(current_user)%>" class="no-style">
+            <span class="user-avatar"><%= image_tag current_user.avatar.url, width: 30 %></span>
+            <strong><%= current_user.username %></strong>
+            <span class="inliner icon icon-angle-right"></span>
+          </a>
+      <% else %>
+          <%= link_to t('user.user_login'), new_session_path, title: t('user.user_login') %>
+      <% end %>
 
 
-    <!-- post -->
-    <% if current_user %>
-        <%= link_to t('user.add_post'), new_post_path, class: 'action', title: t('user.add_post') %>
-    <% end %>
+      <!-- post -->
+      <% if current_user %>
+          <%= link_to t('user.add_post'), new_post_path, class: 'action', title: t('user.add_post') %>
+      <% end %>
 
-    <!-- logout / sign up -->
-    <% if current_user %>
-        <%= link_to t('user.user_logout'), logout_path, title: t('user.user_logout')  %>
-    <% else %>
-        <%= link_to t('user.user_signup'), new_user_path, class: 'action', title: t('user.user_signup') %>
-    <% end %>
+      <!-- logout / sign up -->
+      <% if current_user %>
+          <%= link_to t('user.user_logout'), logout_path, title: t('user.user_logout')  %>
+      <% else %>
+          <%= link_to t('user.user_signup_html'), new_user_path, class: 'action', title: t('user.user_signup') %>
+      <% end %>
 
-  </div>
+    </div>
 
   </div>
 </header>

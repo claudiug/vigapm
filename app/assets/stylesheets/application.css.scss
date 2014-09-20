@@ -106,6 +106,19 @@ body {
       border-color: #3198e0;
     }
   }
+  .no-style {
+    padding: 0 14px;
+    &:hover {
+      border-color: transparent;
+      background: none;
+      strong {
+        border-bottom: 1px dotted white;
+      }
+    }
+  }
+  .icon-angle-right {
+    margin-left: 10px;
+  }
   .action {
     border: 1px solid white;
 
@@ -116,7 +129,19 @@ body {
     }
   }
 }
+.user-avatar {
+  border-radius: 50%;
+  overflow: hidden;
+  display: inline-block;
+  background: white;
+  vertical-align: middle;
+  margin-right: 10px;
+  position: relative;
+  top: -1px;
+  img {
 
+  }
+}
 header {
   background: #1b1f23;
   padding: 10px 0;
@@ -133,14 +158,103 @@ header {
   display: inline-block;
   vertical-align: middle;
 }
-
-h1 {
+.post-hero {
+  background: white;
+  padding: 30px 0 40px;
+  .container {
+    position: relative;
+  }
+  .icon-bookmark {
+    font-size: 36px;
+    position: absolute;
+    right: 30px;
+    top: 0;
+    color: #e74c3c;
+  }
+}
+.post-header {
   text-align: center;
+  h1 {
+    margin: 0;
+    padding-bottom: 10px;
+  }
   .post-stats {
     font-size: 14px;
     display: block;
   }
+  .subscribe {
+    padding-top: 25px;
+  }
 }
 .centered {
   text-align: center;
+}
+ul.menu {
+  padding: 0;
+  margin: 0;
+}
+.group-container {
+  position: relative;
+}
+.list-group-item {
+  width: 260px;
+}
+.btn-outline {
+  border: 1px solid white;
+  background: transparent;
+}
+
+/* The bubbles */
+.the-bubble {
+  position: relative;
+  width: auto;
+  height: auto;
+  padding: 15px 25px;
+  background: #FFFFFF;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  &.left {
+    &:after {
+      border-width: 9px 15px 9px 0;
+      margin-top: -9px;
+      left: -15px;
+      right: autp;
+    }
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 9px 0 9px 15px;
+    border-color: transparent #FFFFFF;
+    display: block;
+    width: 0;
+    z-index: 1;
+    margin-top: -9px;
+    right: -15px;
+    top: 50%;
+  }
+}
+.bubble-container {
+  position: relative;
+  p {
+    font-size: 15px;
+  }
+  .user, .the-bubble {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .user {
+    padding-right: 20px;
+  }
+  .icon-star {
+    position: absolute;
+    font-size: 30px;
+    top: -5px;
+    left: -10px;
+  }
+}
+.post-content {
+  padding-top: 25px;
 }

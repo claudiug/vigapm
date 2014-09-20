@@ -1,47 +1,87 @@
 <%= stylesheet_link_tag 'posts', media: 'all', 'data-turbolinks-track' => true %>
 
-<section class="content-25 bg-clouds">
+<div class="post-hero">
+
     <div class="container">
-        <% if @post.cached_votes_up > 5000 %>
-            <span class="icon icon-bookmark"></span>
+      <% if @post.cached_votes_up > 0 %>
+          <span class="icon icon-bookmark"></span>
+      <% end %>
+
+
+  <div class="post-header">
+    <h1>
+      <%= @post.title  %></h1>
+
+        <% if @post.created_at > Time.now - 1.days %>
+           <span class="post-stats icon icon-clock-o warn">
+        <% else %>
+           <span class="post-stats icon icon-clock-o">
         <% end %>
+        <span>Created <%=time_ago_in_words(@post.created_at)%> ago</span>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <span>by <a href="<%=user_path(@post.user) rescue ""%>">
+            <%= @post.user.username rescue "Vigap" %></a>
+            <span class="badge <%=@post.user.username.gsub(/ /, "-") rescue "Vigap"%>-rank">
+              <%=@post.user.ranking rescue 0%>
+            </span>
+        </span>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="icon icon-eye"></span> <%= "#{@post.impressionist_count} views so far!" %>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="icon icon-comment"></span> <a href="#" title="Add comment">Add comment</a></span> </span>
 
-        <div class="row">
+
+
+
+        <div class="subscribe">
+          <% if current_user %>
+              <% if @post.is_post_subscribe?(current_user) %>
+                  <%= render 'posts/unfollow' %>
+              <% else %>
+                  <%= render 'posts/follow' %>
+              <% end %>
+          <% end %>
+
+       </div> <!-- .subscribe -->
+
+  </div> <!-- .post-header -->
+
+</div>
+
+</div> <!-- .post-hero -->
+
+<section class="post-content">
+    <div class="container">
+
+
             <div class="content-post">
-                <h1>
-                    <%= @post.title  %>
 
-                    <% if @post.created_at > Time.now - 1.days %>
-                    <span class="post-stats icon icon-clock-o warn">
-                    <% else %>
-                    <span class="post-stats icon icon-clock-o">
-                    <% end %>
-                    <span>Created <%=time_ago_in_words(@post.created_at)%> ago</span></span>
 
-                </h1>
+                <div class="bubble-container">
+                  <a href="<%=user_path(@post.user) rescue ""%>" class="user">
+                    <span class="user-avatar">
+                        <img width="60" src="<%= @post.user.avatar.url(:thumb) rescue "/assets/missing-avatar.png" %>">
+                    </span>
+                    <span class="icon icon-star"></span>
 
-                <div class="pull-right">
-                  <div class="media">
-                    <div class="media">
-                      <a class="pull-left" style="width:70px;" href="<%=user_path(@post.user) rescue ""%>">
-                        <img class="media-object img-circle" style="margin-left:20px;width:40px;height:40px;" src="<%= @post.user.avatar.url(:thumb) rescue "/assets/missing-avatar.png" %>">
-                        <span class="glyphicon glyphicon-star" style="color:goldenrod;position:relative;top:-40px;left:8px;font-size:24px;"></span>
-                        <span class="badge <%=@post.user.username.gsub(/ /, "-") rescue "Vigap"%>-rank" style="position:relative;top:-24px;left:20px;background-color:goldenrod;color:white;"><%=@post.user.ranking rescue 0%></span>
-                      </a>
-                        <div class="media-body">
-                          <h4 class="media-heading"><i>Ruled By: </i></h4>
-                          <a href="<%=user_path(@post.user) rescue ""%>">
-                            <h4 style="margin-top:-2px;"><%= @post.user.username rescue "Vigap" %></h4>
-                          </a>
-                        </div>
-                    </div>
-                  </div>
+
+                  </a>
+
+
+                <div class="the-bubble left">
+                  <p><%= @post.body.html_safe %></p>
+
+                    <div class="bubble-meta">
+                      <%= @post.user.username rescue "Vigap" %>
+
+                      <span class="badge <%=@post.user.username.gsub(/ /, "-") rescue "Vigap"%>-rank">
+                      <%=@post.user.ranking rescue 0%>
+                    </span>
+                    </div> <!-- .bubble-meta -->
                 </div>
 
-                <div class="row"></div>
+                </div>
 
-                <br>
-                <p><%= @post.body.html_safe %></p>
                 <% if current_user != @post.user %>
                     <h2>
                     <% votetag = @post.user.username.gsub(/ /, "-") rescue "Vigap" %>
@@ -56,45 +96,21 @@
                 <% end %>
                 <br>
 
-                <div class="pull-right">
-                  <div class="media">
-                    <h4 class="pull-left media-heading" style="margin-top:3px;"><i>Created By: </i></h4>
-                    <div class="media" style="margin-top:0;padding-top:0;top:0;height:33px;">
-                      <a href="<%=user_path(@post.user) rescue ""%>">
-                        <img class="media-object img-circle pull-left" style="width:24px;height:24px;" src="<%= @post.user.avatar.url(:thumb) rescue "/assets/missing-avatar.png" %>">
-                        <h4 class="media-body pull-right" style="margin:3px 0 0 -5px;padding:0;top:0;">
-                          <%= @post.user.username rescue "Vigap" %>
-                        </h4>
-                      </a>
-                      <span class="badge <%=@post.user.username.gsub(/ /, "-") rescue "Vigap"%>-rank" style="position:relative;top:10px;left:-10px;"><%=@post.user.ranking rescue 0%></span>
-                    </div>
-                  </div>
-                </div>
-
                 <div class="row">
                   <% @post.tags.each do |tag| %>
                       <%= link_to tag.name, tag_path(tag), class: "btn btn-default" %>
                   <%end%>
                 </div>
-            </div>
+            </div> <!-- content -->
         </div>
-    </div>
-<br />
+
 </section>
 
 
 <div class="bg-clouds">
   <div class="container">
   <h3> Elemente de aranjat in pagina: </h3>
-  <%= "#{@post.impressionist_count} views so far!" %>
-  
-  <% if current_user %>
-      <% if @post.is_post_subscribe?(current_user) %>
-          <%= render 'posts/unfollow' %>
-      <% else %>
-          <%= render 'posts/follow' %>
-      <% end %>
-  <% end %>
+
 
   <h3>User that follow this post:</h3>
   <% @users_follow.each do |user| %>

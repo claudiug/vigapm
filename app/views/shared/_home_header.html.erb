@@ -5,9 +5,10 @@
 
       <!-- user face -->
         <% if current_user %>
-              <a href="<%=user_path(current_user)%>">
-                <%= image_tag current_user.avatar.url %>
-                <%= current_user.username %>
+              <a href="<%=user_path(current_user)%>" class="no-style">
+                <span class="user-avatar"><%= image_tag current_user.avatar.url, width: 30 %></span>
+                <strong><%= current_user.username %></strong>
+                <span class="inliner icon icon-angle-right"></span>
               </a>
         <% else %>
               <%= link_to t('user.user_login'), new_session_path, title: t('user.user_login') %>
@@ -23,7 +24,7 @@
     <% if current_user %>
         <%= link_to t('user.user_logout'), logout_path, title: t('user.user_logout')  %>
     <% else %>
-        <%= link_to t('user.user_signup'), new_user_path, class: 'action', title: t('user.user_signup') %>
+        <%= link_to t('user.user_signup_html'), new_user_path, class: 'action', title: t('user.user_signup') %>
     <% end %>
 
   </div>
@@ -42,8 +43,11 @@
                       <%= t "search.button" %>
                     </button>
                 </span>
-              </div>
 
+
+
+              </div>
+            <span class="vigap-count">Browse through <strong>9.123</strong> discussions</span>
         <% end %>
       </div> <!-- .ubscribe-form col-sm-8 col-sm-offset-2 -->
     </div> <!-- .header-14-sub -->
