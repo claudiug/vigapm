@@ -120,7 +120,6 @@
     </li>
   <% end %>
 
-
   <div class="row">
   <% if @post.user && current_user && current_user.id == @post.user.id %>
       <a href="<%=edit_post_path %>">
