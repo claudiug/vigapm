@@ -2,5 +2,5 @@
              html: { method: :delete },
              remote: false) do |f| %>
     <div><%= f.hidden_field :post_id %></div>
-    <%= f.submit "Unsubscribe!", class: "btn btn-large btn-outline" %>
+    <%= f.submit "Unsubscribe!", class: "btn btn-large btn-outline", id: '_posts_unfollow' %>
 <% end %>

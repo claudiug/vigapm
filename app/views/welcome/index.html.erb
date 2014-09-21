@@ -167,7 +167,7 @@
   <div class="centered">
   <% @top_tags.each do |category| %>
 
-        <%= link_to category.name, tag_path(category), class: 'tag' %>
+        <%= link_to category.name, tag_path(category), class: 'tag', id: '_homepage_tags' %>
 
    <% end %>
    </div>
