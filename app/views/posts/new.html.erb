@@ -18,13 +18,13 @@
       <%= f.hidden_field :body, html: { id: 'body' } %>
     </div>
     <br>
-    <div class="editable" data-field-id="body"></div>
+    <div class="editable" data-field-id="body" id="_newpost_body"></div>
     <br>
     <div class="field">
       <%= f.text_field :tag_list, :placeholder => "Tags (separated by commas)", :style => "width:100%;outline: 0;border: none;font-size:21px;font-color: rgba(0,0,0,0.3);font-weight:100;" %>
     </div>
     <br>
-    <%= f.submit 'Submit', class: 'btn btn-lg btn-info' %>
+    <%= f.submit 'Submit', class: 'btn btn-lg btn-info', id: '_newpost_submit' %>
 <% end %>
 </div>
 

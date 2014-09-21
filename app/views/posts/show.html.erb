@@ -19,7 +19,7 @@
         <% end %>
         <span>Created <%=time_ago_in_words(@post.created_at)%> ago</span>
         &nbsp;&nbsp;&nbsp;&nbsp;
-        <span>by <a href="<%=user_path(@post.user) rescue ""%>">
+        <span>by <a href="<%=user_path(@post.user) rescue ""%>" id="_posts_createdby_profile">
             <%= @post.user.username rescue "Vigap" %></a>
             <span class="badge <%=@post.user.username.gsub(/ /, "-") rescue "Vigap"%>-rank">
               <%=@post.user.ranking rescue 0%>
@@ -58,7 +58,7 @@
 
 
                 <div class="bubble-container">
-                  <a href="<%=user_path(@post.user) rescue ""%>" class="user">
+                  <a href="<%=user_path(@post.user) rescue ""%>" class="user" id="_posts_ruledby_profile">
                     <span class="user-avatar">
                         <img width="60" src="<%= @post.user.avatar.url(:thumb) rescue "/assets/missing-avatar.png" %>">
                     </span>
@@ -139,7 +139,7 @@
       <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
-          <%= f.text_area :body, placeholder: "Add your thoughts!", class: "form-control", style: "font-size: 18px;height: 200px;" %>
+          <%= f.text_area :body, placeholder: "Add your thoughts!", class: "form-control", style: "font-size: 18px;height: 200px;", id: "_posts_comment_field" %>
         </div>
         <div class="col-md-2"></div>
       </div>
@@ -147,7 +147,7 @@
         <div class="col-md-4"></div>
         <div class="col-md-4">
           <span class="input-group-btn">
-            <%= f.submit 'Post comment', class: "btn btn-lg btn-success", style: "width: 100%; font-size: 24px;" %>
+            <%= f.submit 'Post comment', class: "btn btn-lg btn-success", style: "width: 100%; font-size: 24px;", id: "_posts_post_comment" %>
           </span>
         </div>
         <div class="col-md-4"></div>
@@ -168,7 +168,7 @@
         <div class="media comment">
       <% end %>
 
-        <a class="pull-left" href="<%=user_path(comment.user) rescue ""%>">
+        <a class="pull-left" href="<%=user_path(comment.user) rescue ""%>" id="_posts_comment_profile">
           <%= image_tag comment.user.avatar.url(:medium), class:'img-circle', style:'height:64px;width:64px;' %>
           <% if comment.user.ranking %>
             <% if comment.user.ranking < 0 %>

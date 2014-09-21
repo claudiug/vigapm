@@ -53,7 +53,7 @@
       <ul class="nav nav-tabs" id="myTab">
         <li class="active"><a href="#posts" data-toggle="tab">Posts</a></li>
         <% if current_user.username == @user.username %>
-            <li><a href="#settings" data-toggle="tab">Settings</a></li>
+            <li><a href="#settings" data-toggle="tab" id="_profile_settings">Settings</a></li>
         <% end %>
       </ul>
 
@@ -121,7 +121,7 @@
                   <div class="form-group">
                     <div class="col-xs-12">
                       <br>
-                      <%= f.submit 'save', :class => "btn btn-success btn-lrg" %>
+                      <%= f.submit 'save', :class => "btn btn-success btn-lrg", :id => "_profile_settings_save" %>
                     </div>
                   </div>
               <% end %>

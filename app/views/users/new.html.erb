@@ -13,19 +13,19 @@
           </ul>
         </div>
     <% end %>
-    <div class="field">
+    <div class="field" id="_signup_username">
       <%= f.label :username %>
       <%= f.text_field :username %>
     </div>
-    <div class="field">
+    <div class="field" id="_signup_email">
       <%= f.label :email %>
       <%= f.text_field :email %>
     </div>
-    <div class="field">
+    <div class="field" id="_signup_password">
       <%= f.label :password %>
       <%= f.password_field :password %>
     </div>
     <div class="action">
-      <%= f.submit 'Sign in', class: 'btn btn-info' %>
+      <%= f.submit 'Sign in', class: 'btn btn-info', id: '_signup_signin' %>
     </div>
 <% end %>
