@@ -1,30 +1,30 @@
 <header>
-<%= link_to image_tag("vigap-logo.png", width: 141), "#{request.protocol}#{request.host_with_port}", :class => "brand" %>
+<%= link_to image_tag("vigap-logo.png", width: 141), "#{request.protocol}#{request.host_with_port}", :class => "brand", :id => '_home' %>
 
   <div class="user-area">
 
       <!-- user face -->
         <% if current_user %>
-              <a href="<%=user_path(current_user)%>" class="no-style">
+              <a href="<%=user_path(current_user)%>" class="no-style" id="_home_profile">
                 <span class="user-avatar"><%= image_tag current_user.avatar.url, style: "width: 30px" %></span>
                 <strong><%= current_user.username %></strong>
                 <span class="inliner icon icon-angle-right"></span>
               </a>
         <% else %>
-              <%= link_to t('user.user_login'), new_session_path, title: t('user.user_login') %>
+              <%= link_to t('user.user_login'), new_session_path, title: t('user.user_login'), id: '_home_singin' %>
         <% end %>
 
 
       <!-- post -->
       <% if current_user %>
-            <%= link_to t('user.add_post'), new_post_path, class: 'action', title: t('user.add_post') %>
+            <%= link_to t('user.add_post'), new_post_path, class: 'action', title: t('user.add_post'), id: '_new_post' %>
       <% end %>
 
     <!-- logout / sign up -->
     <% if current_user %>
-        <%= link_to t('user.user_logout'), logout_path, title: t('user.user_logout')  %>
+        <%= link_to t('user.user_logout'), logout_path, title: t('user.user_logout'), id: '_home_logout'  %>
     <% else %>
-        <%= link_to t('user.user_signup_html'), new_user_path, class: 'action', title: t('user.user_signup') %>
+        <%= link_to t('user.user_signup_html'), new_user_path, class: 'action', title: t('user.user_signup'), id: '_home_signup' %>
     <% end %>
 
   </div>
@@ -39,7 +39,7 @@
               <div class="input-group">
                 <%= text_field_tag :query, params[:query], placeholder: t('search.field_placeholder'), class: 'typeahead form-control searchbox' %>
                 <span class="input-group-btn">
-                    <button class="btn btn-primary" type="button">
+                    <button class="btn btn-primary" type="button" id="_home_search">
                       <%= t "search.button" %>
                     </button>
                 </span>
