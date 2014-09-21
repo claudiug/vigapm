@@ -29,11 +29,30 @@
 </div>
 
 <script>
+$(function () {
   var editor = new MediumEditor('.editable', {
     placeholder: 'Write your post'
   });
   $('.editable').bind('input propertychange', function() {
     $("#post_" + $(this).attr("data-field-id")).val($(this).html());
   });
+
+  $('.editable').mediumInsert({
+    editor: editor,
+    addons: {
+      images: {},
+      embeds: {
+        oembedProxy: 'http://medium.iframe.ly/api/oembed?iframe=1'
+      },
+      tables: {}
+    }
+  });
+
+  var allContents = editor.serialize();
+  var elContent = allContents["element-0"].value;
+
+});
+
+
 </script>
 

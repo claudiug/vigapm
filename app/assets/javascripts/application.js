@@ -17,6 +17,11 @@
 //= require wookmark
 //= require holder
 //= require common
+//= require medium-editor-insert-plugin
+//= require medium-editor-insert-images
+//= require medium-editor-insert-embeds
+//= require medium-editor-insert-tables
+//= require medium-editor-insert-maps
 
 //= require_tree .
 
