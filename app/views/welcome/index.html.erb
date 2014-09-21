@@ -19,6 +19,7 @@
                       <h4 class="list-group-item-heading">
                         <a href="<%= post_path(result) %>"><%= result.title %></a>
                       </h4>
+                      <% puts result.inspect %>
 
                       <% if result.updated_at > Time.now - 1.days %>
                           <span class="label label-warning glyphicon glyphicon-dashboard">&nbsp;
