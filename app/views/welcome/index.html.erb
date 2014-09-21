@@ -5,119 +5,119 @@
 <h2>Latest things</h2>
 
 <% if @results %>
-  <div class="menu">
-    <% @results.each do |result| %>
-        <div class="menu-category list-group">
-            <div class="menu-item list-group-item">
+      <div class="group-container"> 
+          <ul class="menu grouped-list">
+            <% @results.each do |result| %>
+                    <li class="menu-item list-group-item">
 
-              <div class="pic">
-                <a href="<%= post_path(result) %>">
-                    <img src="holder.js/260x150/gray" alt="Placeholder">
-                </a>
-              </div> <!-- .pic -->
+                      <div class="pic">
+                        <a href="<%= post_path(result) %>">
+                            <img src="holder.js/260x150/gray" alt="Placeholder" width="260" height="150" />
+                        </a>
+                      </div> <!-- .pic -->
 
-              <h4 class="list-group-item-heading">
-                <a href="<%= post_path(result) %>"><%= result.title %></a>
-              </h4>
+                      <h4 class="list-group-item-heading">
+                        <a href="<%= post_path(result) %>"><%= result.title %></a>
+                      </h4>
 
-              <% if result.updated_at > Time.now - 1.days %>
-                  <span class="label label-warning glyphicon glyphicon-dashboard">&nbsp;
-              <% else %>
-                  <span class="label label-default glyphicon glyphicon-dashboard">&nbsp;
-              <% end %>
-              <%=time_ago_in_words(result.updated_at)%></span>
+                      <% if result.updated_at > Time.now - 1.days %>
+                          <span class="label label-warning glyphicon glyphicon-dashboard">&nbsp;
+                      <% else %>
+                          <span class="label label-default glyphicon glyphicon-dashboard">&nbsp;
+                      <% end %>
+                      <%=time_ago_in_words(result.updated_at)%></span>
 
-              <p><%= truncate(result.body, :length => 100, :omission => '... (continued)') %></p>
+                      <p><%= truncate(result.body, :length => 100, :omission => '... (continued)') %></p>
 
-              <% if result.cached_votes_up > 0 %>
-                  <span class="label label-success glyphicon glyphicon-thumbs-up">
-                  &nbsp;<%=result.cached_votes_up%></span>
-              <% end %>
+                      <% if result.cached_votes_up > 0 %>
+                          <span class="label label-success glyphicon glyphicon-thumbs-up">
+                          &nbsp;<%=result.cached_votes_up%></span>
+                      <% end %>
 
-              <% if result.cached_votes_down > 0 %>
-                  <span class="label label-danger glyphicon glyphicon-thumbs-down">
-                  &nbsp;<%=result.cached_votes_down%></span>
-              <% end %>
+                      <% if result.cached_votes_down > 0 %>
+                          <span class="label label-danger glyphicon glyphicon-thumbs-down">
+                          &nbsp;<%=result.cached_votes_down%></span>
+                      <% end %>
 
-              <% if result.comments %>
-                <span class="label label-primary glyphicon glyphicon-comment">
-                  &nbsp;<%=result.comments.size%>
-                </span>
-              <% end %>
-            </div>
-        </div>
-    <% end %>
-  </div>
+                      <% if result.comments %>
+                        <span class="label label-primary glyphicon glyphicon-comment">
+                          &nbsp;<%=result.comments.size%>
+                        </span>
+                      <% end %>
+                    </li>
+            <% end %>
+          </ul>
+      </div> <!-- container -->
 
 <% else %>
-    <div class="menu">
-      <% @posts.each do |post| %>
-          <div class="menu-category list-group">
-            <div class="menu-item list-group-item">
+      <div class="group-container">
+        <ul class="menu grouped-list">
+          <% @posts.each do |post| %>
+                <li class="menu-item list-group-item">
 
 
-              <div class="pic">
-                <a href="<%= post_path(id: post.slug) %>">
-                  <img src="holder.js/260x150/gray" alt="Placeholder">
-                </a>
-              </div> <!-- .pic -->
+                  <div class="pic">
+                    <a href="<%= post_path(id: post.slug) %>">
+                      <img src="holder.js/260x150/gray" alt="Placeholder" width="260" height="150" />
+                    </a>
+                  </div> <!-- .pic -->
 
-            <h4 class="list-group-item-heading">
-              <a href="<%= post_path(id: post.slug) %>"><%= post.title %></a></h4>
-            </h4>
+                <h4 class="list-group-item-heading">
+                  <a href="<%= post_path(id: post.slug) %>"><%= post.title %></a></h4>
+                </h4>
 
 
 
-            <p>
-              <%= truncate(post.body.html_safe, :length => 100, :omission => '... (continued)', :escape => false) %>
-            </p>
+                <p>
+                  <%= truncate(post.body.html_safe, :length => 100, :omission => '... (continued)', :escape => false) %>
+                </p>
 
-            <div class="card-footer">
-              <!--Types of label: Default Primary Success Info Warning Danger-->
-              <% if post.updated_at > Time.now - 1.days %>
-                  <span class="post-stats icon icon-clock-o warn">
-              <% else %>
-                  <span class="post-stats icon icon-clock-o">
-              <% end %>
-              <span><%=time_ago_in_words(post.updated_at)%></span></span>
+                <div class="card-footer">
+                  <!--Types of label: Default Primary Success Info Warning Danger-->
+                  <% if post.updated_at > Time.now - 1.days %>
+                      <span class="post-stats icon icon-clock-o warn">
+                  <% else %>
+                      <span class="post-stats icon icon-clock-o">
+                  <% end %>
+                  <span><%=time_ago_in_words(post.updated_at)%></span></span>
 
-            <% if post.cached_votes_up > 0 %>
-                  <span class="post-stats icon icon-thumbs-up">
-                    <span><%= post.cached_votes_up %></span>
-                  </span>
-            <% end %>
+                <% if post.cached_votes_up > 0 %>
+                      <span class="post-stats icon icon-thumbs-up">
+                        <span><%= post.cached_votes_up %></span>
+                      </span>
+                <% end %>
 
-            <% if post.cached_votes_down > 0 %>
-                  <span class="post-stats icon icon-thumbs-down">
-                    <span><%=post.cached_votes_down%></span>
-                  </span>
-            <% end %>
+                <% if post.cached_votes_down > 0 %>
+                      <span class="post-stats icon icon-thumbs-down">
+                        <span><%=post.cached_votes_down%></span>
+                      </span>
+                <% end %>
 
-            <% if post.list_of_comments %>
-                <span class="post-stats icon icon-comment">
-                  <span><%=post.list_of_comments.length%></span>
-                </span>
-            <% end %>
-            </div>
-              </div>
-          </div>
-      <% end %>
-    </div>
-
+                <% if post.list_of_comments %>
+                    <span class="post-stats icon icon-comment">
+                      <span><%=post.list_of_comments.length%></span>
+                    </span>
+                <% end %>
+                </div>
+                  </li>
+          <% end %>
+        </ul>
+      </div> <!-- .container -->
     <%= paginate @posts %>
 
 <% end %>
 
   <h2>Top Posts</h2>
+  <div class="group-container-none">
+  <ul class="grouped-list-none">
   <% @top_posts.each do |top| %>
 
-      <div class="menu-category list-group">
-        <div class="menu-item list-group-item">
+        <li class="menu-item list-group-item">
 
 
           <div class="pic">
             <a href="<%= post_path(id: top.slug) %>">
-              <img src="holder.js/260x150/gray" alt="Placeholder">
+              <img src="holder.js/260x150/gray" alt="Placeholder" width="260" height="150" />
             </a>
           </div> <!-- .pic -->
 
@@ -158,9 +158,10 @@
                 </span>
             <% end %>
           </div>
-        </div>
-      </div>
+        </li>
   <% end %>
+  </ul>
+  </div> <!-- .container -->
 
   <h2>Top Categories</h2>
   <div class="centered">
