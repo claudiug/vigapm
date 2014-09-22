@@ -2,6 +2,74 @@
 
 <div class="container">
 
+
+  <h2>Top Posts</h2>
+  <div class="group-container-none">
+  <ul class="grouped-list-none">
+  <% @top_posts.each do |top| %>
+
+        <li class="menu-item list-group-item">
+
+
+        <% if top.images.url != "/images/original/missing.png" %>
+          <div class="pic">
+            <a href="<%= post_path(id: top.slug) %>">
+                <img src="<%= top.images.url %>" alt="Placeholder" width="260" height="150" />
+            </a>
+          </div> <!-- .pic -->
+        <% end %>
+
+          <h4 class="list-group-item-heading">
+            <a href="<%= post_path(id: top.slug) %>"><%= top.title %></a></h4>
+          </h4>
+
+
+
+          <p>
+            <%= truncate(strip_tags(top.body.html_safe), :length => 100, :omission => '... (continued)', :escape => false) %>
+          </p>
+
+          <div class="card-footer">
+            <!--Types of label: Default Primary Success Info Warning Danger-->
+            <% if top.updated_at > Time.now - 1.days %>
+                  <span class="post-stats icon icon-clock-o warn">
+            <% else %>
+                  <span class="post-stats icon icon-clock-o">
+            <% end %>
+            <span><%=time_ago_in_words(top.updated_at)%></span></span>
+
+            <% if top.cached_votes_up > 0 %>
+                  <span class="post-stats icon icon-thumbs-up">
+                    <span><%= top.cached_votes_up %></span>
+                  </span>
+            <% end %>
+
+            <% if top.cached_votes_down > 0 %>
+                  <span class="post-stats icon icon-thumbs-down">
+                    <span><%=top.cached_votes_down%></span>
+                  </span>
+            <% end %>
+
+            <% if top.list_of_comments %>
+                <span class="post-stats icon icon-comment">
+                  <span><%=top.list_of_comments.length%></span>
+                </span>
+            <% end %>
+          </div>
+        </li>
+  <% end %>
+  </ul>
+  </div> <!-- .container -->
+
+  <h2>Top Categories</h2>
+  <div class="centered">
+  <% @top_tags.each do |category| %>
+
+        <%= link_to category.name, tag_path(category), class: 'tag', id: '_homepage_tags' %>
+
+   <% end %>
+   </div>
+
 <h2>Latest things</h2>
 
 <% if @results %>
@@ -12,7 +80,11 @@
 
                       <div class="pic">
                         <a href="<%= post_path(result) %>">
+                          <% if result.images.url == "/images/original/missing.png" %>
                             <img src="holder.js/260x150/gray" alt="Placeholder" width="260" height="150" />
+                          <% else %>
+                            <img src="<%= result.images.url %>" alt="Placeholder" width="260" height="150" />
+                          <% end %>
                         </a>
                       </div> <!-- .pic -->
 
@@ -56,11 +128,13 @@
                 <li class="menu-item list-group-item">
 
 
+                <% if post.images.url != "/images/original/missing.png" %>
                   <div class="pic">
                     <a href="<%= post_path(id: post.slug) %>">
-                      <img src="holder.js/260x150/gray" alt="Placeholder" width="260" height="150" />
+                        <img src="<%= post.images.url %>" alt="Placeholder" width="260" height="150" />
                     </a>
                   </div> <!-- .pic -->
+                <% end %>
 
                 <h4 class="list-group-item-heading">
                   <a href="<%= post_path(id: post.slug) %>"><%= post.title %></a></h4>
@@ -69,7 +143,7 @@
 
 
                 <p>
-                  <%= truncate(post.body.html_safe, :length => 100, :omission => '... (continued)', :escape => false) %>
+                  <%= truncate(strip_tags(post.body.html_safe), :length => 100, :omission => '... (continued)', :escape => false) %>
                 </p>
 
                 <div class="card-footer">
@@ -103,72 +177,7 @@
           <% end %>
         </ul>
       </div> <!-- .container -->
-    <%= paginate @posts %>
+    <%= paginate @posts, :default_per_page => '8' %>
 
 <% end %>
-
-  <h2>Top Posts</h2>
-  <div class="group-container-none">
-  <ul class="grouped-list-none">
-  <% @top_posts.each do |top| %>
-
-        <li class="menu-item list-group-item">
-
-
-          <div class="pic">
-            <a href="<%= post_path(id: top.slug) %>">
-              <img src="holder.js/260x150/gray" alt="Placeholder" width="260" height="150" />
-            </a>
-          </div> <!-- .pic -->
-
-          <h4 class="list-group-item-heading">
-            <a href="<%= post_path(id: top.slug) %>"><%= top.title %></a></h4>
-          </h4>
-
-
-
-          <p>
-            <%= truncate(top.body.html_safe, :length => 100, :omission => '... (continued)', :escape => false) %>
-          </p>
-
-          <div class="card-footer">
-            <!--Types of label: Default Primary Success Info Warning Danger-->
-            <% if top.updated_at > Time.now - 1.days %>
-                  <span class="post-stats icon icon-clock-o warn">
-            <% else %>
-                  <span class="post-stats icon icon-clock-o">
-            <% end %>
-            <span><%=time_ago_in_words(top.updated_at)%></span></span>
-
-            <% if top.cached_votes_up > 0 %>
-                  <span class="post-stats icon icon-thumbs-up">
-                    <span><%= top.cached_votes_up %></span>
-                  </span>
-            <% end %>
-
-            <% if top.cached_votes_down > 0 %>
-                  <span class="post-stats icon icon-thumbs-down">
-                    <span><%=top.cached_votes_down%></span>
-                  </span>
-            <% end %>
-
-            <% if top.list_of_comments %>
-                <span class="post-stats icon icon-comment">
-                  <span><%=top.list_of_comments.length%></span>
-                </span>
-            <% end %>
-          </div>
-        </li>
-  <% end %>
-  </ul>
-  </div> <!-- .container -->
-
-  <h2>Top Categories</h2>
-  <div class="centered">
-  <% @top_tags.each do |category| %>
-
-        <%= link_to category.name, tag_path(category), class: 'tag', id: '_homepage_tags' %>
-
-   <% end %>
-   </div>
 </div>
