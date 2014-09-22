@@ -5,13 +5,8 @@
 <div class="row" id="composer-box">
 <%= form_for @post, html: { multipart:  true } do |f| %>
   <div id="title">
-<<<<<<< HEAD
-    <%= f.text_area :title, class: 'form', :placeholder => "Title", :maxlength => 56, :rows => 1, :cols => 21, :style => "text-align:center;border:none !important;outline: 0;overflow: auto; resize: none;" %>
-
-=======
     <%= f.text_area :title, class: 'form', :placeholder => "Title", :maxlength => 56, :rows => 1, :cols => 21, :style => "text-align:center;border:none !important;outline: 0;overflow: auto; resize: none;font-size:48px;background:none;" %>
-
->>>>>>> 2106396deb6ea34fd06949f55fec35afe91a34a8
+    
     <script type="text/javascript">
     document.getElementById('post_title').addEventListener('keyup', function () {
       this.style.height = 0; // this is necessary to make it shrink when deleting
