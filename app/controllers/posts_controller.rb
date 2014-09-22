@@ -18,6 +18,7 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(posts_params)
+    @post.images = params[:post][:images]
     if @post.save
       redirect_to @post
     else
@@ -59,6 +60,6 @@ class PostsController < ApplicationController
   end
 
   def posts_params
-    params[:post].permit(:title, :body, :tag_list, :slug)
+    params[:post].permit(:title, :body, :tag_list, :slug, :images)
   end
 end

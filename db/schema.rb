@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140914002554) do
+ActiveRecord::Schema.define(version: 20140922073456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,15 +42,6 @@ ActiveRecord::Schema.define(version: 20140914002554) do
   add_index "comments", ["cached_weighted_score"], name: "index_comments_on_cached_weighted_score", using: :btree
   add_index "comments", ["cached_weighted_total"], name: "index_comments_on_cached_weighted_total", using: :btree
   add_index "comments", ["parent_id"], name: "index_comments_on_parent_id", using: :btree
-
-  create_table "event_notifications", force: true do |t|
-    t.string   "name"
-    t.integer  "comment_id"
-    t.integer  "post_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "events", force: true do |t|
     t.string   "name"
@@ -97,6 +88,10 @@ ActiveRecord::Schema.define(version: 20140914002554) do
     t.integer  "cached_weighted_total",   default: 0
     t.float    "cached_weighted_average", default: 0.0
     t.string   "slug"
+    t.string   "images_file_name"
+    t.string   "images_content_type"
+    t.integer  "images_file_size"
+    t.datetime "images_updated_at"
   end
 
   add_index "posts", ["cached_votes_down"], name: "index_posts_on_cached_votes_down", using: :btree
@@ -163,6 +158,7 @@ ActiveRecord::Schema.define(version: 20140914002554) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.boolean  "is_guru",                default: false
     t.string   "city"
     t.string   "bio"
     t.string   "auth_token"

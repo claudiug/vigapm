@@ -16,6 +16,10 @@
 #  cached_weighted_total   :integer          default(0)
 #  cached_weighted_average :float            default(0.0)
 #  slug                    :string(255)
+#  images_file_name        :string(255)
+#  images_content_type     :string(255)
+#  images_file_size        :integer
+#  images_updated_at       :datetime
 #
 
 class Post < ActiveRecord::Base
@@ -34,6 +38,13 @@ class Post < ActiveRecord::Base
 
   has_many :subscriptions
   has_many :users, through: :subscriptions, dependent: :destroy
+
+  has_attached_file :images, styles: {medium: '300x300>', thumb: '100x100>'}, default_url: '/images/:style/missing.png'
+  validates_attachment_content_type :images, :content_type => /\Aimage\/.*\Z/
+
+  validates_attachment :images, presence: true,
+                       content_type: {content_type: 'image/jpeg'},
+                       size: {in: 0..10.megabytes}
 
   is_impressionable
 
