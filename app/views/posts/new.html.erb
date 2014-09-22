@@ -1,9 +1,11 @@
 <%= stylesheet_link_tag 'newpost', media: 'all', 'data-turbolinks-track' => true %>
+<%= stylesheet_link_tag 'medium-editor-insert-plugin', media: 'all', 'data-turbolinks-track' => true %>
 
+<div class="container">
 <div class="row" id="composer-box">
 <%= form_for @post do |f| %>
   <div id="title">
-    <%= f.text_area :title, class: 'form', :placeholder => "Title", :maxlength => 56, :rows => 1, :cols => 21, :style => "text-align:center;border:none !important;outline: 0;overflow: auto; resize: none;" %>
+    <%= f.text_area :title, class: 'form', :placeholder => "Title", :maxlength => 56, :rows => 1, :cols => 21, :style => "text-align:center;border:none !important;outline: 0;overflow: auto; resize: none;font-size:48px;background:none;" %>
  
     <script type="text/javascript">
     document.getElementById('post_title').addEventListener('keyup', function () {
@@ -21,17 +23,18 @@
     <div class="editable" data-field-id="body" id="_newpost_body"></div>
     <br>
     <div class="field">
-      <%= f.text_field :tag_list, :placeholder => "Tags (separated by commas)", :style => "width:100%;outline: 0;border: none;font-size:21px;font-color: rgba(0,0,0,0.3);font-weight:100;" %>
+      <%= f.text_field :tag_list, :placeholder => "Tags (separated by commas)", :style => "width:100%;outline: 0;border: none;font-size:21px;font-color: rgba(0,0,0,0.3);background:none;font-weight:100;" %>
     </div>
     <br>
     <%= f.submit 'Submit', class: 'btn btn-lg btn-info', id: '_newpost_submit' %>
 <% end %>
 </div>
+</div>
 
 <script>
 $(function () {
   var editor = new MediumEditor('.editable', {
-    placeholder: 'Write your post'
+    placeholder: '.......Write your text'
   });
   $('.editable').bind('input propertychange', function() {
     $("#post_" + $(this).attr("data-field-id")).val($(this).html());
@@ -40,7 +43,9 @@ $(function () {
   $('.editable').mediumInsert({
     editor: editor,
     addons: {
-      images: {},
+      images: {
+        imagesUploadScript: '/posts' //Claudiu HELP!!!!
+      },
       embeds: {
         oembedProxy: 'http://medium.iframe.ly/api/oembed?iframe=1'
       },
@@ -48,9 +53,7 @@ $(function () {
     }
   });
 
-  var allContents = editor.serialize();
-  var elContent = allContents["element-0"].value;
-
+  $('.editable:first').focus();
 });
 
 

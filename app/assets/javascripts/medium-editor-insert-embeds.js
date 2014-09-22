@@ -91,7 +91,7 @@
 
         function processEmbedTag(embed_tag) {
             if (!embed_tag) {
-                alert('Incorrect URL format specified');
+                alert('You need to specify a video embed URL');
                 return false;
             } else {
                 var returnedTag = embed_tag;
