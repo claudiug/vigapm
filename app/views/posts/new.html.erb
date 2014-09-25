@@ -1,10 +1,10 @@
 <%= stylesheet_link_tag 'newpost', media: 'all', 'data-turbolinks-track' => true %>
 
 <div class="row" id="composer-box">
-<%= form_for @post do |f| %>
+<%= form_for @post, html: { multipart:  true } do |f| %>
   <div id="title">
     <%= f.text_area :title, class: 'form', :placeholder => "Title", :maxlength => 56, :rows => 1, :cols => 21, :style => "text-align:center;border:none !important;outline: 0;overflow: auto; resize: none;" %>
- 
+
     <script type="text/javascript">
     document.getElementById('post_title').addEventListener('keyup', function () {
       this.style.height = 0; // this is necessary to make it shrink when deleting
@@ -40,7 +40,9 @@ $(function () {
   $('.editable').mediumInsert({
     editor: editor,
     addons: {
-      images: {},
+      images: {
+          imagesUploadScript: '/posts/new'
+      },
       embeds: {
         oembedProxy: 'http://medium.iframe.ly/api/oembed?iframe=1'
       },

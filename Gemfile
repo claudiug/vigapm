@@ -32,6 +32,7 @@ gem 'redis'
 gem "paperclip", "~> 4.2"
 gem 'medium-editor-rails'
 gem "font-awesome-rails"
+gem "skylight"
 
 gem 'rmagick', '2.13.2'
 
