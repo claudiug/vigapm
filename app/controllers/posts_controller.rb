@@ -3,11 +3,12 @@ class PostsController < ApplicationController
 
   def index
     params[:page] || 1
-    @posts = Post.page(params[:page]).per_page(20)
+    @posts = Post.page(params[:page]).per(20)
   end
 
   def show
     @post = Post.includes(:comments).find_by(slug: params[:id])
+    @post.change_user?
     @users_follow = @post.users
     impressionist(@post, "PostController", :unique => [:session_hash])
   end

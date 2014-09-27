@@ -35,4 +35,15 @@ class Comment < ActiveRecord::Base
   def down_vote(user)
     self.downvote_from(user) if self.user != user
   end
+
+  def comments_votes
+    {
+        up: self.get_upvotes.size,
+        down: self.get_downvotes.size
+    }
+  end
+
+  def comment_total_votes
+    comments_votes[:up] + comments_votes[:down]
+  end
 end

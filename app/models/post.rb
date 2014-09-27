@@ -31,7 +31,7 @@ class Post < ActiveRecord::Base
   has_many :tags, through: :taggings
   validates :slug, presence: true
   validates :title, presence: true, uniqueness: true
-  validates :title, length: {in: 3..56 }
+  validates :title, length: {in: 3..56}
   before_validation :generate_slug
   has_many :subscriptions
   has_many :subscriptions
@@ -53,9 +53,43 @@ class Post < ActiveRecord::Base
     impressions.size
   end
 
+  #TODO refactor this, many, many queries
+  #TODO REFACTOR
+  PAGE_VIEWS = 100
+  ACTIVITY = 20
+
+  def change_user?
+    if self.page_view_size > PAGE_VIEWS && post_activity > ACTIVITY && self.comments.size > 1
+      if user.ranking < first_user_in_post[:ranking]
+        self.user.id = first_user_in_post[:user_id]
+        save!
+        true
+      end
+    end
+    false
+  end
+
+  def first_user_in_post
+    result = []
+
+    self.comments.includes(:user).each do |comment|
+      result << {user_id: comment.user.id, ranking: comment.user.ranking}
+    end
+    result.sort_by { |a| a[:ranking] }.reverse.first
+  end
+
+  def post_activity
+    @post_votes ||= post_total_votes
+    @comments_votes ||= comments.map do |c|
+      c.comment_total_votes
+    end.reduce(:+)
+    @post_votes + @comments_votes
+  end
+
   POST_LIMIT = 4
+
   def self.top_posts
-    includes(:impressions).sort_by { |a| a.page_view_size}.reverse.take(POST_LIMIT)
+    includes(:impressions).sort_by { |a| a.page_view_size }.reverse.take(POST_LIMIT)
   end
 
   def to_param
@@ -97,11 +131,15 @@ class Post < ActiveRecord::Base
     self.downvote_from(user) if self.user != user
   end
 
-  def votes
+  def post_votes
     {
         up: self.get_upvotes.size,
         down: self.get_downvotes.size
     }
+  end
+
+  def post_total_votes
+    post_votes[:up] + post_votes[:down]
   end
 
   def post_ranking
