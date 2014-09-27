@@ -159,8 +159,8 @@
 
 <div class="container">
 <div class="comments-box row">
-<% if @post.list_of_comments %>
-  <% @post.list_of_comments.each do |comment| %>
+<% if @post.comments %>
+  <% @post.comments.each do |comment| %>
     <% if comment.body %>
       <% if comment.cached_votes_up - comment.cached_votes_down < 0 %>
         <div class="media comment" style="opacity:<%= 1 + (comment.cached_votes_up - comment.cached_votes_down) / 10.0 %>">

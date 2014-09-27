@@ -89,7 +89,7 @@ class Post < ActiveRecord::Base
   POST_LIMIT = 4
 
   def self.top_posts
-    includes(:impressions).sort_by { |a| a.page_view_size }.reverse.take(POST_LIMIT)
+    includes(:comments, :impressions).sort_by { |a| a.page_view_size }.reverse.take(POST_LIMIT)
   end
 
   def to_param
@@ -113,10 +113,6 @@ class Post < ActiveRecord::Base
     self.tags = names.split(",").map do |n|
       Tag.where(name: n.strip).first_or_create!
     end
-  end
-
-  def list_of_comments
-    comments.to_a if comments.length > 0
   end
 
   def average_rating

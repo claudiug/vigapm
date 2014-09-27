@@ -50,9 +50,9 @@
                   </span>
             <% end %>
 
-            <% if top.list_of_comments %>
+            <% if top.comments %>
                 <span class="post-stats icon icon-comment">
-                  <span><%=top.list_of_comments.length%></span>
+                  <span><%=top.comments.length%></span>
                 </span>
             <% end %>
           </div>
@@ -167,9 +167,9 @@
                       </span>
                 <% end %>
 
-                <% if post.list_of_comments %>
+                <% if post.comments %>
                     <span class="post-stats icon icon-comment">
-                      <span><%=post.list_of_comments.length%></span>
+                      <span><%=post.comments.size %></span>
                     </span>
                 <% end %>
                 </div>
