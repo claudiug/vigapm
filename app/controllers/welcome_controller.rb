@@ -3,7 +3,7 @@ class WelcomeController < ApplicationController
 
   def index
     if params[:query]
-      @results = Post.where('title LIKE ?', "%#{params[:query]}%")
+      @results = Post.where('title ILIKE ?', "%#{params[:query]}%")
     end
     params[:page] || 1
     @posts = Post.includes(:comments).page(params[:page]).per(10)
