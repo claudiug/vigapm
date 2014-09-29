@@ -12,7 +12,7 @@ class WelcomeController < ApplicationController
   end
 
   def autocomplete
-    render json: Post.where('title LIKE ?', "%#{params[:query]}%").map {|s| {name: s.title}}
+    render json: Post.where('title ILIKE ?', "%#{params[:query]}%").map {|s| {name: s.title}}
   end
 end
 

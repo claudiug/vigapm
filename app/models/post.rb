@@ -100,11 +100,6 @@ class Post < ActiveRecord::Base
     Tag.find_by_name!(name).posts
   end
 
-  def self.tag_counts #TODO remove it
-    Tag.select('tags.*, count(taggings.tag_id) as count').
-        joins(:taggings).group('taggings.tag_id')
-  end
-
   def tag_list
     self.tags.pluck(:name).join(', ')
   end
@@ -127,15 +122,8 @@ class Post < ActiveRecord::Base
     self.downvote_from(user) if self.user != user
   end
 
-  def post_votes
-    {
-        up: self.get_upvotes.size,
-        down: self.get_downvotes.size
-    }
-  end
-
   def post_total_votes
-    post_votes[:up] + post_votes[:down]
+    self.get_upvotes.size + self.get_downvotes.size
   end
 
   def post_ranking
