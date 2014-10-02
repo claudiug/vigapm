@@ -1,19 +1,23 @@
-<h1>Log In</h1>
-
+<div class="container centered-container">
+<h2>Log In <span class="icon icon-angle-right separator"></span> <a href="/users/new" title="Register">Join in</a></h2>
+<div class="vigform">
 <%= form_tag :sessions do %>
     <div class="field">
       <%= label_tag :email %>
       <%= text_field_tag :email %>
     </div>
     <div class="field">
-      <%= label_tag :password %>
+      <label for="password"><span class="f-right"><%= link_to "Bad memory bro?", new_password_reset_path %></span> Password</label>
+
       <%= password_field_tag :password %>
     </div>
     <div class = 'field'>
-        <%= check_box_tag :remember_me, 1, params[:remember_me] %>
+        <%= check_box_tag :remember_me, 1, params[:remember_me], class: 'no-width' %> Remember me
      </div>
     <div class="action">
-      <%= submit_tag 'Log IN' %>
+      <%= submit_tag 'Log in', class: 'btn btn-info' %>
     </div>
 <% end %>
-<p><%= link_to "Bad memory bro?", new_password_reset_path %></p>
+</div> <!-- .vigform -->
+
+</div> <!-- container -->

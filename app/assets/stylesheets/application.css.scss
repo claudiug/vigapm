@@ -260,3 +260,39 @@ ul.menu {
 .post-content {
   padding-top: 25px;
 }
+.centered-container {
+  text-align: center;
+}
+.f-right {
+  float: right;
+}
+.f-left {
+  float: left;
+}
+
+.page-white-full {
+  background: white;
+  margin-top: 80px;
+  border-top: 1px solid #dddddd;
+  min-height: 300px;
+  .nav-tabs {
+    margin-top: -40px;
+  }
+  .tab-pane {
+    padding: 20px 0;
+  }
+  #settings {
+    .form-group {
+      display: block;
+      width: 550px;
+      float: none;
+      overflow: hidden;
+    }
+  }
+  label {
+    margin-bottom: 0;
+    padding-bottom: 3px;
+    font-weight: normal;
+  }
+
+}

@@ -1,9 +1,15 @@
-<h1>Reset Password</h1>
+<div class="container">
+<h2>Reset Password</h2>
 
+<div class="vigform">
 <%= form_tag password_resets_path, :method => :post do %>
     <div class="field">
       <%= label_tag :email %>
       <%= text_field_tag :email, params[:email] %>
     </div>
-    <div class="actions"><%= submit_tag "Reset Password" %></div>
+    <div class="actions"><%= submit_tag "Reset Password", class:'btn btn-default' %></div>
 <% end %>
+</div>
+  <h2><a href="/sessions/new" title="Back to login"><span class="icon icon-angle-left"></span> &nbsp; Back to login</a></h2>
+</div>
+

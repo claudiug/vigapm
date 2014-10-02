@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authorize, only: [:followers, :following]
+  layout "auth", :only => [ :new ]
   def new
     @user = User.new
   end

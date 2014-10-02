@@ -1,0 +1,38 @@
+/* Auth area */
+.vigform {
+  width: 360px;
+  margin: 0 auto;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  background-color: #fff;
+  -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  border: 0;
+  padding: 30px 35px;
+  .field {
+    padding-bottom: 15px;
+    text-align: left;
+  }
+  label {
+    display: block;
+    text-align: left;
+    font-weight: normal;
+  }
+  input {
+    width: 100%;
+    &.no-width {
+      width: auto;
+      margin-right: 4px;
+    }
+  }
+}
+.separator {
+  font-weight: none;
+  margin: 0 10px;
+  opacity: .2;
+}
