@@ -296,3 +296,76 @@ ul.menu {
   }
 
 }
+
+/* Delete this if you will */
+body {
+  background: white !important;
+  color: black !important;
+}
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+  color: #000;
+  font-family: Georgia, serif;
+}
+.list-group-item,
+.list-group-item:hover,
+.list-group-item:focus {
+  border: 1px solid black !important;
+  border-top: 5px solid black !important;
+  .card-footer {
+    border-top: 0 !important
+  }
+  h4 {
+    font-size: 27px !important;
+    border-bottom: 1px dotted black !important;
+    margin-bottom: 14px !important;
+    padding-bottom: 12px !important;
+    padding-top: 5px !important;
+    font-weight: 700 !important;
+  }
+  a {
+    color: black !important;
+    &:hover {
+      color: #333;
+    }
+  }
+  p {
+
+  }
+  .next-av {
+    vertical-align: middle;
+    margin-top: -3px;
+    background: image-url('test_avatar.jpg');
+    width: 40px;
+    height: 40px;
+    margin-right: 9px;
+    display: inline-block;
+  }
+}
+.hero-container {
+  height: 340px !important;
+  background: image-url('test.jpg') black !important;
+}
+.vigap-count {
+  display: none !important;
+}
+
+header .brand img:first-child {
+  margin: 40px auto 10px !important;
+  width: 100px !important;
+}
+.header-14-sub .subscribe-form .btn.btn-primary {
+  background: white !important;
+  color: black !important;
+  border-left: 1px solid #000 !important;
+}
+.header-14-sub .subscribe-form .btn.btn-primary:hover, .header-14-sub .subscribe-form .btn.btn-primary:focus {
+  background: #eee !important;
+  color: black !important;
+  border-left: 1px solid #000 !important;
+}
+.tag {
+  background: black !important;
+  &:before {
+    border-color: transparent #000 transparent transparent !important;
+  }
+}
