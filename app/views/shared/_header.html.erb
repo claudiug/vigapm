@@ -11,9 +11,7 @@
             <div class="input-group">
               <%= text_field_tag :query, params[:query], placeholder: t('search.field_placeholder'), class: 'typeahead form-control searchbox' %>
               <span class="input-group-btn">
-                    <button class="btn btn-primary" type="button" id="_home_search">
-                      <%= t "search.button" %>
-                    </button>
+                 <%= submit_tag('search', id: '_home_search', class: 'btn btn-small', name: 'submit') %>
                 </span>
             </div>
 
