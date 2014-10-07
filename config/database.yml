@@ -17,8 +17,9 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: claudiu
-  password: qwe123
+  username: vlad
+  password: pacman
+  host: localhost
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
@@ -26,8 +27,9 @@ default: &default
 development:
   <<: *default
   database: vigap-mvp_development
-  username: claudiu
-  password: qwe123
+  username: vlad
+  password: pacman
+  host: localhost
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -59,11 +61,12 @@ development:
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
-test:
-  <<: *default
-  database: vigap-mvp_test
-  username: claudiu
-  password: qwe123
+#test:
+#  <<: *default
+#  database: vigap-mvp_test
+#  username: vlad
+#  password: pacman
+#  host: localhost
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -87,5 +90,7 @@ test:
 production:
   <<: *default
   database: vigap_production
-  username: vigap
-  password: <%= ENV['VIGAP-MVP_DATABASE_PASSWORD'] %>
+  username: vlad
+  password: pacman
+  host: localhost
+  #password: <%= ENV['VIGAP-MVP_DATABASE_PASSWORD'] %>

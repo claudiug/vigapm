@@ -72,9 +72,10 @@
                   <p><%= @post.body.html_safe %></p>
 
                     <div class="bubble-meta">
-                      <%= @post.user.username rescue "Vigap" %>
+                      Added by:
+                      <a href="#" title=""><%= @post.user.username rescue "Vigap" %></a>
 
-                      <span class="badge <%=@post.user.username.gsub(/ /, "-") rescue "Vigap"%>-rank">
+                       <span class="badge <%=@post.user.username.gsub(/ /, "-") rescue "Vigap"%>-rank">
                       <%=@post.user.ranking rescue 0%>
                     </span>
                     </div> <!-- .bubble-meta -->
@@ -107,55 +108,19 @@
 </section>
 
 
-<div class="bg-clouds">
-  <div class="container">
-  <h3> Elemente de aranjat in pagina: </h3>
-
-
-  <h3>User that follow this post:</h3>
-  <% @users_follow.each do |user| %>
-    <li>
-      <%= user.username %>
-      <%= link_to 'Profile', user_path(user) %>
-    </li>
-  <% end %>
-
-  <div class="row">
-  <% if @post.user && current_user && current_user.id == @post.user.id %>
-      <a href="<%=edit_post_path %>">
-        <!--<span class="label label-warning glyphicon glyphicon-edit">&nbsp;Edit Post</span>-->
-        <button class="pull-right btn btn-lg btn-success glyphicon glyphicon-edit" style="word-spacing:-10px;" id="_posts_editpost">&nbsp;Edit Post</button>
-      </a>
-  <% end %>
-  </div>
-
-</div>
-</div>
-
-
 <div class="container">
  <% if current_user %>
     <%= form_for [@post, @post.comments.build] do|f| %>
       <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
-          <%= f.text_area :body, placeholder: "Add your thoughts!", class: "form-control", style: "font-size: 18px;height: 200px;", id: "_posts_comment_field" %>
+        <div class="add-comment-form">
+          <%= f.text_area :body, placeholder: "Add your thoughts!", class: "form-control", id: "_posts_comment_field" %>
+          <%= f.submit 'Post comment', class: "btn btn-lg btn-default", id: "_posts_post_comment" %>
         </div>
-        <div class="col-md-2"></div>
-      </div>
-      <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-          <span class="input-group-btn">
-            <%= f.submit 'Post comment', class: "btn btn-lg btn-success", style: "width: 100%; font-size: 24px;", id: "_posts_post_comment" %>
-          </span>
-        </div>
-        <div class="col-md-4"></div>
       </div>
     <% end %>
 <% end %>
 </div>
-<hr>
+
 
 <div class="container">
 <div class="comments-box row">
@@ -219,3 +184,41 @@
 <% end %>
 </div>
 </div>
+
+    <div class="container">
+
+      <h2>User that follow this post:</h2>
+      <ul class="followers">
+      <% @users_follow.each do |user| %>
+            <li>
+              <span class="next-av"></span>
+              <a href="<% user_path(user) %>" title="<%= user.username %>"><%= user.username %></a>
+            </li>
+            <li>
+              <span class="next-av"></span>
+              <a href="<% user_path(user) %>" title="<%= user.username %>"><%= user.username %></a>
+            </li>
+            <li>
+              <span class="next-av"></span>
+              <a href="<% user_path(user) %>" title="<%= user.username %>"><%= user.username %></a>
+            </li>
+            <li>
+              <span class="next-av"></span>
+              <a href="<% user_path(user) %>" title="<%= user.username %>"><%= user.username %></a>
+            </li>
+            <li>
+              <span class="next-av"></span>
+              <a href="<% user_path(user) %>" title="<%= user.username %>"><%= user.username %></a>
+            </li>
+      <% end %>
+      </ul>
+      <div class="row">
+        <% if @post.user && current_user && current_user.id == @post.user.id %>
+            <a href="<%=edit_post_path %>">
+              <!--<span class="label label-warning glyphicon glyphicon-edit">&nbsp;Edit Post</span>-->
+              <button class="pull-right btn btn-lg btn-success glyphicon glyphicon-edit" style="word-spacing:-10px;" id="_posts_editpost">&nbsp;Edit Post</button>
+            </a>
+        <% end %>
+      </div>
+
+    </div>

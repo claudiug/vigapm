@@ -86,7 +86,7 @@ class Post < ActiveRecord::Base
     @post_votes + @comments_votes
   end
 
-  POST_LIMIT = 4
+  POST_LIMIT = 9
 
   def self.top_posts
     includes(:comments, :impressions).sort_by { |a| a.page_view_size }.reverse.take(POST_LIMIT)

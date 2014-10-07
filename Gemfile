@@ -37,6 +37,6 @@ gem "paperclip", "~> 4.2"
 gem 'medium-editor-rails'
 gem "font-awesome-rails"
 gem "skylight"
-gem 'rmagick', '2.13.2'
+gem 'rmagick', '2.13.3'
 gem 'pjax_rails'
 gem 'flat-ui-rails'

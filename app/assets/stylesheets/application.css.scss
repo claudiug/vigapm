@@ -209,13 +209,17 @@ ul.menu {
 /* The bubbles */
 .the-bubble {
   position: relative;
-  width: auto;
+  width: 90%;
   height: auto;
   padding: 15px 25px;
   background: #FFFFFF;
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   border-radius: 8px;
+  .bubble-meta {
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+  }
   &.left {
     &:after {
       border-width: 9px 15px 9px 0;
@@ -297,7 +301,34 @@ ul.menu {
 
 }
 
-/* Delete this if you will */
+.add-comment-form {
+  position: relative;
+  padding: 15px;
+  .form-control {
+    height: 180px;
+    padding-bottom: 60px;
+  }
+  .btn {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 96%;
+  }
+}
+.next-av {
+  vertical-align: middle;
+  margin-top: -3px;
+  background: image-url('test_avatar.jpg');
+  background-size: 30px;
+  width: 30px;
+  height: 30px;
+  margin-right: 9px;
+  display: inline-block;
+}
+/* Delete this if you will
 body {
   background: white !important;
   color: black !important;
@@ -367,5 +398,30 @@ header .brand img:first-child {
   background: black !important;
   &:before {
     border-color: transparent #000 transparent transparent !important;
+  }
+}
+*/
+
+footer {
+  background: #333;
+  margin-top: 20px;
+  padding: 15px 0;
+  font-size: 13px;
+  font-weight: normal;
+  a {
+    margin: 0 8px;
+  }
+  .f-right {
+    margin-right: 8px;
+    font-size: 13px;
+  }
+}
+.followers {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  li {
+    display: inline-block;
+    padding: 10px;
   }
 }

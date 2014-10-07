@@ -3,7 +3,7 @@ $(document).ready(function() {
         align: 'center',
         autoResize: true,
         container: $('.group-container'),
-        offset: 17,
-        verticalOffset: 20
+        offset: 27,
+        verticalOffset: 27
     });
 })

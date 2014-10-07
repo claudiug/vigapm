@@ -206,9 +206,7 @@ a.muted:hover,
 a.muted:focus {
   color: #979c9f;
 }
-footer {
-  background-color: transparent;
-}
+
 .input-append input {
   -webkit-border-radius: 6px 0 0 6px;
   -moz-border-radius: 6px 0 0 6px;
@@ -1837,4 +1835,5 @@ section * {
     line-height: 22px;
     font-size: 17px;
     font-weight: 500;
+    width: auto;
 }
