@@ -9,7 +9,7 @@
   font-weight: 500;
   font-style: normal;
   font-size: 63px;
-  text-align: center;
+  text-align: left;
   line-height: 1.1;
   font-color: rgba(0,0,0,0.7);
   margin-top: 15px;
@@ -24,6 +24,15 @@
   outline: 0;
   min-height: 400px;
   overflow: auto;
-  padding-left: 40px !important;
+  padding: 0 30px !important;
 }
 
+.medium-editor-insert-plugin.medium-editor-placeholder:after {
+  top: 22px;
+  left: 30px;
+}
+.mediumInsert {
+  position: relative;
+
+  min-height: 18px;
+}

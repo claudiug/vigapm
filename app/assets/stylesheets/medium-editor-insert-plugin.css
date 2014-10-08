@@ -104,7 +104,6 @@
 
 .mediumInsert {
   position: relative;
-  margin-left: -40px !important;
   min-height: 18px; }
   .mediumInsert.small {
     width: calc(33.33% + 40px); }
