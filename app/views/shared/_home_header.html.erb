@@ -40,7 +40,11 @@
                 <%= text_field_tag :query, params[:query], placeholder: t('search.field_placeholder'), class: 'typeahead form-control searchbox' %>
                 <%= submit_tag('search', id: '_home_search', class: 'btn btn-primary', name: 'submit') %>
               </div>
-            <span class="vigap-count">Browse through <strong>9.123</strong> discussions</span>
+            <% if @posts.count > 5 %>
+              <a href="<%= "#{request.protocol}#{request.host_with_port}/?utf8=✓&query=&submit=search" %>">
+                <span class="vigap-count">Browse through <strong><%= @posts.count rescue 9.123 %></strong> discussions</span>
+              </a>
+            <% end %>
         <% end %>
       </div> <!-- .ubscribe-form col-sm-8 col-sm-offset-2 -->
     </div> <!-- .header-14-sub -->

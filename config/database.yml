@@ -17,9 +17,8 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: vlad
-  password: pacman
-  host: localhost
+  username: claudiu
+  password: qwe123
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
@@ -27,9 +26,8 @@ default: &default
 development:
   <<: *default
   database: vigap-mvp_development
-  username: vlad
-  password: pacman
-  host: localhost
+  username: claudiu
+  password: qwe123
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -90,7 +88,6 @@ development:
 production:
   <<: *default
   database: vigap_production
-  username: vlad
-  password: pacman
-  host: localhost
-  #password: <%= ENV['VIGAP-MVP_DATABASE_PASSWORD'] %>
+  username: claudiu
+  password: qwe123
+  password: <%= ENV['VIGAP-MVP_DATABASE_PASSWORD'] %>

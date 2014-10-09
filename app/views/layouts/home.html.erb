@@ -9,7 +9,9 @@
   <%= javascript_include_tag 'application' %>
   <script src="//use.typekit.net/sbr1aun.js"></script>
   <script>try{Typekit.load();}catch(e){}</script>
-  <%= stylesheet_link_tag 'welcome', media: 'all', 'data-turbolinks-track' => true %>
+  <% if !@results %>
+    <%= stylesheet_link_tag 'welcome', media: 'all', 'data-turbolinks-track' => true %>
+  <% end %>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>
@@ -26,7 +28,11 @@
 <!-- End Google Tag Manager -->
 
 <!-- include header -->
-<%= render 'shared/home_header' %>
+<% if @results %>
+  <%= render 'shared/header' %>
+<% else %>
+  <%= render 'shared/home_header' %>
+<% end %>
 
 <div data-pjax-container class="pagecontent">
   <%= yield %>

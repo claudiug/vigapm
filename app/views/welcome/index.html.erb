@@ -25,9 +25,11 @@
           <h4 class="list-group-item-heading">
             <small>
 
-              <span class="next-av"></span>
-
-              Added by: <a href="#" title="User">Username</a></small>
+              <% author = User.find(top.user_id) rescue nil %>
+              <span class="next-av">
+                <img class="img-circle" width="60" height="60" src="<%= author.avatar.url(:thumb) rescue "/assets/missing-avatar.png" %>">
+              </span>
+              Added by: <a href="<%= user_path(author) rescue "" %>" title="User"><%= author.username rescue "Vigap" %></a></small>
             <a href="<%= post_path(id: top.slug) %>" title="<%= top.title %>"><%= top.title %></a></h4>
           </h4>
 
@@ -73,16 +75,12 @@
   </ul>
   </div> <!-- .container -->
 <% end %>
-<h2>Latest things</h2>
 
 <% if @results %>
+<h2>Search results</h2>
       <div class="group-container">
           <ul class="menu grouped-list">
             <% @results.each do |result| %>
-
-
-
-
 
                 <li class="menu-item list-group-item">
 
@@ -96,7 +94,13 @@
                   <% end %>
 
                   <h4 class="list-group-item-heading">
-                    <small><span class="next-av"></span> Added by: <a href="#" title="User">Username</a></small>
+                  <small>
+
+                    <% author = User.find(result.user_id) rescue nil %>
+                    <span class="next-av">
+                      <img class="img-circle" width="60" height="60" src="<%= author.avatar.url(:thumb) rescue "/assets/missing-avatar.png" %>">
+                    </span>
+                    Added by: <a href="<%= user_path(author) rescue "" %>" title="User"><%= author.username rescue "Vigap" %></a></small>
                     <a href="<%= post_path(id: result.slug) %>" title="<%= result.title %>"><%= result.title %></a>
                   </h4>
 
@@ -147,6 +151,7 @@
       </div> <!-- container -->
 
 <% else %>
+<h2>Latest things</h2>
       <div class="group-container">
         <ul class="menu grouped-list">
           <% @posts.each do |post| %>
@@ -162,7 +167,13 @@
                 <% end %>
 
                 <h4 class="list-group-item-heading">
-                  <small><span class="next-av"></span> Added by: <a href="#" title="User">Username</a></small>
+                  <small>
+
+                    <% author = User.find(post.user_id) rescue nil %>
+                    <span class="next-av">
+                      <img class="img-circle" width="60" height="60" src="<%= author.avatar.url(:thumb) rescue "/assets/missing-avatar.png" %>">
+                    </span>
+                    Added by: <a href="<%= user_path(author) rescue "" %>" title="User"><%= author.username rescue "Vigap" %></a></small>
                   <a href="<%= post_path(id: post.slug) %>" title="<%= post.title %>"><%= post.title %></a>
                 </h4>
 
@@ -206,7 +217,6 @@
       </div> <!-- .container -->
     <%= paginate @posts, :default_per_page => '8' %>
 
-<% end %>
 </div>
 
 <div class="container">
@@ -219,3 +229,4 @@
     <% end %>
   </div>
 </div>
+<% end %>
