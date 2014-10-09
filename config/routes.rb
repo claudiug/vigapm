@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
-
-  resources :password_resets
   root 'welcome#index'
   get 'autocomplete', to: 'welcome#autocomplete'
+  resources :password_resets
   resources :tags
-  resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :posts do
     member do

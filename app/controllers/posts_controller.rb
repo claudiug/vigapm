@@ -20,7 +20,7 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(posts_params)
     @post.images = params[:post][:images]
-    if @post.save
+    if @post.save!
       redirect_to @post
     else
       render :new
