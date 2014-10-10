@@ -27,7 +27,7 @@
 
               <% author = User.find(top.user_id) rescue nil %>
               <span class="next-av">
-                <img class="img-circle" width="60" height="60" src="<%= author.avatar.url(:thumb) rescue link_to image_tag("missing.png", width: 60) %>">
+                <img class="img-circle" width="60" height="60" src="<%= author.avatar.url(:thumb) rescue link_to image_tag("vigap-logo.png") %>">
               </span>
               Added by: <a href="<%= user_path(author) rescue "" %>" title="User"><%= author.username rescue "Vigap" %></a></small>
             <a href="<%= post_path(id: top.slug) %>" title="<%= top.title %>"><%= top.title %></a></h4>
@@ -98,7 +98,8 @@
 
                     <% author = User.find(result.user_id) rescue nil %>
                     <span class="next-av">
-					   <img class="img-circle" width="60" height="60" src="<%= author.avatar.url(:thumb) rescue link_to image_tag("missing.png", width: 60) %>">                    </span>
+                      <img class="img-circle" width="60" height="60" src="<%= author.avatar.url(:thumb) rescue "/assets/missing-avatar.png" %>">
+                    </span>
                     Added by: <a href="<%= user_path(author) rescue "" %>" title="User"><%= author.username rescue "Vigap" %></a></small>
                     <a href="<%= post_path(id: result.slug) %>" title="<%= result.title %>"><%= result.title %></a>
                   </h4>
@@ -170,7 +171,8 @@
 
                     <% author = User.find(post.user_id) rescue nil %>
                     <span class="next-av">
-						<img class="img-circle" width="60" height="60" src="<%= author.avatar.url(:thumb) rescue link_to image_tag("missing.png", width: 60) %>">
+                      <img class="img-circle" width="60" height="60" src="<%= author.avatar.url(:thumb) rescue "/assets/missing-avatar.png" %>">
+                    </span>
                     Added by: <a href="<%= user_path(author) rescue "" %>" title="User"><%= author.username rescue "Vigap" %></a></small>
                   <a href="<%= post_path(id: post.slug) %>" title="<%= post.title %>"><%= post.title %></a>
                 </h4>
