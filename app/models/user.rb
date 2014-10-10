@@ -59,7 +59,12 @@ class User < ActiveRecord::Base
   acts_as_voter
   has_attached_file :avatar,
                     :styles => {big: '300x300>', medium: '64x64>', thumb: '40x40>'},
-                    :default_url => '/assets/missing-avatar.png'
+                    #:default_url => '/assets/missing-avatar.png'
+                    :default_url => lambda { |avatar| avatar.instance.set_default_url}
+
+                        def set_default_url
+                                ActionController::Base.helpers.asset_path('missing-avatar.png')
+                        end
   validates_attachment_content_type :avatar,
                                     :content_type => %w(image/jpg image/jpeg image/png image/gif)
 
