@@ -60,7 +60,7 @@
                 <div class="bubble-container">
                   <a href="<%=user_path(@post.user) rescue ""%>" class="user" id="_posts_ruledby_profile">
                     <span class="user-avatar">
-                        <img width="60" height="60" src="<%= @post.user.avatar.url(:thumb) rescue image-path('missing-avatar') %>">
+                        <img width="60" height="60" src="<%= @post.user.avatar.url(:thumb) rescue image-path('missing-avatar.png') %>">
                     </span>
                     <span class="icon icon-star"></span>
 
