@@ -7,7 +7,7 @@
 <%= form_for @post, html: { multipart:  true } do |f| %>
 
   <div id="title">
-    <%= f.text_area :title, class: 'form', :placeholder => "Title", :maxlength => 56, :rows => 1, :cols => 21, :style => "text-align:left;outline: 0; text-indent: 15px;overflow: auto; width: 100%; background: white; border: 1px solid #ddd; border-bottom: 1px solid #ccc; resize: none;font-size:36px;" %>
+    <%= f.text_area :title, class: 'form', :placeholder => "Title", :maxlength => 56, :rows => 1, :cols => 21, :style => "text-align:left;outline: 0; text-indent: 15px;overflow: auto; width: 100%; background: white; border: 1px solid #ddd; border-bottom: 1px solid #ccc; resize: none;font-size:36px;height: 58px;" %>
     
     <script type="text/javascript">
     document.getElementById('post_title').addEventListener('keyup', function () {
@@ -39,8 +39,16 @@ $(function () {
     placeholder: 'Write your text'
   });
   $('.editable').bind('input propertychange', function() {
-    $("#post_" + $(this).attr("data-field-id")).val($(this).html());
+  //  if($(".mediumInsert-embedsWire").length) {}
+  //  else {
+  //  }
+  //  $("#post_" + $(this).attr("data-field-id")).val($(this).html());
+    $("#post_" + $(this).attr("data-field-id")).html($(this).html());
   });
+
+  //$('.editable').blur(function() {
+  //    $(".mediumInsert-buttons").remove();
+  //})
 
   $('.editable').mediumInsert({
     editor: editor,

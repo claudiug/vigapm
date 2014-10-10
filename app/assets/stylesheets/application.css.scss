@@ -141,7 +141,8 @@ body {
   position: relative;
   top: -1px;
   img {
-
+    height: 30px;
+    width: 30px;
   }
 }
 header {
@@ -328,6 +329,11 @@ ul.menu {
   margin-right: 9px;
   display: inline-block;
 }
+.next-av img {
+  height: 30px!important;
+  width: 30px!important;
+}
+
 /* Delete this if you will
 body {
   background: white !important;
