@@ -33,22 +33,11 @@
 </div>
 </div>
 
-<script>
+<script type="text/javascript">
 $(function () {
   var editor = new MediumEditor('.editable', {
     placeholder: 'Write your text'
   });
-  $('.editable').bind('input propertychange', function() {
-  //  if($(".mediumInsert-embedsWire").length) {}
-  //  else {
-  //  }
-  //  $("#post_" + $(this).attr("data-field-id")).val($(this).html());
-    $("#post_" + $(this).attr("data-field-id")).html($(this).html());
-  });
-
-  //$('.editable').blur(function() {
-  //    $(".mediumInsert-buttons").remove();
-  //})
 
   $('.editable').mediumInsert({
     editor: editor,
@@ -64,6 +53,12 @@ $(function () {
   });
 
   $('.editable:first').focus();
+
+  $('#_newpost_submit').on('click', function() {
+      $(".mediumInsert-buttons").remove();
+      $("#post_body").val($('#_newpost_body').html());
+      $('#new_post').submit();
+  });
 });
 
 
