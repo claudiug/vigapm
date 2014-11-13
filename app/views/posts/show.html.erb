@@ -1,108 +1,94 @@
 <%= stylesheet_link_tag 'posts', media: 'all', 'data-turbolinks-track' => true %>
 
-<div class="post-hero">
-
-    <div class="container">
-      <% if @post.cached_votes_up > 0 %>
-          <span class="icon icon-bookmark"></span>
-      <% end %>
-
-
-  <div class="post-header">
-    <h1>
-      <%= @post.title  %></h1>
-
-        <% if @post.created_at > Time.now - 1.days %>
-           <span class="post-stats icon icon-clock-o warn">
-        <% else %>
-           <span class="post-stats icon icon-clock-o">
-        <% end %>
-        <span>Created <%=time_ago_in_words(@post.created_at)%> ago</span>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <span>by <a href="<%=user_path(@post.user) rescue ""%>" id="_posts_createdby_profile">
-            <%= @post.user.username rescue "Vigap" %></a>
-            <span class="badge <%=@post.user.username.gsub(/ /, "-") rescue "Vigap"%>-rank">
-              <%=@post.user.ranking rescue 0%>
-            </span>
-        </span>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <span class="icon icon-eye"></span> <%= "#{@post.impressionist_count} views so far!" %>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <span class="icon icon-comment"></span> <a href="#" title="Add comment">Add comment</a></span> </span>
-
-
-
-
-        <div class="subscribe">
-          <% if current_user %>
-              <% if @post.is_post_subscribe?(current_user) %>
-                  <%= render 'posts/unfollow' %>
-              <% else %>
-                  <%= render 'posts/follow' %>
-              <% end %>
-          <% end %>
-
-       </div> <!-- .subscribe -->
-
-  </div> <!-- .post-header -->
-
-</div>
-
-</div> <!-- .post-hero -->
-
 <section class="post-content">
+
     <div class="container">
 
+        <% if @post.cached_votes_up > 500 %>
+            <span class="icon icon-bookmark"></span>
+        <% end %>
 
-            <div class="content-post">
+        <div class="jumbotron">
 
+          <div class="post-header">
+            <h1><%= @post.title  %></h1>
 
-                <div class="bubble-container">
-                  <a href="<%=user_path(@post.user) rescue ""%>" class="user" id="_posts_ruledby_profile">
-                    <span class="user-avatar">
-                        <img width="60" height="60" src="<%= @post.user.avatar.url(:thumb) rescue asset_path('missing-avatar.png') %>">
-                    </span>
-                    <span class="icon icon-star"></span>
+            <div class="subtitle">
 
-
-                  </a>
-
-
-                <div class="the-bubble left">
-                  <p><%= @post.body.html_safe %></p>
-
-                    <div class="bubble-meta">
-                      Added by:
-                      <a href="#" title=""><%= @post.user.username rescue "Vigap" %></a>
-
-                       <span class="badge <%=@post.user.username.gsub(/ /, "-") rescue "Vigap"%>-rank">
+                <% if @post.created_at > Time.now - 1.days %>
+                   <span class="post-stats icon icon-clock-o warn">
+                <% else %>
+                   <span class="post-stats icon icon-clock-o">
+                <% end %>
+                <span>Created <%=time_ago_in_words(@post.created_at)%> ago</span>
+                <span>by <a href="<%=user_path(@post.user) rescue ""%>" id="_posts_createdby_profile">
+                    <%= @post.user.username rescue "Vigap" %></a>
+                    <span class="badge <%=@post.user.username.gsub(/ /, "-") rescue "Vigap"%>-rank">
                       <%=@post.user.ranking rescue 0%>
                     </span>
-                    </div> <!-- .bubble-meta -->
+                </span>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="icon icon-eye"></span> <%= "#{@post.impressionist_count} views so far!" %>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="icon icon-comment"></span> <a href="#" title="Add comment">Add comment</a></span> </span>
+
+            </div> <!-- .subtitle -->
+
+            <div class="thirdrow">
+              RULED BY:
+              <a href="<%=user_path(@post.user) rescue ""%>" class="user" id="_posts_ruledby_profile">
+                <span class="icon icon-star"></span>
+                <span class="user-avatar img-circle">
+                    <img width="60" height="60"  src="<%= @post.user.avatar.url(:thumb) rescue asset_path('missing-avatar.png')%>">
+                </span>
+                    <%= @post.user.username rescue "Vigap" %></a>
+                    <span class="badge <%=@post.user.username.gsub(/ /, "-") rescue "Vigap"%>-rank">
+                      <%=@post.user.ranking rescue 0%>
+                    </span>
+              </a>
+            </div>
+
+          </div> <!-- .post-header -->
+
+
+
+                <div class="article-body">
+                  <p><%= @post.body.html_safe %></p>
                 </div>
 
-                </div>
 
+                <div class="centered article-vote">
                 <% if current_user != @post.user %>
-                    <h2>
                     <% votetag = @post.user.username.gsub(/ /, "-") rescue "Vigap" %>
                     <%= link_to " #{@post.cached_votes_up}", up_post_path(@post), method: :put, remote: true, id: votetag + '-post-upvote', class:'label label-success glyphicon glyphicon-thumbs-up vote-btn' %>
                     <%= link_to " #{@post.cached_votes_down}", down_post_path(@post), method: :put, remote: true, id: votetag + '-post-downvote', class:'label label-danger glyphicon glyphicon-thumbs-down vote-btn' %>
-                    </h2>
                 <% else %>
-                  <h2>
-                    <span id='link_up' class='label label-success glyphicon glyphicon-thumbs-up vote-btn'><%=" #{@post.cached_votes_up}"%></span>
+                    <span id='link_up' class='label label-glyphicon glyphicon-ok vote-btn'><%=" #{@post.cached_votes_up}"%></span>
                     <span id='link_down' class='label label-danger glyphicon glyphicon-thumbs-down vote-btn'><%=" #{@post.cached_votes_down}"%></span>
-                  </h2>
                 <% end %>
+                </div>
                 <br>
+
+                <div class="centered">
+                  <div class="subscribe">
+                    <% if current_user %>
+                        <% if @post.is_post_subscribe?(current_user) %>
+                            <%= render 'posts/unfollow' %>
+                        <% else %>
+                            <%= render 'posts/follow' %>
+                        <% end %>
+                    <% end %>
+                 </div> <!-- .subscribe -->
+               </div>
 
                 <div class="row">
                   <% @post.tags.each do |tag| %>
                       <%= link_to tag.name, tag_path(tag), class: "btn btn-default", id: '_posts_tags' %>
                   <%end%>
                 </div>
-            </div> <!-- content -->
+
+          </div>
+
         </div>
 
 </section>

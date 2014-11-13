@@ -27,16 +27,45 @@
   text-decoration: underline; }
 
 .jumbotron {
+  background: #f1f1f1;
   padding-top:16px;
+  color: #333;
 }
 
 .jumbotron p {
+  font-family: proxima-nova, sans-serif;
+  font-weight: normal;
   white-space: pre-wrap;
-  font-size: 18px;
+  font-size: 20px;
+  color: #333;
+}
+
+.jumbotron span {
+  color: #333;
+}
+
+.jumbotron .subtitle {
+  color: rgb(127, 140, 141);
+}
+
+.jumbotron .thirdrow {
+  margin-top: 15px;
+  font-size: 24px;
+  color: goldenrod;
+}
+
+.jumbotron .thirdrow .icon {
+  z-index: 100;
+  color: goldenrod;
 }
 
 h4 .label {
   word-spacing: -10px;
+}
+
+.article-body {
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 .comments-box p {
@@ -54,14 +83,30 @@ h4 .label {
 }
 
 .vote-btn {
-  padding-left: 10px;
+  padding-left: 40px;
+  padding-right: 40px;
+  max-height: 10px;
 }
 
-h2 .vote-btn {
+.article-vote {
   word-spacing: -10px;
+  font-size: 20px;
 }
 
+.article-vote a {
+  margin-left: 6px;
+  margin-right: 6px;
+}
 
 .content-post {
   padding-top: 15px;
+}
+
+
+.icon-bookmark {
+  font-size: 42px;
+  position: absolute;
+  right: 40px;
+  margin-top: -3px;
+  color: #e74c3c;
 }
