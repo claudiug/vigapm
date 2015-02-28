@@ -82,7 +82,7 @@
                 <% if @post.user && current_user && current_user.id == @post.user.id %>
                     <a href="<%=edit_post_path %>">
                       <!--<span class="label label-warning glyphicon glyphicon-edit">&nbsp;Edit Post</span>-->
-                      <button class="btn btn-lg btn-default glyphicon glyphicon-edit" style="word-spacing:-10px;" id="_posts_editpost">&nbsp;Edit Post</button>
+                      <button class="pull-right btn btn-lg btn-default glyphicon glyphicon-edit" style="word-spacing:-10px;" id="_posts_editpost">&nbsp;Edit Post</button>
                     </a>
                 <% end %>
                </div>
