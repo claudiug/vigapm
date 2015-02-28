@@ -19,7 +19,7 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(posts_params)
-    render json: params and return
+    #render json: params and return
     @post.images = params[:post][:images]
     if @post.save!
       redirect_to @post
