@@ -63,8 +63,8 @@
                     <%= link_to " #{@post.cached_votes_up}", up_post_path(@post), method: :put, remote: true, id: votetag + '-post-upvote', class:'label label-success glyphicon glyphicon-thumbs-up vote-btn' %>
                     <%= link_to " #{@post.cached_votes_down}", down_post_path(@post), method: :put, remote: true, id: votetag + '-post-downvote', class:'label label-danger glyphicon glyphicon-thumbs-down vote-btn' %>
                 <% else %>
-                    <span id='link_up' class='label label-glyphicon glyphicon-ok vote-btn'><%=" #{@post.cached_votes_up}"%></span>
-                    <span id='link_down' class='label label-danger glyphicon glyphicon-thumbs-down vote-btn'><%=" #{@post.cached_votes_down}"%></span>
+                    <span id='link_up' class='label label-glyphicon glyphicon-ok glyphicon-thumbs-up vote-btn ownvote'><%=" #{@post.cached_votes_up}"%></span>
+                    <span id='link_down' class='label label-danger glyphicon glyphicon-thumbs-down vote-btn ownvote'><%=" #{@post.cached_votes_down}"%></span>
                 <% end %>
                 </div>
                 <br>
@@ -79,6 +79,12 @@
                         <% end %>
                     <% end %>
                  </div> <!-- .subscribe -->
+                 <% if @post.user && current_user && current_user.id == @post.user.id %>
+    -            <a href="<%=edit_post_path %>">
+    -              <!--<span class="label label-warning glyphicon glyphicon-edit">&nbsp;Edit Post</span>-->
+    -              <button class="pull-right btn btn-lg btn-success glyphicon glyphicon-edit" style="word-spacing:-10px;" id="_posts_editpost">&nbsp;Edit Post</button>
+    -            </a>
+-                <% end %>
                </div>
 
                 <div class="row">
