@@ -456,6 +456,22 @@ footer {
     }
 }
 
+.replybtn {
+    border: 1px solid goldenrod;
+    color: goldenrod;
+    border-radius: 3px;
+    transition: color 0.25s, background 0.25s;
+    background: transparent;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 31px;
+    &:hover {
+      color: white;
+      background: goldenrod;
+    }
+}
+
 .glyphicon-thumbs-up {
     border: 1px solid #5cb85c;
     background-color: transparent;
