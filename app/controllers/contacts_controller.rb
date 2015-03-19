@@ -3,21 +3,22 @@ class ContactsController < ApplicationController
 
   before_action :authorize
 
+  helper_method :contact_form_message
+
   def show
   end
 
   def create
-    if simple_captcha_valid? && form_feedback.present?
+    if simple_captcha_valid? && contact_form_message.present?
       @sent = ContactMailer.feedback_received(current_user, params[:contact].delete(:feedback)).deliver
     end
 
-    @feedback_text = form_feedback
     render :show
   end
 
   protected
 
-  def form_feedback
-    params[:contact][:feedback]
+  def contact_form_message
+    params[:contact][:feedback] if params[:contact].present?
   end
 end
