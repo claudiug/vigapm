@@ -1,0 +1,19 @@
+<div class="container">
+  <%- if @sent %>
+    <div id='contact-flash'>
+      <div class='alert alert-success fade in'>
+        <button class='close' data-dismiss='alert'><i class='glyphicon glyphicon-remove-circle'></i></button>
+        <i class='glyphicon glyphicon-times %>'></i> Thanks! We promise to read your feedback and take it into consideration.
+      </div>
+    </div>
+  <%- end %>
+
+  <h2>Leave your feedback</h2>
+  <div class="row">
+    <%= form_for :contact do |f| %>
+      <%= f.text_area :feedback, class: 'form', value: contact_form_message, placeholder: 'Let us know your thoughts!', style: 'text-align:left;outline: 0; text-indent: 15px;overflow: auto; width: 100%; background: white; border: 1px solid #ddd; border-bottom: 1px solid #ccc; resize: none;font-size:36px;height: 212px;' %>
+      <%= show_simple_captcha %>
+      <%= f.submit 'Submit', class: 'btn btn-lg btn-info' %>
+    <%- end %>
+  </div>
+</div>

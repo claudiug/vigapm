@@ -7,6 +7,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'byebug'
   gem 'faker'
+  gem 'letter_opener'
 end
 
 gem 'rails', '4.1.4'
@@ -40,3 +41,4 @@ gem "skylight"
 gem 'rmagick', '2.13.3'
 gem 'pjax_rails'
 gem 'flat-ui-rails'
+gem 'simple_captcha2', require: 'simple_captcha'
