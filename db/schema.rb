@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140922073456) do
+ActiveRecord::Schema.define(version: 20150319101409) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -122,6 +122,15 @@ ActiveRecord::Schema.define(version: 20140922073456) do
   add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id", using: :btree
   add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true, using: :btree
   add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id", using: :btree
+
+  create_table "simple_captcha_data", force: true do |t|
+    t.string   "key",        limit: 40
+    t.string   "value",      limit: 6
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "simple_captcha_data", ["key"], name: "idx_key", using: :btree
 
   create_table "statuses", force: true do |t|
     t.string   "name"

@@ -36,6 +36,7 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     acts_as_votable (0.10.0)
+    addressable (2.3.7)
     annotate (2.6.5)
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
@@ -103,6 +104,10 @@ GEM
     kaminari-bootstrap (3.0.1)
       kaminari (>= 0.13.0)
       rails
+    launchy (2.4.3)
+      addressable (~> 2.3)
+    letter_opener (1.3.0)
+      launchy (~> 2.2)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -166,6 +171,8 @@ GEM
       sass (~> 3.2.0)
       sprockets (~> 2.8, <= 2.11.0)
       sprockets-rails (~> 2.0)
+    simple_captcha2 (0.3.4)
+      rails (>= 4.1)
     skylight (0.3.20)
       activesupport (>= 3.0.0)
     sprockets (2.11.0)
@@ -221,6 +228,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   kaminari-bootstrap (~> 3.0.1)
+  letter_opener
   medium-editor-rails
   newrelic_rpm
   paperclip (~> 4.2)
@@ -234,6 +242,7 @@ DEPENDENCIES
   redis
   rmagick (= 2.13.3)
   sass-rails (~> 4.0.3)
+  simple_captcha2
   skylight
   twitter-typeahead-rails
   uglifier (>= 1.3.0)
