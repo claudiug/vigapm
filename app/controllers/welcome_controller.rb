@@ -6,7 +6,7 @@ class WelcomeController < ApplicationController
       @results = Post.where('title ILIKE ?', "%#{params[:query]}%")
     end
     params[:page] || 1
-    @posts = Post.includes(:comments).page(params[:page]).per(10)
+    @posts = Post.includes(:comments).order('posts.updated_at DESC').page(params[:page]).per(10)
     @top_posts = Post.top_posts
     @top_tags = Tag.top_tags
   end
