@@ -4,8 +4,11 @@
     <div class="f-left">
       <%= link_to 'Home', root_path %> &bull;
       <%= link_to 'About', post_path(id: 'about-vigap') %> &bull;
-      <%= link_to 'Terms & Privacy', post_path(id: 'vigap-terms-privacy') %> &bull;
-      <a href="#" title="Contact">Contact</a>
+      <%= link_to 'Terms & Privacy', post_path(id: 'vigap-terms-privacy') %>
+      <%- if current_user %>
+        &bull;
+        <%= link_to 'Contact', '#' %>
+      <%- end %>
     </div>
   </div>
 </footer>
