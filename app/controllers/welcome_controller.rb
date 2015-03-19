@@ -3,7 +3,7 @@ class WelcomeController < ApplicationController
 
   def index
     if params[:query]
-      @results = Post.where('title ILIKE ?', "%#{params[:query]}%")
+      @results = Post.order('impressions_count DESC').where('title ILIKE ?', "%#{params[:query]}%")
     end
     params[:page] || 1
     @posts = Post.includes(:comments).order('posts.updated_at DESC').page(params[:page]).per(10)
