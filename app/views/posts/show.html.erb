@@ -30,7 +30,7 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <span class="icon icon-eye"></span> <%= "#{@post.impressionist_count} views" %>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <span class="icon icon-comment"></span> <a href="#" title="Add comment">Add comment</a></span> </span>
+                <span class="icon icon-comment"></span> <a href="#" title="Add comment" id='new-post-comment'>Add comment</a></span> </span>
 
             </div> <!-- .subtitle -->
 
@@ -38,13 +38,13 @@
               RULED BY:
               <a href="<%=user_path(@post.user) rescue ""%>" class="user" id="_posts_ruledby_profile">
                 <span class="icon icon-star"></span>
-                <span class="user-avatar img-circle">
-                    <img width="60" height="60"  src="<%= @post.user.avatar.url(:thumb) rescue asset_path('missing-avatar.png')%>">
+                <span>
+                  <%= image_tag((@post.user.avatar.url(:medium) rescue asset_path('missing-avatar.png')), class:'img-circle', style:'height:64px;width:64px;') %>
+                  <span class="badge badge-ruled-by <%=@post.user.username.gsub(/ /, "-") rescue "Vigap"%>-rank">
+                    <%=@post.user.ranking rescue 0%>
+                  </span>
                 </span>
-                    <%= @post.user.username rescue "Vigap" %></a>
-                    <span class="badge <%=@post.user.username.gsub(/ /, "-") rescue "Vigap"%>-rank">
-                      <%=@post.user.ranking rescue 0%>
-                    </span>
+                <%= @post.user.username rescue "Vigap" %>
               </a>
             </div>
 
