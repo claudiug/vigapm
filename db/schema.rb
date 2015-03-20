@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150319101409) do
+ActiveRecord::Schema.define(version: 20150319183357) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,6 +101,7 @@ ActiveRecord::Schema.define(version: 20150319101409) do
     t.string   "images_content_type"
     t.integer  "images_file_size"
     t.datetime "images_updated_at"
+    t.integer  "impressions_count",       default: 0
   end
 
   add_index "posts", ["cached_votes_down"], name: "index_posts_on_cached_votes_down", using: :btree

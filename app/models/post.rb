@@ -44,8 +44,7 @@ class Post < ActiveRecord::Base
 
   validates_attachment :images, content_type: {content_type: 'image/jpeg'}, size: {in: 0..10.megabytes}
 
-  is_impressionable
-
+  is_impressionable counter_cache: true
 
   def page_view_size
     impressions.size
