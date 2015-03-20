@@ -44,7 +44,6 @@
 <div class="container">
       <ul class="nav nav-tabs" id="myTab">
         <li class="active"><a href="#posts" data-toggle="tab">Created posts</a></li>
-        <li><a href="#subs" data-toggle="tab">Followed posts</a></li>
         <!--
         <li><a href="#followers" data-toggle="tab">Followers</a></li>
         <li><a href="#following" data-toggle="tab">Following</a></li>
@@ -52,7 +51,8 @@
         <%= link_to 'Following', following_user_path(@user) %>
 -->
         <% if current_user.username == @user.username %>
-            <li><a href="#settings" data-toggle="tab" id="_profile_settings">Settings</a></li>
+          <li><a href="#subs" data-toggle="tab">Followed posts</a></li>
+          <li><a href="#settings" data-toggle="tab" id="_profile_settings">Settings</a></li>
         <% end %>
       </ul>
 
@@ -118,13 +118,15 @@
           </div>
         </div><!--/tab-pane-->
 
-        <div class="tab-pane active" id="subs">
-          <% @user.subscription_posts.each do |subscription_post| %>
-            <%= link_to subscription_post.title, post_path(subscription_post) %>
-          <% end %>
-        </div><!--/tab-pane-->
+
 
         <% if current_user.username == @user.username %>
+            <div class="tab-pane active" id="subs">
+              <% @user.subscription_posts.each do |subscription_post| %>
+                <%= link_to subscription_post.title, post_path(subscription_post) %>
+              <% end %>
+            </div><!--/tab-pane-->
+
             <div class="tab-pane" id="settings">
 
               <%= form_for @user,  :html => { :multipart => true } do |f| %>
