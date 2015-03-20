@@ -1,7 +1,12 @@
 <div class="container">
 
 
-    <h1><%= @user.username %> <small>(<%= @user.posts.count %> posts)</small></h1>
+    <h1>
+      <div class="pull-left">
+        <%= image_tag @user.avatar.url(:thumb), class:'img-circle', style:'height:57px;width:57px;' %>
+      </div>
+      <%= @user.username %> <small>(<%= @user.posts.count %> posts)</small>
+    </h1>
 
       <span class="post-stats icon icon-clock-o warn">
         <span>Joined</span>:
@@ -44,12 +49,6 @@
 <div class="container">
       <ul class="nav nav-tabs" id="myTab">
         <li class="active"><a href="#posts" data-toggle="tab">Created posts</a></li>
-        <!--
-        <li><a href="#followers" data-toggle="tab">Followers</a></li>
-        <li><a href="#following" data-toggle="tab">Following</a></li>
-        <%= link_to 'Followers', followers_user_path(@user) %>
-        <%= link_to 'Following', following_user_path(@user) %>
--->
         <% if current_user.username == @user.username %>
           <li><a href="#subs" data-toggle="tab">Followed posts</a></li>
           <li><a href="#settings" data-toggle="tab" id="_profile_settings">Settings</a></li>
