@@ -62,10 +62,8 @@
 
           <div class="group-container-none">
             <ul class="grouped-list-none">
-              <% @user.posts.each do |post| %>
+              <% @user.posts.order('created_at DESC').each do |post| %>
                 <li class="menu-item list-group-item">
-
-
                   <% if post.images.url != "/images/original/missing.png" %>
                     <div class="pic">
                       <a href="<%= post_path(id: post.slug) %>">
@@ -76,23 +74,18 @@
 
                   <h4 class="list-group-item-heading">
                     <small>
-
-                      <% author = User.find(post.user_id) rescue nil %>
                       <span class="next-av">
-                      <img class="img-circle" width="60" height="60" src="<%= author.avatar.url(:thumb) rescue  asset_path('missing-avatar.png') %>">
+                      <img class="img-circle" width="60" height="60" src="<%= @user.avatar.url(:thumb) rescue  asset_path('missing-avatar.png') %>">
                     </span>
-                      Added by: <a href="<%= user_path(author) rescue "" %>" title="User"><%= author.username rescue "Vigap" %></a></small>
+                      Added by: <a href="<%= user_path(@user) rescue "" %>" title="User"><%= @user.username rescue "Vigap" %></a></small>
                     <a href="<%= post_path(id: post.slug) %>" title="<%= post.title %>"><%= post.title %></a>
                   </h4>
-
-
 
                   <p>
                     <%= truncate(strip_tags(post.body.html_safe), :length => 100, :omission => '... (continued)', :escape => false) %>
                   </p>
 
                   <div class="card-footer">
-
                     <!--Types of label: Default Primary Success Info Warning Danger-->
                     <% if post.updated_at > Time.now - 1.days %>
                               <span class="post-stats icon icon-clock-o warn">
