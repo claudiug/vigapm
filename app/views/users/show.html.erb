@@ -44,7 +44,7 @@
 <div class="container">
       <ul class="nav nav-tabs" id="myTab">
         <li class="active"><a href="#posts" data-toggle="tab">Created posts</a></li>
-        <li><a href="#subs" data-toggle="tab">Subscription posts</a></li>
+        <li><a href="#subs" data-toggle="tab">Followed posts</a></li>
         <!--
         <li><a href="#followers" data-toggle="tab">Followers</a></li>
         <li><a href="#following" data-toggle="tab">Following</a></li>
@@ -120,8 +120,7 @@
 
         <div class="tab-pane active" id="subs">
           <% @user.subscription_posts.each do |subscription_post| %>
-              <%= link_to subscription_post.title, post_path(subscription_post) %>
-
+            <%= link_to subscription_post.title, post_path(subscription_post) %>
           <% end %>
         </div><!--/tab-pane-->
 

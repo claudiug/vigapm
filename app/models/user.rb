@@ -54,7 +54,7 @@ class User < ActiveRecord::Base
 
 
   has_many :subscriptions
-  has_many :subscription_posts, through: :subscriptions, source: :post
+  has_many :subscription_posts, -> { order('created_at DESC') }, through: :subscriptions, source: :post
 
   acts_as_voter
   has_attached_file :avatar,
