@@ -8,7 +8,8 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       cookies.permanent[:auth_token] = user.auth_token
-      redirect_to root_url, notice: 'Logged in #{user.username}'
+
+      redirect_to session.delete(:redirect_to) || root_url, notice: 'Logged in #{user.username}'
     else
       flash.now.alert = 'Email or password Invalid!'
       render :new
