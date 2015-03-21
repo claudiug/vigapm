@@ -62,14 +62,6 @@ class Post < ActiveRecord::Base
     end
   end
 
-  def post_activity
-    @post_votes ||= post_total_votes
-    @comments_votes ||= comments.map do |c|
-      c.comment_total_votes
-    end.reduce(:+)
-    @post_votes + @comments_votes
-  end
-
   POST_LIMIT = 9
 
   def self.top_posts
@@ -125,7 +117,22 @@ class Post < ActiveRecord::Base
   protected
 
   def seeking_new_guru?
-    self.impressions_count > PAGE_VIEWS && post_activity > ACTIVITY && self.comments.size > 1
+    return if system_post?
+
+    self.impressions_count > PAGE_VIEWS && self.comments.size > 1 && post_activity > ACTIVITY
+  end
+
+  # This one probably should use separate field for checking if user is an admin
+  def system_post?
+    user.username == 'Vigap'
+  end
+
+  def post_activity
+    @post_votes ||= post_total_votes
+    @comments_votes ||= comments.map do |c|
+      c.comment_total_votes
+    end.reduce(:+)
+    @post_votes + @comments_votes
   end
 
   def guru_should_leave?
