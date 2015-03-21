@@ -36,15 +36,15 @@
 
             <div class="thirdrow">
               RULED BY:
-              <a href="<%=user_path(@post.user) rescue ""%>" class="user" id="_posts_ruledby_profile">
+              <a href="<%=user_path(@post.guru) rescue ""%>" class="user" id="_posts_ruledby_profile">
                 <span class="icon icon-star"></span>
                 <span>
-                  <%= image_tag((@post.user.avatar.url(:medium) rescue asset_path('missing-avatar.png')), class:'img-circle', style:'height:64px;width:64px;') %>
-                  <span class="badge badge-ruled-by <%=@post.user.username.gsub(/ /, "-") rescue "Vigap"%>-rank">
-                    <%=@post.user.ranking rescue 0%>
+                  <%= image_tag((@post.guru.avatar.url(:medium) rescue asset_path('missing-avatar.png')), class:'img-circle', style:'height:64px;width:64px;') %>
+                  <span class="badge badge-ruled-by <%=@post.guru.username.gsub(/ /, "-") rescue "Vigap"%>-rank">
+                    <%=@post.guru.ranking_for(post) rescue 0%>
                   </span>
                 </span>
-                <%= @post.user.username rescue "Vigap" %>
+                <%= @post.guru.username rescue "Vigap" %>
               </a>
             </div>
 
