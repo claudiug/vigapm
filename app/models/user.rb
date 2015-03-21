@@ -13,7 +13,6 @@
 #  avatar_content_type    :string(255)
 #  avatar_file_size       :integer
 #  avatar_updated_at      :datetime
-#  is_guru                :boolean          default(FALSE)
 #  city                   :string(255)
 #  bio                    :string(255)
 #  auth_token             :string(255)
