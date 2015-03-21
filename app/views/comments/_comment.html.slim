@@ -19,6 +19,9 @@
           span#link_up_comment.label.label-success.glyphicon.glyphicon-thumbs-up.vote-btn.ownvote= comment.cached_votes_up
           span#link_down_comment.label.label-danger.glyphicon.glyphicon-thumbs-down.vote-btn.ownvote= comment.cached_votes_down
 
-        input#_comments_reply.replybtn name="reply" type="submit" value="Reply"
+        = form_for [@post, comment.children.build] do |f|
+          = f.text_area :body
+          = f.hidden_field :parent_id, value: comment.id
+          input#_comments_reply.replybtn name="reply" type="submit" value="Reply"
       = render comment.children if comment.depth < 3
   = render comment.children if comment.depth >= 3
