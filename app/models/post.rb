@@ -23,7 +23,6 @@
 #
 
 class Post < ActiveRecord::Base
-
   acts_as_votable
   has_many :comments
   belongs_to :user
@@ -39,6 +38,7 @@ class Post < ActiveRecord::Base
 
   has_many :subscriptions
   has_many :users, through: :subscriptions, dependent: :destroy
+  has_many :commentators, through: :comments, source: :user
 
   has_attached_file :images, styles: {medium: '300x300>', thumb: '100x100>'}, default_url: '/images/:style/missing.png'
   validates_attachment_content_type :images, :content_type => /\Aimage\/.*\Z/
@@ -56,24 +56,10 @@ class Post < ActiveRecord::Base
   PAGE_VIEWS = 100
   ACTIVITY = 20
 
-  def change_user?
-    if self.page_view_size > PAGE_VIEWS && post_activity > ACTIVITY && self.comments.size > 1
-      if user.ranking < first_user_in_post[:ranking]
-        self.user.id = first_user_in_post[:user_id]
-        save!
-        true
-      end
+  def change_guru!
+    if seeking_new_guru? && guru_should_leave?
+      self.update!(guru: guru_candidate)
     end
-    false
-  end
-
-  def first_user_in_post
-    result = []
-
-    self.comments.includes(:user).each do |comment|
-      result << {user_id: comment.user.id, ranking: comment.user.ranking}
-    end
-    result.sort_by { |a| a[:ranking] }.reverse.first
   end
 
   def post_activity
@@ -132,7 +118,26 @@ class Post < ActiveRecord::Base
     subscriptions.find_by(user_id: user.id)
   end
 
+  def user_voters
+    votes_for.by_type(User).voters
+  end
+
+  protected
+
+  def seeking_new_guru?
+    self.impressions_count > PAGE_VIEWS && post_activity > ACTIVITY && self.comments.size > 1
+  end
+
+  def guru_should_leave?
+    guru.ranking_for(self) < guru_candidate.ranking_for(self)
+  end
+
+  def guru_candidate
+    commentators.sort_by { |c| c.ranking_for(self) }.reverse.first
+  end
+
   private
+
   def generate_slug
     self.slug = title.parameterize
   end
