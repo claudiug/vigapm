@@ -129,3 +129,11 @@ h4 .label {
   top: 20px;
   left: -25px;
 }
+
+.new-comment-reply {
+  display: none;
+
+  textarea {
+    width: 100%;
+  }
+}
