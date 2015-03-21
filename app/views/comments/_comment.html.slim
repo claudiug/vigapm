@@ -1,6 +1,6 @@
 - if comment.body
   .media.comment[style="opacity: #{comment_opacity(comment)};"]
-    = link_to user_path(comment.user), class: 'pull-left', id: '_posts_comment_profile'
+    = link_to user_path(comment.user), class: ('pull-left' if comment.depth < 4), id: '_posts_comment_profile', style: 'display: inline-block;'
       = image_tag comment.user.avatar.url(:medium), class:'img-circle', style:'height:64px;width:64px;'
       = ranking_badge(comment.user)
     .media-body
@@ -19,4 +19,4 @@
           span#link_up_comment.label.label-success.glyphicon.glyphicon-thumbs-up.vote-btn.ownvote= comment.cached_votes_up
           span#link_down_comment.label.label-danger.glyphicon.glyphicon-thumbs-down.vote-btn.ownvote= comment.cached_votes_down
         input#_comments_reply.replybtn name="reply" type="submit" value="Reply"
-        /= render comment.children
+      = render comment.children
