@@ -14,7 +14,7 @@
         <li class="menu-item list-group-item">
 
 
-        <% unless top.images.url == "/images/original/missing.png" %>
+        <% if top.main_picture %>
           <div class="pic">
             <a href="<%= post_path(id: top.slug) %>">
                 <img src="<%= top.images.url %>" alt="Placeholder" width="260" height="150" />
@@ -83,8 +83,7 @@
 
                 <li class="menu-item list-group-item">
 
-
-                  <% if result.images.url != "/images/original/missing.png" %>
+                  <% if result.main_picture %>
                       <div class="pic">
                         <a href="<%= post_path(id: result.slug) %>">
                           <img src="<%= result.images.url %>" alt="Placeholder" width="260" height="150" />
@@ -157,7 +156,7 @@
                 <li class="menu-item list-group-item">
 
 
-                <% if post.images.url != "/images/original/missing.png" %>
+                <% if post.main_picture %>
                   <div class="pic">
                     <a href="<%= post_path(id: post.slug) %>">
                         <img src="<%= post.images.url %>" alt="Placeholder" width="260" height="150" />

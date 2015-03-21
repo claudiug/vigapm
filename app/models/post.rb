@@ -112,6 +112,10 @@ class Post < ActiveRecord::Base
     votes_for.by_type(User).voters
   end
 
+  def main_picture
+    pictures.first.image if pictures.any?
+  end
+
   protected
 
   def seeking_new_guru?
