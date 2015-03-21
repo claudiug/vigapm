@@ -27,6 +27,7 @@ class Post < ActiveRecord::Base
   acts_as_votable
   has_many :comments
   belongs_to :user
+  belongs_to :guru, class_name: 'User'
   has_many :taggings
   has_many :tags, through: :taggings
   validates :slug, presence: true
