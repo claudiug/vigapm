@@ -31,31 +31,3 @@
 <% end %>
 </div>
 </div>
-
-<script type="text/javascript">
-$(function () {
-  var editor = new MediumEditor('.editable', {
-    placeholder: 'Write your text'
-  });
-
-  $('.editable').mediumInsert({
-    editor: editor,
-    addons: {
-      images: {
-        imagesUploadScript: '/post'
-      }
-    }
-  });
-
-  $('.editable:first').focus();
-
-  $('#_newpost_submit').on('click', function() {
-      $(".mediumInsert-buttons").remove();
-      $("#post_body").val($('#_newpost_body').html());
-      $('#new_post').submit();
-  });
-});
-
-
-</script>
-
