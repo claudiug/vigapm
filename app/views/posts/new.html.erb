@@ -3,7 +3,7 @@
 <div class="container">
   <h2>Add your post</h2>
 <div class="row" id="composer-box">
-<%= form_for @post, html: { multipart:  true } do |f| %>
+<%= form_for @post, html: { multipart:  true }, data: { tmp_id: @temporarily_id || params[:post][:temporarily_id] } do |f| %>
 
   <div id="title">
     <%= f.text_area :title, class: 'form', :placeholder => "Title", :maxlength => 56, :rows => 1, :cols => 21, :style => "text-align:left;outline: 0; text-indent: 15px;overflow: auto; width: 100%; background: white; border: 1px solid #ddd; border-bottom: 1px solid #ccc; resize: none;font-size:36px;height: 58px;" %>

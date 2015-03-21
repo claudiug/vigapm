@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
   before_action :authorize, only: [:create, :up, :down, :edit, :update, :destroy]
 
+  respond_to :html, only: :create
+
   def index
     params[:page] || 1
     @posts = Post.page(params[:page]).per(20)
@@ -15,17 +17,14 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @temporarily_id = SecureRandom.uuid.hex
   end
 
   def create
     @post = current_user.posts.build(posts_params)
-    #render json: params and return
-    @post.images = params[:post][:images]
-    if @post.save!
-      redirect_to @post
-    else
-      render :new
-    end
+    @post.save
+
+    respond_with @post
   end
 
   def edit
@@ -62,6 +61,6 @@ class PostsController < ApplicationController
   end
 
   def posts_params
-    params[:post].permit(:title, :body, :tag_list, :slug, :images)
+    params[:post].permit(:title, :body, :tag_list, :slug)
   end
 end
