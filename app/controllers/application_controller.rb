@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   def authorize
     if current_user.nil?
-      session[:redirect_to] = request.fullpath
+      session[:redirect_to] = request.fullpath if request.get?
       redirect_to new_session_path, alert: 'Not authorized'
     end
   end
