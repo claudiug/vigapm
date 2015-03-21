@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150319183357) do
+ActiveRecord::Schema.define(version: 20150321083706) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comment_hierarchies", id: false, force: true do |t|
+    t.integer "ancestor_id",   null: false
+    t.integer "descendant_id", null: false
+    t.integer "generations",   null: false
+  end
+
+  add_index "comment_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "comment_anc_desc_idx", unique: true, using: :btree
+  add_index "comment_hierarchies", ["descendant_id"], name: "comment_desc_idx", using: :btree
 
   create_table "comments", force: true do |t|
     t.text     "body"
@@ -102,6 +111,7 @@ ActiveRecord::Schema.define(version: 20150319183357) do
     t.integer  "images_file_size"
     t.datetime "images_updated_at"
     t.integer  "impressions_count",       default: 0
+    t.integer  "guru_id"
   end
 
   add_index "posts", ["cached_votes_down"], name: "index_posts_on_cached_votes_down", using: :btree
@@ -111,6 +121,7 @@ ActiveRecord::Schema.define(version: 20150319183357) do
   add_index "posts", ["cached_weighted_average"], name: "index_posts_on_cached_weighted_average", using: :btree
   add_index "posts", ["cached_weighted_score"], name: "index_posts_on_cached_weighted_score", using: :btree
   add_index "posts", ["cached_weighted_total"], name: "index_posts_on_cached_weighted_total", using: :btree
+  add_index "posts", ["guru_id"], name: "index_posts_on_guru_id", using: :btree
   add_index "posts", ["slug"], name: "index_posts_on_slug", using: :btree
 
   create_table "relationships", force: true do |t|
