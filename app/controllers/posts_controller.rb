@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
   before_action :authorize, only: [:create, :up, :down, :edit, :update, :destroy]
 
+  helper_method :temporarily_id
+
   respond_to :html, only: :create
 
   def index
@@ -17,12 +19,14 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @temporarily_id = SecureRandom.uuid.hex
+    @temporarily_id = generate_post_tmp_id
   end
 
   def create
     @post = current_user.posts.build(posts_params)
-    @post.save
+    @post.save!
+
+    Post::Picture.where(post_id: temporarily_id).update_all(post_id: @post.id)
 
     respond_with @post
   end
@@ -62,5 +66,18 @@ class PostsController < ApplicationController
 
   def posts_params
     params[:post].permit(:title, :body, :tag_list, :slug)
+  end
+
+  def temporarily_id
+    @temporarily_id || params[:post][:temporarily_id]
+  end
+
+  def generate_post_tmp_id
+    tmp_id = 2147483648
+    while tmp_id > 2147483647
+      tmp_id = SecureRandom.uuid.hex
+    end
+
+    tmp_id
   end
 end
