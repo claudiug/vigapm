@@ -9,9 +9,7 @@
   <%= javascript_include_tag 'application' %>
   <script src="//use.typekit.net/sbr1aun.js"></script>
   <script>try{Typekit.load();}catch(e){}</script>
-  <% if @results %>
-    <%= stylesheet_link_tag 'search', media: 'all', 'data-turbolinks-track' => true %>
-  <% else %>
+  <% unless @results %>
     <%= stylesheet_link_tag 'welcome', media: 'all', 'data-turbolinks-track' => true %>
   <% end %>
   <%= csrf_meta_tags %>

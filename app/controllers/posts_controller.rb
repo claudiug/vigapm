@@ -8,7 +8,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.includes(:comments).find_by(slug: params[:id])
-    @post.change_user?
+    @post.change_guru!
     @users_follow = @post.users
     impressionist(@post, "PostController", :unique => [:session_hash])
   end
