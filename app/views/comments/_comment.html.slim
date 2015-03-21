@@ -23,5 +23,5 @@
           = f.text_area :body
           = f.hidden_field :parent_id, value: comment.id
           input#_comments_reply.replybtn name="reply" type="submit" value="Reply"
-      = render comment.children if comment.depth < 3
-  = render comment.children if comment.depth >= 3
+      = render comment.children if comment.depth < 4
+  = render comment.children if comment.depth >= 4
