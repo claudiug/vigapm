@@ -49,6 +49,7 @@
 <div class="container">
       <ul class="nav nav-tabs" id="myTab">
         <li class="active"><a href="#posts" data-toggle="tab">Created posts</a></li>
+        <li><a href="#ruled-posts" data-toggle="tab">Ruled posts</a></li>
         <% if current_user.username == @user.username %>
           <li><a href="#subs" data-toggle="tab">Followed posts</a></li>
           <li><a href="#settings" data-toggle="tab" id="_profile_settings">Settings</a></li>
@@ -117,6 +118,64 @@
           </div>
         </div><!--/tab-pane-->
 
+        <div class="tab-pane " id="ruled-posts">
+          <div class="group-container-none">
+            <ul class="grouped-list-none">
+              <% @user.ruled_posts.order('impressions_count DESC').each do |post| %>
+                <li class="menu-item list-group-item">
+                  <% if post.images.url != "/images/original/missing.png" %>
+                    <div class="pic">
+                      <a href="<%= post_path(id: post.slug) %>">
+                        <img src="<%= post.images.url %>" alt="Placeholder" width="260" height="150" />
+                      </a>
+                    </div> <!-- .pic -->
+                  <% end %>
+
+                  <h4 class="list-group-item-heading">
+                    <small>
+                      <span class="next-av">
+                      <img class="img-circle" width="60" height="60" src="<%= post.user.avatar.url(:thumb) rescue  asset_path('missing-avatar.png') %>">
+                    </span>
+                      Added by: <a href="<%= user_path(post.user) rescue "" %>" title="User"><%= post.user.username rescue "Vigap" %></a></small>
+                    <a href="<%= post_path(id: post.slug) %>" title="<%= post.title %>"><%= post.title %></a>
+                  </h4>
+
+                  <p>
+                    <%= truncate(strip_tags(post.body.html_safe), :length => 100, :omission => '... (continued)', :escape => false) %>
+                  </p>
+
+                  <div class="card-footer">
+                    <!--Types of label: Default Primary Success Info Warning Danger-->
+                    <% if post.updated_at > Time.now - 1.days %>
+                              <span class="post-stats icon icon-clock-o warn">
+                    <% else %>
+                              <span class="post-stats icon icon-clock-o">
+                    <% end %>
+                    <span><%=time_ago_in_words(post.updated_at)%></span></span>
+
+                    <% if post.cached_votes_up > 0 %>
+                              <span class="post-stats icon icon-thumbs-up">
+                                <span><%= post.cached_votes_up %></span>
+                              </span>
+                    <% end %>
+
+                    <% if post.cached_votes_down > 0 %>
+                              <span class="post-stats icon icon-thumbs-down">
+                                <span><%=post.cached_votes_down%></span>
+                              </span>
+                    <% end %>
+
+                    <% if post.comments %>
+                            <span class="post-stats icon icon-comment">
+                              <span><%=post.comments.length %></span>
+                            </span>
+                    <% end %>
+                  </div>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div><!--/tab-pane-->
 
 
         <% if current_user.username == @user.username %>
