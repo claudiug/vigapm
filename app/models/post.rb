@@ -56,7 +56,7 @@ class Post < ActiveRecord::Base
   ACTIVITY = 20
 
   def change_user?
-    if self.page_view_size > PAGE_VIEWS && post_activity > ACTIVITY && self.comments.size > 1
+    if self.page_view_size > PAGE_VIEWS && self.comments.size > 1 && post_activity > ACTIVITY
       if user.ranking < first_user_in_post[:ranking]
         self.user.id = first_user_in_post[:user_id]
         save!
