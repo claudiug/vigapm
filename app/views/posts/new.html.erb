@@ -1,5 +1,4 @@
 <%= stylesheet_link_tag 'newpost', media: 'all', 'data-turbolinks-track' => true %>
-<%= stylesheet_link_tag 'medium-editor-insert-plugin', media: 'all', 'data-turbolinks-track' => true %>
 
 <div class="container">
   <h2>Add your post</h2>
@@ -44,11 +43,7 @@ $(function () {
     addons: {
       images: {
         imagesUploadScript: '/post'
-      },
-      embeds: {
-        oembedProxy: 'http://medium.iframe.ly/api/oembed?iframe=1'
-      },
-      tables: {}
+      }
     }
   });
 
