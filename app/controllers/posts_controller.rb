@@ -33,6 +33,7 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find_by(slug: params[:id])
+    @temporarily_id = @post.id
   end
 
   def update
