@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authorize, only: [:followers, :following]
+  before_action :authorize, only: [:followers, :following, :show]
   layout 'auth', only: %i(new create)
 
   respond_to :html, only: :create
