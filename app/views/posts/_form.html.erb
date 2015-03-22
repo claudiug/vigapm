@@ -20,7 +20,9 @@
       <%= f.hidden_field :temporarily_id, value: temporarily_id %>
     </div>
     <br>
-    <div class="editable" data-field-id="body" id="_newpost_body" style="width: 100%; background: white; border: 1px solid #ddd; border-bottom: 1px solid #ccc; border-radius: 4px;"></div>
+    <div class="editable" data-field-id="body" id="_newpost_body" style="width: 100%; background: white; border: 1px solid #ddd; border-bottom: 1px solid #ccc; border-radius: 4px;">
+      <%= @post.body.html_safe if @post.body.present? %>
+    </div>
     <br>
     <div class="field">
       <%= f.text_field :tag_list, :placeholder => "Tags (separated by commas)", :style => "width:100%;outline: 0;border: none;font-size:21px;font-color: rgba(0,0,0,0.3);background:none;font-weight:100;" %>
