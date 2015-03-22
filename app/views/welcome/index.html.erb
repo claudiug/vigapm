@@ -17,7 +17,7 @@
         <% if top.main_picture %>
           <div class="pic">
             <a href="<%= post_path(id: top.slug) %>">
-                <img src="<%= top.images.url %>" alt="Placeholder" width="260" height="150" />
+                <img src="<%= top.main_picture.image.url %>" alt="Placeholder" width="260" height="150" />
             </a>
           </div> <!-- .pic -->
         <% end %>
@@ -86,7 +86,7 @@
                   <% if result.main_picture %>
                       <div class="pic">
                         <a href="<%= post_path(id: result.slug) %>">
-                          <img src="<%= result.images.url %>" alt="Placeholder" width="260" height="150" />
+                          <img src="<%= result.main_picture.image.url %>" alt="Placeholder" width="260" height="150" />
                         </a>
                       </div> <!-- .pic -->
                   <% end %>
@@ -159,7 +159,7 @@
                 <% if post.main_picture %>
                   <div class="pic">
                     <a href="<%= post_path(id: post.slug) %>">
-                        <img src="<%= post.images.url %>" alt="Placeholder" width="260" height="150" />
+                        <img src="<%= post.main_picture.image.url %>" alt="Placeholder" width="260" height="150" />
                     </a>
                   </div> <!-- .pic -->
                 <% end %>

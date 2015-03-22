@@ -113,7 +113,7 @@ class Post < ActiveRecord::Base
   end
 
   def main_picture
-    pictures.first.image if pictures.any?
+    pictures.first if pictures.any?
   end
 
   protected
