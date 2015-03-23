@@ -1,12 +1,14 @@
 //*= require bootstrap-wysihtml5
 //*= require medium-editor/medium-editor
 //*= require medium-editor/themes/default
+//*= require medium-editor-insert-plugin.min
 //*= require font-awesome
 
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 @import 'flat-ui';
 @import 'icons';
+@import 'home_cards';
 
 body {
   font-family: "proxima-nova", sans-serif;

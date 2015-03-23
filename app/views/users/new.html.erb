@@ -3,30 +3,32 @@
 
   <div class="vigform">
     <%= form_for @user do |f| %>
-        <% if @user.errors.any? %>
-            <div class="error">
-              <h4>Form is invalid</h4>
-              <ul>
-                <% @user.errors.full_messages.each do |message| %>
-                    <li><%= message %></li>
-                <% end %>
-              </ul>
-            </div>
-        <% end %>
         <div class="field" id="_signup_username">
-          <%= f.label :username %>
+          <%= f.label :username, 'Nickname' %>
           <%= f.text_field :username %>
+          <div class="error-message">
+            <%= @user.errors[:username].first %>
+          </div>
         </div>
         <div class="field" id="_signup_email">
           <%= f.label :email %>
           <%= f.text_field :email %>
+          <div class="error-message">
+            <%= @user.errors[:email].first %>
+          </div>
         </div>
         <div class="field" id="_signup_password">
           <%= f.label :password %>
           <%= f.password_field :password %>
+          <div class="error-message">
+            <%= @user.errors[:password].first %>
+          </div>
+        </div>
+        <div>
+          By registering, you agree to our <%= link_to 'Terms & Privacy', post_path(id: 'vigap-terms-privacy') %>.
         </div>
         <div class="action">
-          <%= f.submit 'Sign in', class: 'btn btn-info', id: '_signup_signin' %>
+          <%= f.submit 'Register', class: 'btn btn-info', id: '_signup_signin' %>
         </div>
     <% end %>
   </div>

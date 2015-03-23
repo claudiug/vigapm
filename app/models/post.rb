@@ -16,36 +16,34 @@
 #  cached_weighted_total   :integer          default(0)
 #  cached_weighted_average :float            default(0.0)
 #  slug                    :string(255)
-#  images_file_name        :string(255)
-#  images_content_type     :string(255)
-#  images_file_size        :integer
-#  images_updated_at       :datetime
+#  impressions_count       :integer          default(0)
+#  guru_id                 :integer
 #
 
 class Post < ActiveRecord::Base
-
   acts_as_votable
-  has_many :comments
+
   belongs_to :user
+  belongs_to :guru, class_name: 'User'
+
+  has_many :pictures
+
+  has_many :comments
+  has_many :commentators, through: :comments, source: :user
+
   has_many :taggings
   has_many :tags, through: :taggings
-  validates :slug, presence: true
-  validates :title, presence: true, uniqueness: true
-  validates :title, length: {in: 3..56}
-  before_validation :generate_slug
-  has_many :subscriptions
-  has_many :subscriptions
 
   has_many :subscriptions
   has_many :users, through: :subscriptions, dependent: :destroy
 
-  has_attached_file :images, styles: {medium: '300x300>', thumb: '100x100>'}, default_url: '/images/:style/missing.png'
-  validates_attachment_content_type :images, :content_type => /\Aimage\/.*\Z/
+  before_validation :generate_slug
 
-  validates_attachment :images, content_type: {content_type: 'image/jpeg'}, size: {in: 0..10.megabytes}
+  validates :slug, presence: true
+  validates :title, presence: true, uniqueness: true
+  validates :title, length: {in: 3..56}
 
-  is_impressionable
-
+  is_impressionable counter_cache: true
 
   def page_view_size
     impressions.size
@@ -56,32 +54,10 @@ class Post < ActiveRecord::Base
   PAGE_VIEWS = 100
   ACTIVITY = 20
 
-  def change_user?
-    if self.page_view_size > PAGE_VIEWS && post_activity > ACTIVITY && self.comments.size > 1
-      if user.ranking < first_user_in_post[:ranking]
-        self.user.id = first_user_in_post[:user_id]
-        save!
-        true
-      end
+  def change_guru!
+    if seeking_new_guru? && guru_should_leave?
+      self.update!(guru: guru_candidate)
     end
-    false
-  end
-
-  def first_user_in_post
-    result = []
-
-    self.comments.includes(:user).each do |comment|
-      result << {user_id: comment.user.id, ranking: comment.user.ranking}
-    end
-    result.sort_by { |a| a[:ranking] }.reverse.first
-  end
-
-  def post_activity
-    @post_votes ||= post_total_votes
-    @comments_votes ||= comments.map do |c|
-      c.comment_total_votes
-    end.reduce(:+)
-    @post_votes + @comments_votes
   end
 
   POST_LIMIT = 9
@@ -132,7 +108,45 @@ class Post < ActiveRecord::Base
     subscriptions.find_by(user_id: user.id)
   end
 
+  def user_voters
+    votes_for.by_type(User).voters
+  end
+
+  def main_picture
+    pictures.first if pictures.any?
+  end
+
+  protected
+
+  def seeking_new_guru?
+    return if system_post?
+
+    self.impressions_count > PAGE_VIEWS && self.comments.size > 1 && post_activity > ACTIVITY
+  end
+
+  # This one probably should use separate field for checking if user is an admin
+  def system_post?
+    user.username == 'Vigap'
+  end
+
+  def post_activity
+    @post_votes ||= post_total_votes
+    @comments_votes ||= comments.map do |c|
+      c.comment_total_votes
+    end.reduce(:+)
+    @post_votes + @comments_votes
+  end
+
+  def guru_should_leave?
+    guru.ranking_for(self) < guru_candidate.ranking_for(self)
+  end
+
+  def guru_candidate
+    commentators.sort_by { |c| c.ranking_for(self) }.reverse.first
+  end
+
   private
+
   def generate_slug
     self.slug = title.parameterize
   end

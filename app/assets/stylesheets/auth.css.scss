@@ -17,6 +17,16 @@
   .field {
     padding-bottom: 15px;
     text-align: left;
+
+    .field_with_errors {
+      input {
+        border-color: red;
+      }
+    }
+
+    .error-message {
+      color: red;
+    }
   }
   label {
     display: block;

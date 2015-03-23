@@ -13,7 +13,6 @@
 #  avatar_content_type    :string(255)
 #  avatar_file_size       :integer
 #  avatar_updated_at      :datetime
-#  is_guru                :boolean          default(FALSE)
 #  city                   :string(255)
 #  bio                    :string(255)
 #  auth_token             :string(255)
@@ -43,6 +42,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: true, format: { with: REGEX }
   validates :username, presence: true, uniqueness: true
   has_many :posts, dependent: :destroy
+  has_many :ruled_posts, class_name: 'Post', foreign_key: 'guru_id'
   has_many :comments, dependent: :destroy
   has_many :relationships, foreign_key: 'follower_id', dependent: :destroy
   has_many :followed_users, through: :relationships, source: :followed
@@ -54,7 +54,7 @@ class User < ActiveRecord::Base
 
 
   has_many :subscriptions
-  has_many :subscription_posts, through: :subscriptions, source: :post
+  has_many :subscription_posts, -> { order('created_at DESC') }, through: :subscriptions, source: :post
 
   acts_as_voter
   has_attached_file :avatar,
@@ -72,7 +72,15 @@ class User < ActiveRecord::Base
     result = 0
     result += User.includes(:comments).pluck(:cached_votes_score).delete_if{|x| x == nil}.reduce(:+)
     result += User.includes(:posts).pluck(:cached_votes_score).delete_if{|x| x == nil}.reduce(:+)
-    result
+  end
+
+  # This method gets user ranking for a single post and post's comments
+  def ranking_for(post)
+    result = 0
+    result += posts.where(id: post).pluck(:cached_votes_score).reduce(:+).to_i
+    result += comments.where(post_id: post).pluck(:cached_votes_score).reduce(:+).to_i
+    # Add ruled posts?
+    # result += posts.where(id: post).pluck(:cached_votes_score).reduce(:+)
   end
 
   def following?(other_user)

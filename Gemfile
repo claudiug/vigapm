@@ -7,6 +7,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'byebug'
   gem 'faker'
+  gem 'letter_opener'
 end
 
 gem 'rails', '4.1.4'
@@ -34,9 +35,12 @@ gem 'newrelic_rpm'
 gem 'pg'
 gem 'redis'
 gem "paperclip", "~> 4.2"
-gem 'medium-editor-rails'
+gem 'medium-editor-rails', '~> 2.0.9'
 gem "font-awesome-rails"
 gem "skylight"
 gem 'rmagick', '2.13.3'
 gem 'pjax_rails'
 gem 'flat-ui-rails'
+gem 'simple_captcha2', require: 'simple_captcha'
+gem 'slim'
+gem 'closure_tree'

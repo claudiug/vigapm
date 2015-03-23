@@ -30,21 +30,21 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <span class="icon icon-eye"></span> <%= "#{@post.impressionist_count} views" %>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <span class="icon icon-comment"></span> <a href="#" title="Add comment">Add comment</a></span> </span>
+                <span class="icon icon-comment"></span> <a href="#" title="Add comment" id='new-post-comment'>Add comment</a></span> </span>
 
             </div> <!-- .subtitle -->
 
             <div class="thirdrow">
               RULED BY:
-              <a href="<%=user_path(@post.user) rescue ""%>" class="user" id="_posts_ruledby_profile">
+              <a href="<%=user_path(@post.guru) rescue ""%>" class="user" id="_posts_ruledby_profile">
                 <span class="icon icon-star"></span>
-                <span class="user-avatar img-circle">
-                    <img width="60" height="60"  src="<%= @post.user.avatar.url(:thumb) rescue asset_path('missing-avatar.png')%>">
+                <span>
+                  <%= image_tag((@post.guru.avatar.url(:medium) rescue asset_path('missing-avatar.png')), class:'img-circle', style:'height:64px;width:64px;') %>
+                  <span class="badge badge-ruled-by <%=@post.guru.username.gsub(/ /, "-") rescue "Vigap"%>-rank">
+                    <%=@post.guru.ranking_for(post) rescue 0%>
+                  </span>
                 </span>
-                    <%= @post.user.username rescue "Vigap" %></a>
-                    <span class="badge <%=@post.user.username.gsub(/ /, "-") rescue "Vigap"%>-rank">
-                      <%=@post.user.ranking rescue 0%>
-                    </span>
+                <%= @post.guru.username rescue "Vigap" %>
               </a>
             </div>
 
@@ -113,112 +113,10 @@
 <% end %>
 </div>
 
-
 <div class="container">
-<div class="comments-box row">
-<% if @post.comments %>
-  <% @post.comments.each do |comment| %>
-    <% if comment.body %>
-      <% if comment.cached_votes_up - comment.cached_votes_down < 0 %>
-        <div class="media comment" style="opacity:<%= 1 + (comment.cached_votes_up - comment.cached_votes_down) / 10.0 %>">
-      <% else %>
-        <div class="media comment">
-      <% end %>
-
-        <a class="pull-left" href="<%=user_path(comment.user) rescue ""%>" id="_posts_comment_profile">
-          <%= image_tag comment.user.avatar.url(:medium), class:'img-circle', style:'height:64px;width:64px;' %>
-          <% if comment.user.ranking %>
-            <% if comment.user.ranking < 0 %>
-              <span class="badge alert-danger <%=comment.user.username.gsub(/ /, "-") rescue "Vigap"%>-rank">
-            <% else %>
-              <span class="badge <%=comment.user.username.gsub(/ /, "-") rescue "Vigap"%>-rank" style="background-color:slate-grey;">
-            <% end %>
-            <%=comment.user.ranking%>
-          <% else %>
-            0
-          <% end %>
-          </span>
-        </a>
-
-        <div class="media-body">
-          <% if comment.created_at > Time.now - 1.days %>
-              <span class="label label-warning glyphicon glyphicon-dashboard pull-right">&nbsp;
-          <% else %>
-              <span class="label label-default glyphicon glyphicon-dashboard pull-right">&nbsp;
-          <% end %>
-          <%=time_ago_in_words(comment.created_at)%></span>
-
-          <h4 class="media-heading">
-            <strong>
-              <%= link_to comment.user.username, user_path(comment.user) rescue "Anonymous" %>
-            </strong>says:
-          </h4>
-
-          <p><%=comment.body%></p>
-              <h4>
-            <% if current_user != comment.user %>
-                <% votetag = comment.user.username.gsub(/ /, "-") rescue "Vigap" %>
-                <%= link_to " #{comment.cached_votes_up}", up_post_comment_path(@post.id, comment), method: :put, remote: true, id: votetag + '-comment-upvote', class:'label label-success glyphicon glyphicon-thumbs-up vote-btn' %>
-                <%= link_to " #{comment.cached_votes_down}", down_post_comment_path(@post.id, comment), method: :put, remote: true, id: votetag + '-comment-downvote', class:'label label-danger glyphicon glyphicon-thumbs-down vote-btn' %>
-            <% else %>
-                <span id='link_up_comment' class='label label-success glyphicon glyphicon-thumbs-up vote-btn ownvote'><%=" #{comment.cached_votes_up}"%></span>
-                <span id='link_down_comment' class='label label-danger glyphicon glyphicon-thumbs-down vote-btn ownvote'><%=" #{comment.cached_votes_down}"%></span>
-            <% end %>
-<!--TODO Make this Reply button functional-->
-            <input class="replybtn" id="_comments_reply" name="reply" type="submit" value="Reply">
-            </h4>
-
-<!--BEGIN EXAMPLE REPLY-->
-          <a class="pull-left" href="<%=user_path(comment.user) rescue ""%>" id="_posts_comment_profile">
-          <%= image_tag comment.user.avatar.url(:medium), class:'img-circle', style:'height:64px;width:64px;' %>
-          <% if comment.user.ranking %>
-            <% if comment.user.ranking < 0 %>
-              <span class="badge alert-danger <%=comment.user.username.gsub(/ /, "-") rescue "Vigap"%>-rank">
-            <% else %>
-              <span class="badge <%=comment.user.username.gsub(/ /, "-") rescue "Vigap"%>-rank" style="background-color:slate-grey;">
-            <% end %>
-            <%=comment.user.ranking%>
-          <% else %>
-            0
-          <% end %>
-          </span>
-        </a>
-
-        <div class="media-body">
-          <% if comment.created_at > Time.now - 1.days %>
-              <span class="label label-warning glyphicon glyphicon-dashboard pull-right">&nbsp;
-          <% else %>
-              <span class="label label-default glyphicon glyphicon-dashboard pull-right">&nbsp;
-          <% end %>
-          <%=time_ago_in_words(comment.created_at)%></span>
-
-          <h4 class="media-heading">
-            <strong>
-              <%= link_to comment.user.username, user_path(comment.user) rescue "Anonymous" %>
-            </strong>says:
-          </h4>
-
-          <!--<p><%=comment.body%></p>-->
-          <p>This is an example reply. Please ignore.</p>
-            <% if current_user != comment.user %>
-              <h4>
-                <% votetag = comment.user.username.gsub(/ /, "-") rescue "Vigap" %>
-                <%= link_to " #{comment.cached_votes_up}", up_post_comment_path(@post.id, comment), method: :put, remote: true, id: votetag + '-comment-upvote', class:'label label-success glyphicon glyphicon-thumbs-up vote-btn' %>
-                <%= link_to " #{comment.cached_votes_down}", down_post_comment_path(@post.id, comment), method: :put, remote: true, id: votetag + '-comment-downvote', class:'label label-danger glyphicon glyphicon-thumbs-down vote-btn' %>
-              </h4>
-            <% else %>
-              <h4>
-                <span id='link_up_comment' class='label label-success glyphicon glyphicon-thumbs-up vote-btn ownvote'><%=" #{comment.cached_votes_up}"%></span>
-                <span id='link_down_comment' class='label label-danger glyphicon glyphicon-thumbs-down vote-btn ownvote'><%=" #{comment.cached_votes_down}"%></span>
-              </h4>
-            <% end %>
-<!--END EXAMPLE REPLY-->
-
-        </div>
-      </div>
-      <hr>
-    <% end %>
-  <% end %>
-<% end %>
-</div>
+  <div class="comments-box row">
+    <div class="col-sm-12">
+      <%= render @post.comments.roots %>
+    </div>
+  </div>
 </div>

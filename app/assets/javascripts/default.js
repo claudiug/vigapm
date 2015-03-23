@@ -21,6 +21,8 @@ $(function() {
             source: posts.ttAdapter()
         }
     );
-
+    $('input.typeahead').on('typeahead:selected', function(obj, datum, name) {
+      window.location.href = datum['link'];
+    });
 });
 

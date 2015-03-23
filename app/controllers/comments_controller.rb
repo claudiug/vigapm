@@ -1,17 +1,16 @@
 class CommentsController < ApplicationController
-
   before_action :authorize, only: [:create, :up, :down] #LOL
   before_action :find_post, only: [:create]
 
+  respond_to :html, only: :create
+
   def create
-    @comment = @post.comments.build(params[:comment].permit(:body))
+    @comment = @post.comments.build(comment_params)
     @comment.user = current_user
-    if @comment.save
-      CommentMail.new_comment(@post, @comment).deliver #TODO send in a thread
-      redirect_to @post
-    else
-      redirect_to @post
-    end
+
+    CommentMail.new_comment(@post, @comment).deliver if @comment.save
+
+    respond_with [@post, @comment], location: post_path(@post)
   end
 
   def up
@@ -27,6 +26,11 @@ class CommentsController < ApplicationController
   end
 
   private
+
+  def comment_params
+    params.require(:comment).permit(:body, :parent_id)
+  end
+
   def find_post
     @post = Post.find_by(slug: params[:post_id])
   end

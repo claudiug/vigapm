@@ -3,3 +3,4 @@
 /.idea
 .idea/*.xml
 .idea/*.iml
+.bundle

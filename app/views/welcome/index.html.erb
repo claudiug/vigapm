@@ -14,10 +14,10 @@
         <li class="menu-item list-group-item">
 
 
-        <% unless top.images.url == "/images/original/missing.png" %>
+        <% if top.main_picture %>
           <div class="pic">
             <a href="<%= post_path(id: top.slug) %>">
-                <img src="<%= top.images.url %>" alt="Placeholder" width="260" height="150" />
+                <img src="<%= top.main_picture.image.url %>" alt="Placeholder" width="260" height="150" />
             </a>
           </div> <!-- .pic -->
         <% end %>
@@ -77,17 +77,16 @@
 
 <% if @results %>
 <h2>Search results</h2>
-      <div class="group-container">
-          <ul class="menu grouped-list">
+      <div class="group-container-none">
+          <ul class="grouped-list-none">
             <% @results.each do |result| %>
 
                 <li class="menu-item list-group-item">
 
-
-                  <% if result.images.url != "/images/original/missing.png" %>
+                  <% if result.main_picture %>
                       <div class="pic">
                         <a href="<%= post_path(id: result.slug) %>">
-                          <img src="<%= result.images.url %>" alt="Placeholder" width="260" height="150" />
+                          <img src="<%= result.main_picture.image.url %>" alt="Placeholder" width="260" height="150" />
                         </a>
                       </div> <!-- .pic -->
                   <% end %>
@@ -151,16 +150,16 @@
 
 <% else %>
 <h2>Latest things</h2>
-      <div class="group-container">
-        <ul class="menu grouped-list">
+      <div class="group-container-none">
+        <ul class="grouped-list-none">
           <% @posts.each do |post| %>
                 <li class="menu-item list-group-item">
 
 
-                <% if post.images.url != "/images/original/missing.png" %>
+                <% if post.main_picture %>
                   <div class="pic">
                     <a href="<%= post_path(id: post.slug) %>">
-                        <img src="<%= post.images.url %>" alt="Placeholder" width="260" height="150" />
+                        <img src="<%= post.main_picture.image.url %>" alt="Placeholder" width="260" height="150" />
                     </a>
                   </div> <!-- .pic -->
                 <% end %>

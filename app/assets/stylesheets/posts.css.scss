@@ -111,7 +111,6 @@ h4 .label {
   padding-top: 15px;
 }
 
-
 .icon-bookmark {
   font-size: 42px;
   position: absolute;
@@ -122,4 +121,18 @@ h4 .label {
 
 .ownvote {
   border: none;
+}
+
+.badge-ruled-by {
+  position: relative;
+  top: 20px;
+  left: -25px;
+}
+
+.new-comment-reply {
+  display: none;
+
+  textarea {
+    width: 100%;
+  }
 }

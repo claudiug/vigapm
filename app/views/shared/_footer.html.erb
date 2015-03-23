@@ -1,12 +1,15 @@
 <footer>
   <div class="container">
-    <div class="f-right">&copy; Vigap 2014</div>
+    <div class="f-right">&copy; Vigap <%= Time.now.year %></div>
     <div class="f-left">
-      <a href="#" title="Home">Home</a> &bull;
-      <a href="#" title="Posts">Posts</a> &bull;
-      <a href="#" title="About">About</a> &bull;
-      <a href="#" title="Terms & Privacy">Terms &amp; Privacy</a> &bull;
-      <a href="#" title="Contact">Contact</a>
+      <%= link_to 'Home', root_path %> &bull;
+      <%= link_to 'About', post_path(id: 'about-vigap') %> &bull;
+      <%= link_to 'Terms & Privacy', post_path(id: 'vigap-terms-privacy') %>
+      <%- if current_user %>
+        &bull;
+        <%= link_to 'Contact', contact_path %>
+      <%- end %>
     </div>
   </div>
 </footer>
+
