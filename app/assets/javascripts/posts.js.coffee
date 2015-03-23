@@ -7,6 +7,11 @@ $ ->
       500
     comment_field.focus()
 
+  $('.container').on 'click', '.new-comments-reply.replybtn', (e)->
+    e.preventDefault()
+    $(@).next('.new-comment-reply').show()
+    @.remove()
+
   editor = new MediumEditor('.editable', placeholder: 'Write your text')
   post_tmp_id = $('form#new_post').data('tmp-id')
   $('.editable').mediumInsert

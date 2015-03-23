@@ -1,0 +1,28 @@
+- if comment.body
+  .media.comment[style="opacity: #{comment_opacity(comment)};"]
+    = link_to user_path(comment.user), class: ('pull-left'), id: '_posts_comment_profile', style: 'display: inline-block;'
+      = image_tag comment.user.avatar.url(:medium), class:'img-circle', style:'height:64px;width:64px;'
+      = ranking_badge(comment.user)
+    .media-body
+      = comment_posted_ago(comment)
+      h4.media-heading
+        strong
+          =' link_to comment.user.username, user_path(comment.user) rescue "Anonymous"
+        | says:
+      p=comment.body
+      h4
+        - if current_user != comment.user
+          - votetag = comment.user.username.gsub(/ /, "-") rescue "Vigap"
+          =' link_to comment.cached_votes_up, up_post_comment_path(@post.id, comment), method: :put, remote: true, id: "#{votetag}-comment-upvote", class:'label label-success glyphicon glyphicon-thumbs-up vote-btn'
+          =' link_to comment.cached_votes_down, down_post_comment_path(@post.id, comment), method: :put, remote: true, id: "#{votetag}-comment-downvote", class:'label label-danger glyphicon glyphicon-thumbs-down vote-btn'
+        - else
+          span#link_up_comment.label.label-success.glyphicon.glyphicon-thumbs-up.vote-btn.ownvote= comment.cached_votes_up
+          span#link_down_comment.label.label-danger.glyphicon.glyphicon-thumbs-down.vote-btn.ownvote= comment.cached_votes_down
+
+        input.new-comments-reply.replybtn name="reply" type="submit" value="Reply"
+        = form_for [@post, comment.children.build], html: { class: 'new-comment-reply' } do |f|
+          = f.text_area :body
+          = f.hidden_field :parent_id, value: comment.id
+          input#_comments_reply.replybtn name="reply" type="submit" value="Reply"
+      = render comment.children if comment.depth < 4
+  = render comment.children if comment.depth >= 4
