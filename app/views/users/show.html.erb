@@ -64,10 +64,10 @@
             <ul class="grouped-list-none">
               <% @user.posts.order('created_at DESC').each do |post| %>
                 <li class="menu-item list-group-item">
-                  <% if post.images.url != "/images/original/missing.png" %>
+                  <% if post.main_picture %>
                     <div class="pic">
                       <a href="<%= post_path(id: post.slug) %>">
-                        <img src="<%= post.images.url %>" alt="Placeholder" width="260" height="150" />
+                        <img src="<%= post.main_picture.image.url %>" alt="Placeholder" width="260" height="150" />
                       </a>
                     </div> <!-- .pic -->
                   <% end %>
@@ -123,10 +123,10 @@
             <ul class="grouped-list-none">
               <% @user.ruled_posts.order('impressions_count DESC').each do |post| %>
                 <li class="menu-item list-group-item">
-                  <% if post.images.url != "/images/original/missing.png" %>
+                  <% if post.main_picture %>
                     <div class="pic">
                       <a href="<%= post_path(id: post.slug) %>">
-                        <img src="<%= post.images.url %>" alt="Placeholder" width="260" height="150" />
+                        <img src="<%= post.main_picture.image.url %>" alt="Placeholder" width="260" height="150" />
                       </a>
                     </div> <!-- .pic -->
                   <% end %>

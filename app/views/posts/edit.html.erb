@@ -1,23 +1,4 @@
-<p>Edit Post</p>
-<%= form_for @post, class:'editable' do |f| %>
-    </br>
-    <%= f.label :title %>
-    </br>
-    <%= f.text_field :title, class: 'form' %>
-    </br>
-    <div class="field">
-      <%= f.label :tag_list, "Tags (separated by commas)" %><br />
-      <%= f.text_field :tag_list %>
-    </div>
-    <%= f.label :body %>
-    </br>
-    <%= f.text_area(:body, cols: 110, rows: 10, class: 'editable form') %>
-    </br>
-    <br>
-    <%= f.submit 'say it', class: 'btn btn-info' %>
-<% end %>
-
-
-
-
-
+<div class="container">
+  <h2>Edit Post</h2>
+  <%= render 'form' %>
+</div>
