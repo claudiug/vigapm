@@ -35,7 +35,7 @@ gem 'newrelic_rpm'
 gem 'pg'
 gem 'redis'
 gem "paperclip", "~> 4.2"
-gem 'medium-editor-rails'
+gem 'medium-editor-rails', '~> 2.0.9'
 gem "font-awesome-rails"
 gem "skylight"
 gem 'rmagick', '2.13.3'

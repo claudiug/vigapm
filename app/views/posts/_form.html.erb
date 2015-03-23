@@ -1,0 +1,33 @@
+<%= stylesheet_link_tag 'newpost', media: 'all', 'data-turbolinks-track' => true %>
+
+<div class="row" id="composer-box">
+  <%= form_for @post, data: { tmp_id: temporarily_id } do |f| %>
+    <div id="title">
+      <%= f.text_area :title, class: 'form', :placeholder => "Title", :maxlength => 56, :rows => 1, :cols => 21, :style => "text-align:left;outline: 0; text-indent: 15px;overflow: auto; width: 100%; background: white; border: 1px solid #ddd; border-bottom: 1px solid #ccc; resize: none;font-size:36px;height: 58px;" %>
+
+      <script type="text/javascript">
+        document.getElementById('post_title').addEventListener('keyup', function () {
+          this.style.height = 0; // this is necessary to make it shrink when deleting
+          this.style.height = this.scrollHeight + 'px';
+        }, false);
+      </script>
+
+      <br>
+    </div>
+
+    <div class="field">
+      <%= f.hidden_field :body, html: { id: 'body' } %>
+      <%= f.hidden_field :temporarily_id, value: temporarily_id %>
+    </div>
+    <br>
+    <div class="editable" data-field-id="body" id="_newpost_body" style="width: 100%; background: white; border: 1px solid #ddd; border-bottom: 1px solid #ccc; border-radius: 4px;">
+      <%= @post.body.html_safe if @post.body.present? %>
+    </div>
+    <br>
+    <div class="field">
+      <%= f.text_field :tag_list, :placeholder => "Tags (separated by commas)", :style => "width:100%;outline: 0;border: none;font-size:21px;font-color: rgba(0,0,0,0.3);background:none;font-weight:100;" %>
+    </div>
+    <br>
+    <%= f.submit 'Submit', class: 'btn btn-lg btn-info', id: '_newpost_submit' %>
+  <% end %>
+</div>

@@ -11,3 +11,17 @@ $ ->
     e.preventDefault()
     $(@).next('.new-comment-reply').show()
     @.remove()
+
+  editor = new MediumEditor('.editable', placeholder: 'Write your text')
+  post_tmp_id = $('form#new_post').data('tmp-id')
+  $('.editable').mediumInsert
+    editor: editor
+    addons:
+      images:
+        uploadScript: "/posts/#{post_tmp_id}/pictures"
+  $('.editable:first').focus()
+  $('#_newpost_submit').on 'click', ->
+    $('.mediumInsert-buttons').remove()
+    $('#post_body').val $('#_newpost_body').html()
+    $('#new_post').submit()
+    return

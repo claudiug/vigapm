@@ -17,11 +17,13 @@
 //= require wookmark
 //= require holder
 //= require common
-//= require medium-editor-insert-plugin
-//= require medium-editor-insert-images
-//= require medium-editor-insert-embeds
-//= require medium-editor-insert-tables
-//= require medium-editor-insert-maps
+
+//= require handlebars-v3.0.0
+//= require jquery-sortable
+//= require jquery.ui.widget
+//= require jquery.iframe-transport
+//= require jquery.fileupload
+//= require medium-editor-insert-plugin.min
 
 //= require_tree .
 

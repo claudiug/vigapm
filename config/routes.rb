@@ -17,6 +17,7 @@ Rails.application.routes.draw do
         put 'down', to: 'comments#down'
       end
     end
+    resources :pictures, only: :create
   end
 
   resources :users do

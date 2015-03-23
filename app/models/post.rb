@@ -16,34 +16,32 @@
 #  cached_weighted_total   :integer          default(0)
 #  cached_weighted_average :float            default(0.0)
 #  slug                    :string(255)
-#  images_file_name        :string(255)
-#  images_content_type     :string(255)
-#  images_file_size        :integer
-#  images_updated_at       :datetime
+#  impressions_count       :integer          default(0)
+#  guru_id                 :integer
 #
 
 class Post < ActiveRecord::Base
   acts_as_votable
-  has_many :comments
+
   belongs_to :user
   belongs_to :guru, class_name: 'User'
+
+  has_many :pictures
+
+  has_many :comments
+  has_many :commentators, through: :comments, source: :user
+
   has_many :taggings
   has_many :tags, through: :taggings
-  validates :slug, presence: true
-  validates :title, presence: true, uniqueness: true
-  validates :title, length: {in: 3..56}
-  before_validation :generate_slug
-  has_many :subscriptions
-  has_many :subscriptions
 
   has_many :subscriptions
   has_many :users, through: :subscriptions, dependent: :destroy
-  has_many :commentators, through: :comments, source: :user
 
-  has_attached_file :images, styles: {medium: '300x300>', thumb: '100x100>'}, default_url: '/images/:style/missing.png'
-  validates_attachment_content_type :images, :content_type => /\Aimage\/.*\Z/
+  before_validation :generate_slug
 
-  validates_attachment :images, content_type: {content_type: 'image/jpeg'}, size: {in: 0..10.megabytes}
+  validates :slug, presence: true
+  validates :title, presence: true, uniqueness: true
+  validates :title, length: {in: 3..56}
 
   is_impressionable counter_cache: true
 
@@ -112,6 +110,10 @@ class Post < ActiveRecord::Base
 
   def user_voters
     votes_for.by_type(User).voters
+  end
+
+  def main_picture
+    pictures.first if pictures.any?
   end
 
   protected
