@@ -13,7 +13,8 @@ $ ->
     @.remove()
 
   editor = new MediumEditor('.editable', placeholder: 'Write your text')
-  post_tmp_id = $('form#new_post').data('tmp-id')
+  form = $('form#new_post, form.edit_post')
+  post_tmp_id = form.data('tmp-id')
   $('.editable').mediumInsert
     editor: editor
     addons:
