@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 
   helper_method :temporarily_id
 
-  respond_to :html, only: :create
+  respond_to :html, only: %i(create update)
 
   def index
     params[:page] || 1
@@ -26,7 +26,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(posts_params)
     @post.save!
 
-    Post::Picture.where(post_id: temporarily_id).update_all(post_id: @post.id)
+    attach_pictures_to_post
 
     respond_with @post
   end
@@ -38,11 +38,11 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find_by(slug: params[:id])
-    if @post.update(posts_params)
-      redirect_to @post
-    else
-      render :edit
-    end
+    @post.update!(posts_params)
+
+    attach_pictures_to_post
+
+    respond_with @post
   end
 
   def destroy
@@ -73,6 +73,8 @@ class PostsController < ApplicationController
     @temporarily_id || params[:post][:temporarily_id]
   end
 
+  protected
+
   def generate_post_tmp_id
     tmp_id = 2147483648
     while tmp_id > 2147483647
@@ -80,5 +82,9 @@ class PostsController < ApplicationController
     end
 
     tmp_id
+  end
+
+  def attach_pictures_to_post
+    Post::Picture.where(post_id: temporarily_id).update_all(post_id: @post.id)
   end
 end
