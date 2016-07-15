@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+
 group :development do
   gem 'quiet_assets'
   gem 'better_errors'
