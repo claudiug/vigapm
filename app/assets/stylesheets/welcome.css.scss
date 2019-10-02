@@ -4,7 +4,8 @@
   text-align: center;
   font-size: 1.2em;
   padding: 1em;
-  cursor: default; }
+  cursor: default; 
+}
   .apple_pagination a, .apple_pagination span {
     padding: 0.2em 0.3em; }
   .apple_pagination .disabled {
@@ -18,8 +19,6 @@
     height: 1.4em;
     line-height: 1.5;
     padding: 0em 0.3em;
-    -moz-border-radius: 1em;
-    -webkit-border-radius: 1em;
     border-radius: 1em;
     text-shadow: rgba(255, 255, 255, 0.8) 1px 1px 1px; }
   .apple_pagination a {
@@ -28,16 +27,13 @@
     .apple_pagination a:hover, .apple_pagination a:focus {
       text-decoration: underline; }
 
-
 *, *:before, *:after {box-sizing:  border-box !important;}
-
 
 .row {
  -moz-column-width: 18em;
  -webkit-column-width: 18em;
  -moz-column-gap: 1em;
  -webkit-column-gap: 1em; 
-  
 }
 
 .menu-category {
@@ -72,7 +68,6 @@ header {
   .navbar {
     position: relative;
     top: 0;
-
   }
 }
 .bg-midnight-blue {
@@ -84,16 +79,8 @@ header {
 }
 .hero-container {
   height: 510px;
-  background: image-url('hero.jpg') center 0;
-  //background: #31383f; /* Old browsers */
-  //background: -moz-radial-gradient(center, ellipse cover, #31383f 0%, #1b1f23 100%); /* FF3.6+ */
-  //background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#31383f), color-stop(100%,#1b1f23)); /* Chrome,Safari4+ */
-  //background: -webkit-radial-gradient(center, ellipse cover, #31383f 0%,#1b1f23 100%); /* Chrome10+,Safari5.1+ */
-  //background: -o-radial-gradient(center, ellipse cover, #31383f 0%,#1b1f23 100%); /* Opera 12+ */
-  //background: -ms-radial-gradient(center, ellipse cover, #31383f 0%,#1b1f23 100%); /* IE10+ */
-  //background: radial-gradient(ellipse at center, #31383f 0%,#1b1f23 100%); /* W3C */
-  //filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#31383f', endColorstr='#1b1f23',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-}
+  background: image-url('hero.jpg') 50% 0;
+ }
 .twitter-typeahead {
   vertical-align: middle;
   .typeahead {
@@ -229,9 +216,6 @@ header {
     border-color: transparent #3198e0 transparent transparent;
     border-style: solid;
     border-width: 18px 18px 18px 0;
-  }
-  &:after {
-
   }
 }
 .vigap-count {
