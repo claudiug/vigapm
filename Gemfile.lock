@@ -1,8 +1,8 @@
 GIT
-  remote: git://github.com/capistrano/rbenv.git
-  revision: 2332dba20ec1f8c8cb7a9cd38770d71f5c4bf5a9
+  remote: https://github.com/capistrano/rbenv.git
+  revision: 1fdb93a6dd4a4ab3fb786c995055cf6949daf7a4
   specs:
-    capistrano-rbenv (2.0.2)
+    capistrano-rbenv (2.2.0)
       capistrano (~> 3.1)
       sshkit (~> 1.3)
 
@@ -41,14 +41,17 @@ GEM
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
     arel (5.0.1.20140414130214)
+    autoprefixer-rails (10.4.19.0)
+      execjs (~> 2)
     bcrypt-ruby (3.1.2)
     better_errors (1.1.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap-sass (3.2.0.1)
-      sass (~> 3.2)
+    bootstrap-sass (3.4.1)
+      autoprefixer-rails (>= 5.2.1)
+      sassc (>= 2.0.0)
     bootstrap-wysihtml5-rails (0.3.2.100)
       railties (>= 3.0)
     builder (3.2.2)
@@ -88,6 +91,7 @@ GEM
     execjs (2.2.1)
     faker (1.1.2)
       i18n (~> 0.5)
+    ffi (1.17.0)
     flat-ui-rails (0.0.2)
     font-awesome-rails (4.2.0.0)
       railties (>= 3.2, < 5.0)
@@ -174,6 +178,8 @@ GEM
       sass (~> 3.2.0)
       sprockets (~> 2.8, <= 2.11.0)
       sprockets-rails (~> 2.0)
+    sassc (2.4.0)
+      ffi (~> 1.9)
     simple_captcha2 (0.3.4)
       rails (>= 4.1)
     skylight (0.3.20)
@@ -223,7 +229,7 @@ DEPENDENCIES
   bcrypt-ruby (= 3.1.2)
   better_errors
   binding_of_caller
-  bootstrap-sass (~> 3.2.0)
+  bootstrap-sass (~> 3.4.1)
   bootstrap-wysihtml5-rails
   byebug
   capistrano (~> 3.2.0)
